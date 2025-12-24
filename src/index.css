@@ -8,96 +8,98 @@
 
 @layer base {
   :root {
-    /* Light Industrial Theme - Clean & Professional */
-    --background: 210 20% 98%;
-    --foreground: 220 25% 15%;
+    /* Light Industrial Theme - Elegant & Professional */
+    --background: 40 25% 97%;
+    --foreground: 220 30% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 15%;
+    --card-foreground: 220 30% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 15%;
+    --popover-foreground: 220 30% 12%;
 
-    /* Industrial Orange - Bold accent */
-    --primary: 24 95% 53%;
+    /* Rich Deep Teal - Premium accent */
+    --primary: 195 70% 28%;
     --primary-foreground: 0 0% 100%;
 
-    /* Light Steel Grey */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 25% 20%;
+    /* Warm Cream */
+    --secondary: 40 20% 94%;
+    --secondary-foreground: 220 30% 15%;
 
-    /* Muted light */
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 45%;
+    /* Muted warm */
+    --muted: 40 15% 94%;
+    --muted-foreground: 220 15% 40%;
 
-    /* Accent - Warm Orange */
-    --accent: 32 98% 50%;
+    /* Accent - Rich Gold */
+    --accent: 38 70% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 24 95% 53%;
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 195 70% 28%;
 
     --radius: 0.5rem;
 
     /* Custom industrial colors */
-    --steel: 220 10% 55%;
-    --charcoal: 220 20% 20%;
-    --rust: 15 80% 45%;
-    --metallic: 220 5% 75%;
+    --steel: 220 12% 50%;
+    --charcoal: 220 25% 15%;
+    --rust: 15 75% 40%;
+    --metallic: 220 8% 72%;
     --cream: 40 30% 96%;
-    --warm-white: 40 20% 99%;
+    --warm-white: 40 25% 98%;
+    --gold: 38 70% 50%;
+    --navy: 220 50% 20%;
 
-    --sidebar-background: 220 20% 97%;
-    --sidebar-foreground: 220 25% 15%;
-    --sidebar-primary: 24 95% 53%;
+    --sidebar-background: 40 20% 96%;
+    --sidebar-foreground: 220 30% 12%;
+    --sidebar-primary: 195 70% 28%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 220 25% 15%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 24 95% 53%;
+    --sidebar-accent: 40 15% 94%;
+    --sidebar-accent-foreground: 220 30% 12%;
+    --sidebar-border: 40 15% 88%;
+    --sidebar-ring: 195 70% 28%;
   }
 
   .dark {
-    --background: 220 15% 8%;
-    --foreground: 0 0% 95%;
+    --background: 220 20% 8%;
+    --foreground: 40 20% 95%;
 
-    --card: 220 15% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 220 18% 12%;
+    --card-foreground: 40 20% 95%;
 
-    --popover: 220 15% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 220 18% 12%;
+    --popover-foreground: 40 20% 95%;
 
-    --primary: 24 95% 53%;
+    --primary: 195 70% 35%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 10% 20%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 20% 95%;
 
-    --muted: 220 10% 15%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 12% 55%;
 
-    --accent: 32 98% 50%;
+    --accent: 38 70% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 10% 20%;
-    --input: 220 10% 18%;
-    --ring: 24 95% 53%;
+    --border: 220 12% 22%;
+    --input: 220 12% 18%;
+    --ring: 195 70% 35%;
 
-    --sidebar-background: 220 15% 6%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 24 95% 53%;
+    --sidebar-background: 220 20% 6%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 195 70% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 10% 15%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 220 10% 20%;
-    --sidebar-ring: 24 95% 53%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 220 12% 22%;
+    --sidebar-ring: 195 70% 35%;
   }
 }
 
@@ -122,20 +124,20 @@
   }
 
   .hero-gradient {
-    background: linear-gradient(135deg, hsl(220 25% 15%) 0%, hsl(220 20% 25%) 50%, hsl(24 30% 25%) 100%);
+    background: linear-gradient(145deg, hsl(195 70% 22%) 0%, hsl(210 50% 18%) 50%, hsl(220 45% 15%) 100%);
   }
 
   .metallic-border {
     border: 1px solid hsl(var(--border));
-    box-shadow: 0 1px 3px hsl(var(--charcoal) / 0.08), 0 1px 2px hsl(var(--charcoal) / 0.04);
+    box-shadow: 0 1px 3px hsl(var(--charcoal) / 0.06), 0 1px 2px hsl(var(--charcoal) / 0.03);
   }
 
   .glow-primary {
-    box-shadow: 0 4px 14px hsl(var(--primary) / 0.4), 0 0 0 1px hsl(var(--primary) / 0.1);
+    box-shadow: 0 4px 20px hsl(var(--primary) / 0.35), 0 0 0 1px hsl(var(--primary) / 0.1);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(38 70% 45%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -143,34 +145,48 @@
 
   .card-elevated {
     background: hsl(var(--card));
-    box-shadow: 0 4px 6px -1px hsl(var(--charcoal) / 0.1), 0 2px 4px -2px hsl(var(--charcoal) / 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 1px 2px hsl(var(--charcoal) / 0.04),
+      0 4px 8px hsl(var(--charcoal) / 0.04),
+      0 8px 16px hsl(var(--charcoal) / 0.04);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .card-elevated:hover {
-    box-shadow: 0 20px 25px -5px hsl(var(--charcoal) / 0.1), 0 8px 10px -6px hsl(var(--charcoal) / 0.1);
-    transform: translateY(-4px);
+    box-shadow: 
+      0 2px 4px hsl(var(--charcoal) / 0.04),
+      0 8px 16px hsl(var(--charcoal) / 0.06),
+      0 16px 32px hsl(var(--charcoal) / 0.08);
+    transform: translateY(-6px);
   }
 
   .section-pattern {
     background-image: 
-      radial-gradient(circle at 1px 1px, hsl(var(--steel) / 0.15) 1px, transparent 0);
-    background-size: 40px 40px;
+      radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.08) 1px, transparent 0);
+    background-size: 32px 32px;
   }
 
   .highlight-card {
     position: relative;
     overflow: hidden;
+    border-radius: 1rem;
   }
 
   .highlight-card::before {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    z-index: 10;
+  }
+
+  .elegant-shadow {
+    box-shadow: 
+      0 2px 8px hsl(var(--charcoal) / 0.08),
+      0 8px 24px hsl(var(--charcoal) / 0.08);
   }
 }
 
