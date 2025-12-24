@@ -8,55 +8,57 @@
 
 @layer base {
   :root {
-    /* Industrial Dark Theme - Primary palette */
-    --background: 220 15% 13%;
-    --foreground: 0 0% 95%;
+    /* Light Industrial Theme - Clean & Professional */
+    --background: 210 20% 98%;
+    --foreground: 220 25% 15%;
 
-    --card: 220 15% 16%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 15%;
 
-    --popover: 220 15% 16%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
 
     /* Industrial Orange - Bold accent */
-    --primary: 28 100% 50%;
+    --primary: 24 95% 53%;
     --primary-foreground: 0 0% 100%;
 
-    /* Steel Grey */
-    --secondary: 220 10% 25%;
-    --secondary-foreground: 0 0% 95%;
+    /* Light Steel Grey */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 25% 20%;
 
-    /* Muted steel */
-    --muted: 220 10% 20%;
-    --muted-foreground: 220 10% 60%;
+    /* Muted light */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    /* Accent - Warning Orange */
-    --accent: 38 100% 50%;
-    --accent-foreground: 0 0% 10%;
+    /* Accent - Warm Orange */
+    --accent: 32 98% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 10% 25%;
-    --input: 220 10% 22%;
-    --ring: 28 100% 50%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 24 95% 53%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
 
     /* Custom industrial colors */
-    --steel: 220 10% 45%;
-    --charcoal: 220 15% 10%;
+    --steel: 220 10% 55%;
+    --charcoal: 220 20% 20%;
     --rust: 15 80% 45%;
-    --metallic: 220 5% 70%;
+    --metallic: 220 5% 75%;
+    --cream: 40 30% 96%;
+    --warm-white: 40 20% 99%;
 
-    --sidebar-background: 220 15% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 28 100% 50%;
+    --sidebar-background: 220 20% 97%;
+    --sidebar-foreground: 220 25% 15%;
+    --sidebar-primary: 24 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 10% 20%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 220 10% 25%;
-    --sidebar-ring: 28 100% 50%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 220 25% 15%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 24 95% 53%;
   }
 
   .dark {
@@ -69,7 +71,7 @@
     --popover: 220 15% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 28 100% 50%;
+    --primary: 24 95% 53%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 10% 20%;
@@ -78,24 +80,24 @@
     --muted: 220 10% 15%;
     --muted-foreground: 220 10% 55%;
 
-    --accent: 38 100% 50%;
-    --accent-foreground: 0 0% 10%;
+    --accent: 32 98% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 220 10% 20%;
     --input: 220 10% 18%;
-    --ring: 28 100% 50%;
+    --ring: 24 95% 53%;
 
     --sidebar-background: 220 15% 6%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 28 100% 50%;
+    --sidebar-primary: 24 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 10% 15%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 220 10% 20%;
-    --sidebar-ring: 28 100% 50%;
+    --sidebar-ring: 24 95% 53%;
   }
 }
 
@@ -116,16 +118,20 @@
 
 @layer components {
   .industrial-gradient {
-    background: linear-gradient(135deg, hsl(var(--charcoal)) 0%, hsl(var(--secondary)) 100%);
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(220 25% 15%) 0%, hsl(220 20% 25%) 50%, hsl(24 30% 25%) 100%);
   }
 
   .metallic-border {
-    border: 1px solid hsl(var(--steel));
-    box-shadow: inset 0 1px 0 hsl(var(--metallic) / 0.1);
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 1px 3px hsl(var(--charcoal) / 0.08), 0 1px 2px hsl(var(--charcoal) / 0.04);
   }
 
   .glow-primary {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
+    box-shadow: 0 4px 14px hsl(var(--primary) / 0.4), 0 0 0 1px hsl(var(--primary) / 0.1);
   }
 
   .text-gradient {
@@ -133,6 +139,38 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .card-elevated {
+    background: hsl(var(--card));
+    box-shadow: 0 4px 6px -1px hsl(var(--charcoal) / 0.1), 0 2px 4px -2px hsl(var(--charcoal) / 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-elevated:hover {
+    box-shadow: 0 20px 25px -5px hsl(var(--charcoal) / 0.1), 0 8px 10px -6px hsl(var(--charcoal) / 0.1);
+    transform: translateY(-4px);
+  }
+
+  .section-pattern {
+    background-image: 
+      radial-gradient(circle at 1px 1px, hsl(var(--steel) / 0.15) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .highlight-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
   }
 }
 
