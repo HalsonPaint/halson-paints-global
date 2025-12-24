@@ -55,6 +55,8 @@ export default {
         charcoal: "hsl(var(--charcoal))",
         rust: "hsl(var(--rust))",
         metallic: "hsl(var(--metallic))",
+        cream: "hsl(var(--cream))",
+        "warm-white": "hsl(var(--warm-white))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
