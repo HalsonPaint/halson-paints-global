@@ -51,8 +51,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "info@halsonpaints.com",
-      href: "mailto:info@halsonpaints.com",
+      value: "newtechnocoats@gmail.com",
+      href: "mailto:newtechnocoats@gmail.com",
     },
     {
       icon: Clock,
