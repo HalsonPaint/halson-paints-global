@@ -50,10 +50,10 @@ const Header = () => {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "text-sm tracking-luxury uppercase transition-all duration-500 link-underline",
+                  "text-sm tracking-luxury uppercase transition-all duration-500 link-underline font-medium",
                   location.pathname === link.path
                     ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                    : "text-foreground/80 hover:text-foreground"
                 )}
               >
                 {link.name}
@@ -66,7 +66,7 @@ const Header = () => {
             <Button 
               asChild 
               variant="outline"
-              className="tracking-luxury text-xs uppercase border-foreground/20 hover:border-foreground hover:bg-transparent transition-all duration-500"
+              className="tracking-luxury text-xs uppercase border-primary text-primary hover:bg-primary hover:text-white transition-all duration-500"
             >
               <Link to="/contact">Get Quote</Link>
             </Button>

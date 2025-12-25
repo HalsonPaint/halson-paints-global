@@ -45,8 +45,7 @@ const Index = () => {
             
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.1] mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Pioneering<br />
-              Protection &<br />
-              <span className="text-accent">Performance</span>
+              <span className="text-accent">Protection</span> & Performance
             </h1>
             
             <p className="text-white/60 text-lg md:text-xl max-w-lg mb-12 leading-relaxed opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
