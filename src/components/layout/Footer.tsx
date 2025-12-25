@@ -66,10 +66,10 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="mailto:info@halsonpaints.com"
+                  href="mailto:newtechnocoats@gmail.com"
                   className="hover:text-background transition-colors duration-500"
                 >
-                  info@halsonpaints.com
+                  newtechnocoats@gmail.com
                 </a>
               </li>
             </ul>
