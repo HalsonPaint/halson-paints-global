@@ -6,7 +6,7 @@ import Layout from "@/components/layout/Layout";
 // Import images
 import facilityImg from "@/assets/facility.jpg";
 import industrialImg from "@/assets/industrial-excellence.jpg";
-import decorativeImg from "@/assets/decorative.jpg";
+import decorativeImg from "@/assets/decorative-new.jpg";
 import leadershipImg from "@/assets/leadership.jpg";
 
 const Index = () => {
@@ -81,12 +81,11 @@ const Index = () => {
       </section>
 
       {/* Stats - Minimal */}
-      <section className="py-24 bg-background border-b border-border">
+      <section className="py-16 bg-background border-b border-border">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             {[
               { value: "15+", label: "Product Categories" },
-              { value: "1000+", label: "Clients Served" },
               { value: "100%", label: "Quality Assured" },
               { value: "24/7", label: "Support" },
             ].map((stat, index) => (
@@ -108,16 +107,17 @@ const Index = () => {
       </section>
 
       {/* Highlights Section - Clean Grid */}
-      <section className="py-32 bg-background">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mb-20">
-            <p className="text-xs tracking-luxury uppercase text-muted-foreground mb-4">
+          <div className="text-center mb-16 opacity-0 animate-fade-in">
+            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-6 font-medium">
               Why Choose Us
             </p>
-            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight">
               Our Strengths
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
+            <div className="w-16 h-[1px] bg-primary mx-auto mb-8 transition-all duration-1000" />
+            <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto text-lg">
               Discover what makes Halson Paints the trusted choice for industrial and decorative coatings.
             </p>
           </div>
@@ -132,11 +132,11 @@ const Index = () => {
                 <img 
                   src={item.image} 
                   alt={item.label}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-700 group-hover:from-black/90" />
                 
-                <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div className="absolute bottom-0 left-0 right-0 p-8 transform transition-transform duration-700 group-hover:translate-y-[-8px]">
                   <h3 className="font-display text-2xl text-white mb-2">
                     {item.label}
                   </h3>
@@ -151,17 +151,17 @@ const Index = () => {
       </section>
 
       {/* About Section - Minimal */}
-      <section className="py-32 bg-secondary">
+      <section className="py-20 bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
             <p className="text-xs tracking-luxury uppercase text-muted-foreground mb-4 text-center">
               Our Story
             </p>
-            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-16 text-center">
+            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-12 text-center">
               About Halson Paints
             </h2>
 
-            <div className="space-y-8 text-muted-foreground leading-luxury text-lg">
+            <div className="space-y-6 text-muted-foreground leading-luxury text-lg">
               <p>
                 Established with a steadfast commitment to excellence, <strong className="text-foreground">Halson Paints Limited</strong> is 
                 a distinguished manufacturer of high-performance industrial and decorative paints, proudly 
@@ -182,7 +182,7 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
               {[
                 "Manufacturing",
                 "Construction", 
@@ -191,7 +191,7 @@ const Index = () => {
               ].map((sector, index) => (
                 <div 
                   key={sector}
-                  className="p-6 bg-background border border-border text-center transition-all duration-700 hover:border-primary/30"
+                  className="p-5 bg-background border border-border text-center transition-all duration-700 hover:border-primary/30"
                 >
                   <span className="text-sm text-foreground">{sector}</span>
                 </div>
@@ -202,13 +202,13 @@ const Index = () => {
       </section>
 
       {/* CTA Section - Clean */}
-      <section className="py-32 hero-gradient">
+      <section className="py-20 hero-gradient">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-4xl md:text-5xl text-white mb-8">
+            <h2 className="font-display text-4xl md:text-5xl text-white mb-6">
               Ready to Elevate Your Projects?
             </h2>
-            <p className="text-white/60 text-lg mb-12 leading-relaxed">
+            <p className="text-white/60 text-lg mb-10 leading-relaxed">
               Partner with Halson Paints for industrial and decorative excellence.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
