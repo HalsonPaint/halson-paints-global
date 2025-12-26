@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import halsonLogo from "@/assets/halson-logo.jpg";
 
 const navLinks = [
   { name: "About", path: "/" },
@@ -36,11 +37,14 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="group">
-            <div className="flex items-center gap-3">
-              <span className="font-display text-xl tracking-wide text-foreground transition-colors duration-500">
-                HALSON PAINTS
-              </span>
-            </div>
+            <img 
+              src={halsonLogo} 
+              alt="Halson Paints Logo" 
+              className={cn(
+                "transition-all duration-500",
+                isScrolled ? "h-10" : "h-12"
+              )}
+            />
           </Link>
 
           {/* Desktop Navigation */}
