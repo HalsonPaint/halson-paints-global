@@ -42,7 +42,7 @@ const Header = () => {
               alt="Halson Paints Logo" 
               className={cn(
                 "transition-all duration-500",
-                isScrolled ? "h-10" : "h-12"
+                isScrolled ? "h-14" : "h-20"
               )}
             />
           </Link>
