@@ -58,7 +58,9 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="tel:+918369657171"
+                  href="https://wa.me/918369657171"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-background transition-colors duration-500"
                 >
                   +91 8369657171
