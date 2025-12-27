@@ -41,8 +41,8 @@ const Header = () => {
               src={halsonLogo} 
               alt="Halson Paints Logo" 
               className={cn(
-                "transition-all duration-500 w-auto object-contain",
-                isScrolled ? "h-12" : "h-14"
+                "transition-all duration-500 object-contain",
+                isScrolled ? "h-14 w-40" : "h-16 w-48"
               )}
             />
           </Link>
