@@ -17,38 +17,50 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (ticking) return;
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        const scrolled = window.scrollY > 50;
+        setIsScrolled((prev) => (prev === scrolled ? prev : scrolled));
+        ticking = false;
+      });
     };
-    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-700",
+        "fixed top-0 left-0 right-0 z-50 py-3 transition-[background-color,border-color,backdrop-filter] duration-500",
         isScrolled 
-          ? "bg-background/95 backdrop-blur-md border-b border-border py-3" 
-          : "bg-transparent py-4"
+          ? "bg-background/95 backdrop-blur-md border-b border-border" 
+          : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between min-h-[60px]">
+        <div className="flex items-center justify-between min-h-[72px] md:grid md:grid-cols-[auto,1fr,auto] md:gap-6">
           {/* Logo */}
-          <Link to="/" className="group flex-shrink-0">
-            <img 
-              src={halsonLogo} 
-              alt="Halson Paints Logo" 
-              className={cn(
-                "transition-all duration-500 object-contain",
-                isScrolled ? "h-14 w-40" : "h-16 w-48"
-              )}
-            />
-          </Link>
+            <Link to="/" className="group flex-shrink-0 flex items-center">
+              <img 
+                src={halsonLogo} 
+                alt="Halson Paints Logo" 
+                className={cn(
+                  "object-contain origin-left transform-gpu transition-transform duration-500",
+                  "h-12 w-40 sm:h-14 sm:w-44 md:h-14 md:w-48 lg:h-16 lg:w-56",
+                  isScrolled ? "scale-[0.92]" : "scale-100"
+                )}
+              />
+            </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-12">
+          <nav className="hidden md:flex items-center justify-center gap-8 lg:gap-12">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
