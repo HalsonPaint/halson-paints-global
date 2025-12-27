@@ -7,18 +7,13 @@ import { cn } from "@/lib/utils";
 
 const WHATSAPP_NUMBER = "918369657171";
 
-const ProductCard = ({ product, categoryName }: { product: Product; categoryName: string }) => {
-  const handleEnquiry = () => {
-    const message = encodeURIComponent(
-      `Hi, I'm interested in the following product:\n\n` +
-      `*Product:* ${product.name}\n` +
-      `*Category:* ${categoryName}\n` +
-      `*Description:* ${product.description}\n\n` +
-      `Please provide more details and pricing.`
-    );
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
-  };
+const getWhatsAppUrl = (message: string) => {
+  return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
+};
 
+const ProductCard = ({ product, categoryName }: { product: Product; categoryName: string }) => {
+  const message = `Hi, I'm interested in the following product:\n\n*Product:* ${product.name}\n*Category:* ${categoryName}\n*Description:* ${product.description}\n\nPlease provide more details and pricing.`;
+  
   return (
     <div className="p-4 bg-secondary/50 rounded-lg border border-border hover:border-primary/30 transition-all group">
       <div className="flex items-start justify-between gap-4">
@@ -31,12 +26,18 @@ const ProductCard = ({ product, categoryName }: { product: Product; categoryName
           </p>
         </div>
         <Button
-          onClick={handleEnquiry}
+          asChild
           size="sm"
           className="shrink-0 font-display tracking-wide"
         >
-          <MessageCircle size={16} className="mr-2" />
-          Enquiry
+          <a 
+            href={getWhatsAppUrl(message)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <MessageCircle size={16} className="mr-2" />
+            Enquiry
+          </a>
         </Button>
       </div>
     </div>
@@ -184,17 +185,18 @@ const Products = () => {
               We offer custom formulations tailored to your specific requirements.
             </p>
             <Button 
-              onClick={() => {
-                const message = encodeURIComponent(
-                  `Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.`
-                );
-                window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
-              }}
+              asChild
               size="lg" 
               className="font-display tracking-wider"
             >
-              <MessageCircle className="mr-2" />
-              Request Custom Solution
+              <a
+                href={getWhatsAppUrl("Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="mr-2" />
+                Request Custom Solution
+              </a>
             </Button>
           </div>
         </div>

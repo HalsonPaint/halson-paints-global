@@ -46,7 +46,8 @@ const Contact = () => {
       icon: Phone,
       label: "Phone",
       value: "+91 8369657171",
-      href: "tel:+918369657171",
+      href: "https://api.whatsapp.com/send?phone=918369657171",
+      external: true,
     },
     {
       icon: Mail,
@@ -125,16 +126,17 @@ const Contact = () => {
                   Need a quick response? Message us directly on WhatsApp.
                 </p>
                 <Button
-                  onClick={() => {
-                    const message = encodeURIComponent(
-                      `Hi, I'm visiting your website and would like to enquire about your products/services.`
-                    );
-                    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
-                  }}
+                  asChild
                   className="font-display tracking-wider"
                 >
-                  <MessageCircle className="mr-2" />
-                  Chat on WhatsApp
+                  <a
+                    href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent("Hi, I'm visiting your website and would like to enquire about your products/services.")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="mr-2" />
+                    Chat on WhatsApp
+                  </a>
                 </Button>
               </div>
 
