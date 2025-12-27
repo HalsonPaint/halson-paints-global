@@ -29,20 +29,20 @@ const Header = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-700",
         isScrolled 
-          ? "bg-background/95 backdrop-blur-md border-b border-border py-4" 
-          : "bg-transparent py-6"
+          ? "bg-background/95 backdrop-blur-md border-b border-border py-3" 
+          : "bg-transparent py-4"
       )}
     >
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between min-h-[60px]">
           {/* Logo */}
-          <Link to="/" className="group">
+          <Link to="/" className="group flex-shrink-0">
             <img 
               src={halsonLogo} 
               alt="Halson Paints Logo" 
               className={cn(
-                "transition-all duration-500",
-                isScrolled ? "h-14" : "h-20"
+                "transition-all duration-500 w-auto object-contain",
+                isScrolled ? "h-12" : "h-14"
               )}
             />
           </Link>
