@@ -5,7 +5,7 @@ import Layout from "@/components/layout/Layout";
 import { productCategories, type Category, type Product } from "@/data/products";
 import { cn } from "@/lib/utils";
 
-const WHATSAPP_NUMBER = "919999999999"; // Placeholder - replace with actual number
+const WHATSAPP_NUMBER = "918369657171";
 
 const ProductCard = ({ product, categoryName }: { product: Product; categoryName: string }) => {
   const handleEnquiry = () => {

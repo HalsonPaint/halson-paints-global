@@ -58,10 +58,10 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="tel:+919999999999"
+                  href="tel:+918369657171"
                   className="hover:text-background transition-colors duration-500"
                 >
-                  +91 99999 99999
+                  +91 8369657171
                 </a>
               </li>
               <li>
@@ -83,7 +83,7 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-6">
             <a 
-              href="https://wa.me/919999999999" 
+              href="https://wa.me/918369657171"
               target="_blank" 
               rel="noopener noreferrer"
               className="text-xs text-background/40 hover:text-background transition-colors duration-500 tracking-luxury uppercase"
