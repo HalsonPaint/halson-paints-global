@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import halsonLogo from "@/assets/halson-logo.jpg";
+import halsonLogo from "@/assets/halson-logo-new.png";
 
 const navLinks = [
   { name: "About", path: "/" },
