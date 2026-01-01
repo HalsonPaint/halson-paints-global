@@ -150,52 +150,106 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section - Minimal */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xs tracking-luxury uppercase text-muted-foreground mb-4 text-center">
-              Our Story
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-12 text-center">
-              About Halson Paints
-            </h2>
+      {/* About Section - Paint Splash Design */}
+      <section className="relative bg-cream overflow-hidden">
+        {/* Paint Splash Top Border */}
+        <div className="absolute top-0 left-0 right-0 h-32 md:h-40">
+          <svg 
+            viewBox="0 0 1440 160" 
+            className="w-full h-full" 
+            preserveAspectRatio="none"
+            fill="none"
+          >
+            <path 
+              d="M0,0 L1440,0 L1440,80 C1300,120 1200,60 1050,90 C900,120 800,70 650,100 C500,130 400,80 250,110 C100,140 50,100 0,120 L0,0 Z" 
+              fill="hsl(var(--primary))"
+            />
+            {/* Paint drips */}
+            <ellipse cx="180" cy="115" rx="8" ry="20" fill="hsl(var(--primary))" />
+            <ellipse cx="420" cy="125" rx="6" ry="15" fill="hsl(var(--primary))" />
+            <ellipse cx="680" cy="118" rx="7" ry="18" fill="hsl(var(--primary))" />
+            <ellipse cx="950" cy="110" rx="5" ry="12" fill="hsl(var(--primary))" />
+            <ellipse cx="1200" cy="95" rx="6" ry="14" fill="hsl(var(--primary))" />
+          </svg>
+        </div>
 
-            <div className="space-y-6 text-muted-foreground leading-luxury text-lg">
-              <p>
-                Established with a steadfast commitment to excellence, <strong className="text-foreground">Halson Paints Limited</strong> is 
-                a distinguished manufacturer of high-performance industrial and decorative paints, proudly 
-                headquartered in Vadavali, near Thane, Maharashtra.
-              </p>
-
-              <p>
-                With years of expertise honed in one of India's dynamic industrial hubs, we have built enduring 
-                trust through our extensive offline distribution network and seamless online presence on IndiaMART, 
-                delivering reliable solutions to clients nationwide.
-              </p>
-
-              <p>
-                At the core of our success is our primary focus on industrial paints – robust, 
-                specialized coatings engineered for superior protection in demanding environments. From 
-                anti-corrosive primers and epoxy systems to heat-resistant and chemical-resistant finishes, 
-                our industrial range safeguards critical assets across diverse sectors.
-              </p>
+        <div className="container mx-auto px-6 lg:px-12 pt-44 md:pt-52 pb-20">
+          <div className="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+            {/* Paint Brush Illustration */}
+            <div className="flex-shrink-0 w-48 md:w-64 relative">
+              <svg viewBox="0 0 200 300" className="w-full h-auto">
+                {/* Paint dripping from brush */}
+                <path 
+                  d="M60,0 Q55,30 65,50 Q75,70 60,90 Q45,110 70,130 Q95,110 80,90 Q65,70 75,50 Q85,30 80,0 Z" 
+                  fill="hsl(var(--primary))"
+                />
+                <ellipse cx="50" cy="140" rx="8" ry="20" fill="hsl(var(--primary))" />
+                <ellipse cx="90" cy="135" rx="6" ry="25" fill="hsl(var(--primary))" />
+                
+                {/* Brush bristles */}
+                <g fill="hsl(var(--gold))">
+                  {[...Array(12)].map((_, i) => (
+                    <rect 
+                      key={i}
+                      x={45 + i * 9} 
+                      y={150} 
+                      width="6" 
+                      height="80" 
+                      rx="2"
+                    />
+                  ))}
+                </g>
+                
+                {/* Ferrule (metal band) */}
+                <rect x="40" y="225" width="120" height="20" rx="3" fill="#9CA3AF" />
+                <rect x="40" y="230" width="120" height="5" fill="#6B7280" />
+                
+                {/* Handle */}
+                <rect x="55" y="245" width="90" height="55" rx="4" fill="#8B5A2B" />
+                <rect x="60" y="250" width="5" height="45" fill="#A0522D" opacity="0.5" />
+              </svg>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-              {[
-                "Manufacturing",
-                "Construction", 
-                "Infrastructure",
-                "Automotive"
-              ].map((sector, index) => (
-                <div 
-                  key={sector}
-                  className="p-5 bg-background border border-border text-center transition-all duration-700 hover:border-primary/30"
-                >
-                  <span className="text-sm text-foreground">{sector}</span>
-                </div>
-              ))}
+            {/* Content */}
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground mb-8 font-semibold italic tracking-tight">
+                ABOUT US
+              </h2>
+
+              <div className="space-y-6 text-muted-foreground leading-luxury text-lg max-w-2xl">
+                <p>
+                  Established with a steadfast commitment to excellence, <strong className="text-foreground">Halson Paints Limited</strong> is 
+                  a distinguished manufacturer of high-performance industrial and decorative paints, proudly 
+                  headquartered in Vadavali, near Thane, Maharashtra.
+                </p>
+
+                <p>
+                  With years of expertise honed in one of India's dynamic industrial hubs, we have built enduring 
+                  trust through our extensive offline distribution network and seamless online presence on IndiaMART, 
+                  delivering reliable solutions to clients nationwide.
+                </p>
+
+                <p>
+                  At the core of our success is our primary focus on industrial paints – robust, 
+                  specialized coatings engineered for superior protection in demanding environments.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+                {[
+                  "Manufacturing",
+                  "Construction", 
+                  "Infrastructure",
+                  "Automotive"
+                ].map((sector) => (
+                  <div 
+                    key={sector}
+                    className="p-5 bg-background border border-border text-center transition-all duration-700 hover:border-primary/30"
+                  >
+                    <span className="text-sm text-foreground">{sector}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
