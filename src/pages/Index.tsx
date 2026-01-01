@@ -150,120 +150,35 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section - Paint Splash Design */}
-      <section className="relative bg-[#F5F5F0] overflow-hidden">
-        {/* Torn Paper Paint Splash Top Border */}
-        <div className="absolute top-0 left-0 right-0 h-28 md:h-36">
-          <svg 
-            viewBox="0 0 1440 150" 
-            className="w-full h-full" 
-            preserveAspectRatio="none"
-            fill="none"
-          >
-            {/* Main torn paper shape */}
-            <path 
-              d="M0,0 L1440,0 L1440,70 
-                 C1380,75 1350,90 1300,85 
-                 C1250,80 1200,95 1150,88 
-                 C1100,81 1050,100 1000,92 
-                 C950,84 900,105 850,95 
-                 C800,85 750,110 700,98 
-                 C650,86 600,108 550,96 
-                 C500,84 450,105 400,93 
-                 C350,81 300,100 250,90 
-                 C200,80 150,95 100,88 
-                 C50,81 25,90 0,85 
-                 L0,0 Z" 
-              fill="#1B3A4B"
-            />
-            {/* Paint drips */}
-            <ellipse cx="320" cy="100" rx="6" ry="18" fill="#1B3A4B" />
-            <ellipse cx="580" cy="108" rx="5" ry="15" fill="#1B3A4B" />
-            <ellipse cx="820" cy="105" rx="7" ry="20" fill="#1B3A4B" />
-            <ellipse cx="1100" cy="98" rx="5" ry="14" fill="#1B3A4B" />
-          </svg>
-        </div>
-
-        <div className="container mx-auto px-6 lg:px-12 pt-40 md:pt-48 pb-16">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 max-w-5xl mx-auto">
-            {/* Paint Brush Illustration */}
-            <div className="flex-shrink-0 w-40 md:w-52 relative -mt-8 md:-mt-16">
-              <svg viewBox="0 0 180 320" className="w-full h-auto">
-                {/* Paint blob on top of brush */}
-                <path 
-                  d="M40,80 
-                     C35,60 45,40 50,25 
-                     C55,10 70,5 90,8 
-                     C110,11 125,20 130,40 
-                     C135,60 140,80 135,100 
-                     C130,115 120,125 100,130 
-                     C80,135 60,130 50,120 
-                     C40,110 38,95 40,80 Z" 
-                  fill="#1B3A4B"
-                />
-                {/* Paint drips from blob */}
-                <ellipse cx="45" cy="135" rx="8" ry="22" fill="#1B3A4B" />
-                <ellipse cx="70" cy="140" rx="6" ry="18" fill="#1B3A4B" />
-                <ellipse cx="95" cy="138" rx="7" ry="20" fill="#1B3A4B" />
-                <ellipse cx="120" cy="135" rx="6" ry="16" fill="#1B3A4B" />
-                <ellipse cx="140" cy="130" rx="5" ry="14" fill="#1B3A4B" />
-                
-                {/* Brush bristles - golden yellow */}
-                <g fill="#D4A84B">
-                  {[...Array(14)].map((_, i) => (
-                    <rect 
-                      key={i}
-                      x={32 + i * 8.5} 
-                      y={150} 
-                      width="5" 
-                      height="75" 
-                      rx="1.5"
-                    />
-                  ))}
-                </g>
-                
-                {/* Ferrule (silver metal band) */}
-                <rect x="28" y="222" width="124" height="18" rx="2" fill="#A8A8A8" />
-                <rect x="28" y="226" width="124" height="6" fill="#888888" />
-                <rect x="28" y="236" width="124" height="4" fill="#707070" />
-                
-                {/* Handle - brown wood */}
-                <rect x="50" y="240" width="80" height="70" rx="4" fill="#6B4423" />
-                <rect x="55" y="245" width="6" height="60" rx="2" fill="#8B5A2B" opacity="0.6" />
-              </svg>
-            </div>
-
-            {/* Content */}
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 font-bold italic">
-                ABOUT US
-              </h2>
-
-              <p className="text-muted-foreground leading-relaxed text-base md:text-lg max-w-lg">
-                Established with a steadfast commitment to excellence, Halson Paints Limited is 
-                a distinguished manufacturer of high-performance industrial and decorative paints 
-                that captivates industries and elevates projects to new heights.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Extended About Content */}
-      <section className="py-16 bg-secondary">
+      {/* About Section - Minimal */}
+      <section className="py-20 bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
+            <p className="text-xs tracking-luxury uppercase text-muted-foreground mb-4 text-center">
+              Our Story
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-12 text-center">
+              About Halson Paints
+            </h2>
+
             <div className="space-y-6 text-muted-foreground leading-luxury text-lg">
               <p>
-                Proudly headquartered in Vadavali, near Thane, Maharashtra, with years of expertise 
-                honed in one of India's dynamic industrial hubs, we have built enduring trust through 
-                our extensive offline distribution network and seamless online presence on IndiaMART, 
+                Established with a steadfast commitment to excellence, <strong className="text-foreground">Halson Paints Limited</strong> is 
+                a distinguished manufacturer of high-performance industrial and decorative paints, proudly 
+                headquartered in Vadavali, near Thane, Maharashtra.
+              </p>
+
+              <p>
+                With years of expertise honed in one of India's dynamic industrial hubs, we have built enduring 
+                trust through our extensive offline distribution network and seamless online presence on IndiaMART, 
                 delivering reliable solutions to clients nationwide.
               </p>
 
               <p>
                 At the core of our success is our primary focus on industrial paints – robust, 
-                specialized coatings engineered for superior protection in demanding environments.
+                specialized coatings engineered for superior protection in demanding environments. From 
+                anti-corrosive primers and epoxy systems to heat-resistant and chemical-resistant finishes, 
+                our industrial range safeguards critical assets across diverse sectors.
               </p>
             </div>
 
@@ -273,7 +188,7 @@ const Index = () => {
                 "Construction", 
                 "Infrastructure",
                 "Automotive"
-              ].map((sector) => (
+              ].map((sector, index) => (
                 <div 
                   key={sector}
                   className="p-5 bg-background border border-border text-center transition-all duration-700 hover:border-primary/30"
