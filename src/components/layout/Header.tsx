@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
+import halsonLogo from "@/assets/halson-logo-new.png";
 
 const navLinks = [
   { name: "About", path: "/" },
@@ -15,7 +15,6 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     let ticking = false;
@@ -50,7 +49,7 @@ const Header = () => {
           {/* Logo */}
             <Link to="/" className="group flex-shrink-0 flex items-center">
               <img 
-                src="/halson.png"
+                src={halsonLogo} 
                 alt="Halson Paints Logo" 
                 className={cn(
                   "object-contain origin-left transform-gpu transition-transform duration-500",
@@ -80,12 +79,12 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button
+            <Button 
+              asChild 
               variant="outline"
-              onClick={() => navigate("/contact")}
               className="tracking-luxury text-xs uppercase border-primary text-primary hover:bg-primary hover:text-white transition-all duration-500"
             >
-              Get Quote
+              <Link to="/contact">Get Quote</Link>
             </Button>
           </div>
 
@@ -123,15 +122,14 @@ const Header = () => {
                 {link.name}
               </Link>
             ))}
-            <Button
+            <Button 
+              asChild 
               variant="outline"
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                navigate("/contact");
-              }}
               className="mt-4 tracking-luxury text-xs uppercase border-foreground/20"
             >
-              Get Quote
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                Get Quote
+              </Link>
             </Button>
           </nav>
         </div>
