@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import halsonLogo from "@/assets/halson-logo-latest.png";
+import halsonLogo from "@/assets/halson-logo-header.png";
 
 const navLinks = [
   { name: "About", path: "/" },
@@ -15,6 +15,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let ticking = false;
@@ -49,7 +50,7 @@ const Header = () => {
           {/* Logo */}
             <Link to="/" className="group flex-shrink-0 flex items-center">
               <img 
-                src={halsonLogo} 
+                src={`${halsonLogo}?v=2`}
                 alt="Halson Paints Logo" 
                 className={cn(
                   "object-contain origin-left transform-gpu transition-transform duration-500",
@@ -79,12 +80,12 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button 
-              asChild 
+            <Button
               variant="outline"
+              onClick={() => navigate("/contact")}
               className="tracking-luxury text-xs uppercase border-primary text-primary hover:bg-primary hover:text-white transition-all duration-500"
             >
-              <Link to="/contact">Get Quote</Link>
+              Get Quote
             </Button>
           </div>
 
@@ -122,14 +123,15 @@ const Header = () => {
                 {link.name}
               </Link>
             ))}
-            <Button 
-              asChild 
+            <Button
               variant="outline"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate("/contact");
+              }}
               className="mt-4 tracking-luxury text-xs uppercase border-foreground/20"
             >
-              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                Get Quote
-              </Link>
+              Get Quote
             </Button>
           </nav>
         </div>
