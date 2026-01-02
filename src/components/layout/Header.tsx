@@ -50,11 +50,11 @@ const Header = () => {
           {/* Logo */}
             <Link to="/" className="group flex-shrink-0 flex items-center">
               <img 
-                src={`${halsonLogo}?v=2`}
+                src={`${halsonLogo}?v=3`}
                 alt="Halson Paints Logo" 
                 className={cn(
                   "object-contain origin-left transform-gpu transition-transform duration-500",
-                  "h-12 w-40 sm:h-14 sm:w-44 md:h-14 md:w-48 lg:h-16 lg:w-56",
+                  "h-12 w-44 sm:h-14 sm:w-52 md:h-16 md:w-56 lg:h-18 lg:w-64",
                   isScrolled ? "scale-[0.92]" : "scale-100"
                 )}
               />
