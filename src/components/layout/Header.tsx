@@ -1,5 +1,5 @@
 import { useState, useEffect, forwardRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,7 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let ticking = false;
@@ -80,12 +81,13 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button 
-              asChild 
+            <Button
+              type="button"
               variant="outline"
+              onClick={() => navigate("/contact")}
               className="tracking-luxury text-xs uppercase border-primary text-primary hover:bg-primary hover:text-white transition-all duration-500"
             >
-              <Link to="/contact">Get Quote</Link>
+              Get Quote
             </Button>
           </div>
 
@@ -123,14 +125,16 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
                 {link.name}
               </Link>
             ))}
-            <Button 
-              asChild 
+            <Button
+              type="button"
               variant="outline"
               className="mt-4 tracking-luxury text-xs uppercase border-foreground/20"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate("/contact");
+              }}
             >
-              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                Get Quote
-              </Link>
+              Get Quote
             </Button>
           </nav>
         </div>

@@ -46,14 +46,15 @@ const Contact = () => {
       icon: Phone,
       label: "Phone",
       value: "+91 8369657171",
-      href: "https://api.whatsapp.com/send?phone=918369657171",
+      href: "https://wa.me/918369657171",
       external: true,
     },
     {
       icon: Mail,
       label: "Email",
       value: "newtechnocoats@gmail.com",
-      href: "mailto:newtechnocoats@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=newtechnocoats@gmail.com",
+      external: true,
     },
     {
       icon: Clock,
@@ -130,7 +131,7 @@ const Contact = () => {
                   className="font-display tracking-wider"
                 >
                   <a
-                    href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent("Hi, I'm visiting your website and would like to enquire about your products/services.")}`}
+                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm visiting your website and would like to enquire about your products/services.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -160,12 +161,14 @@ const Contact = () => {
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      className="absolute inset-0"
+                      className="absolute inset-0 pointer-events-none"
                     />
                     <div className="absolute inset-0 bg-background/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Button className="font-display tracking-wider">
-                        <ExternalLink className="mr-2" size={18} />
-                        Get Directions
+                      <Button asChild className="font-display tracking-wider">
+                        <span>
+                          <ExternalLink className="mr-2" size={18} />
+                          Get Directions
+                        </span>
                       </Button>
                     </div>
                   </div>

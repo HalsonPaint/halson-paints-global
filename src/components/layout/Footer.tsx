@@ -59,7 +59,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               </li>
               <li>
                 <a 
-                  href="https://api.whatsapp.com/send?phone=918369657171"
+                  href="https://wa.me/918369657171"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-background transition-colors duration-500"
@@ -69,7 +69,9 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               </li>
               <li>
                 <a 
-                  href="mailto:newtechnocoats@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=newtechnocoats@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-background transition-colors duration-500"
                 >
                   newtechnocoats@gmail.com
@@ -86,7 +88,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           </p>
           <div className="flex items-center gap-6">
             <a 
-              href="https://api.whatsapp.com/send?phone=918369657171"
+              href="https://wa.me/918369657171"
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:scale-110 transition-transform"
