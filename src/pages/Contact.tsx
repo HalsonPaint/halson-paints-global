@@ -46,7 +46,7 @@ const Contact = () => {
       icon: Phone,
       label: "Phone",
       value: "+91 8369657171",
-      href: "https://wa.me/918369657171",
+      href: "https://api.whatsapp.com/send?phone=918369657171",
       external: true,
     },
     {
@@ -130,7 +130,7 @@ const Contact = () => {
                   className="font-display tracking-wider"
                 >
                   <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm visiting your website and would like to enquire about your products/services.")}`}
+                    href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent("Hi, I'm visiting your website and would like to enquire about your products/services.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
