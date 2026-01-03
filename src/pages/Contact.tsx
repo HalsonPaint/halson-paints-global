@@ -7,7 +7,7 @@ import Layout from "@/components/layout/Layout";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
-const WHATSAPP_NUMBER = "919823672980";
+const WHATSAPP_NUMBER = "918369657171";
 const GOOGLE_MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=G485%2BC49%2C+Vadavali%2C+Maharashtra+421312%2C+India";
 
 const Contact = () => {
@@ -45,8 +45,8 @@ const Contact = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 9823672980",
-      href: "https://api.whatsapp.com/send?phone=919823672980",
+      value: "+91 8369657171",
+      href: "https://api.whatsapp.com/send?phone=918369657171",
       external: true,
     },
     {

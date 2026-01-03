@@ -58,12 +58,12 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="https://api.whatsapp.com/send?phone=919823672980"
+                  href="https://api.whatsapp.com/send?phone=918369657171"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-background transition-colors duration-500"
                 >
-                  +91 9823672980
+                  +91 8369657171
                 </a>
               </li>
               <li>
@@ -85,7 +85,7 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-6">
             <a 
-              href="https://api.whatsapp.com/send?phone=919823672980"
+              href="https://api.whatsapp.com/send?phone=918369657171"
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:scale-110 transition-transform"
