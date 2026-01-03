@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 const WHATSAPP_NUMBER = "918369657171";
 
 const getWhatsAppUrl = (message: string) => {
-  return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 };
 
 const WhatsAppIcon = () => (
