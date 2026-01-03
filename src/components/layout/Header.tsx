@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Contact", path: "/contact" },
 ];
 
-const Header = () => {
+const Header = forwardRef<HTMLElement>((_, ref) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -37,6 +37,7 @@ const Header = () => {
 
   return (
     <header 
+      ref={ref}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 py-3 transition-[background-color,border-color,backdrop-filter] duration-500",
         isScrolled 
@@ -136,6 +137,8 @@ const Header = () => {
       </div>
     </header>
   );
-};
+});
+
+Header.displayName = "Header";
 
 export default Header;
