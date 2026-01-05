@@ -49,7 +49,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
             <ul className="space-y-4 text-sm text-background/70">
               <li>
                 <a 
-                  href="https://maps.google.com/?q=G485+C49,+Vadavali,+Maharashtra+421312,+India"
+                  href="https://www.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-background transition-colors duration-500"
