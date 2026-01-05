@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const WHATSAPP_NUMBER = "918369657171";
-const GOOGLE_MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=G485%2BC49%2C+Vadavali%2C+Maharashtra+421312%2C+India";
+const GOOGLE_MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381";
 
 const Contact = () => {
   const { toast } = useToast();
