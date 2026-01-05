@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const WHATSAPP_NUMBER = "918369657171";
-const GOOGLE_MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381";
+const GOOGLE_MAPS_URL = "https://maps.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -105,6 +105,12 @@ const Contact = () => {
                           href={item.href}
                           target={item.external ? "_blank" : undefined}
                           rel={item.external ? "noopener noreferrer" : undefined}
+                          onClick={(e) => {
+                            if (!item.external) return;
+                            e.preventDefault();
+                            const w = window.open(item.href, "_blank", "noopener,noreferrer");
+                            if (!w) window.top?.location.assign(item.href);
+                          }}
                           className="text-foreground hover:text-primary transition-colors flex items-center gap-2 font-medium"
                         >
                           {item.value}
@@ -146,12 +152,7 @@ const Contact = () => {
                 <h3 className="font-display text-xl font-semibold text-foreground mb-4">
                   Our Location
                 </h3>
-                <a
-                  href={GOOGLE_MAPS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block overflow-hidden rounded-lg border border-border hover:border-primary/50 transition-colors"
-                >
+                <div className="block overflow-hidden rounded-lg border border-border hover:border-primary/50 transition-colors">
                   <div className="aspect-video bg-secondary/50 flex items-center justify-center relative group">
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.9772726726!2d73.1566!3d19.2166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be795c11e81f!2sVadavali%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1"
@@ -163,16 +164,25 @@ const Contact = () => {
                       referrerPolicy="no-referrer-when-downgrade"
                       className="absolute inset-0 pointer-events-none"
                     />
-                    <div className="absolute inset-0 bg-background/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute inset-0 bg-background/50 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                       <Button asChild className="font-display tracking-wider">
-                        <span>
+                        <a
+                          href={GOOGLE_MAPS_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const w = window.open(GOOGLE_MAPS_URL, "_blank", "noopener,noreferrer");
+                            if (!w) window.top?.location.assign(GOOGLE_MAPS_URL);
+                          }}
+                        >
                           <ExternalLink className="mr-2" size={18} />
                           Get Directions
-                        </span>
+                        </a>
                       </Button>
                     </div>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
 
