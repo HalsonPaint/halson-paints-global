@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
-import { EXTERNAL_TARGET } from "@/lib/external";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
@@ -51,7 +50,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               <li>
                 <a 
                   href="https://maps.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381"
-                  target={EXTERNAL_TARGET}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-background transition-colors duration-500"
                 >
@@ -61,7 +60,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               <li>
                 <a 
                   href="https://wa.me/918369657171"
-                  target={EXTERNAL_TARGET}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-background transition-colors duration-500"
                 >
@@ -71,7 +70,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               <li>
                 <a 
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=newtechnocoats@gmail.com"
-                  target={EXTERNAL_TARGET}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-background transition-colors duration-500"
                 >
@@ -90,7 +89,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           <div className="flex items-center gap-6">
             <a 
               href="https://wa.me/918369657171"
-              target={EXTERNAL_TARGET}
+              target="_blank"
               rel="noopener noreferrer"
               className="hover:scale-110 transition-transform"
               title="WhatsApp"
