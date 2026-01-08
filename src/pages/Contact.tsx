@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import Layout from "@/components/layout/Layout";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { EXTERNAL_TARGET } from "@/lib/external";
 
 const WHATSAPP_NUMBER = "918369657171";
 const GOOGLE_MAPS_URL = "https://maps.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381";
@@ -103,7 +104,7 @@ const Contact = () => {
                       {item.href ? (
                         <a
                           href={item.href}
-                          target={item.external ? "_blank" : undefined}
+                          target={item.external ? EXTERNAL_TARGET : undefined}
                           rel={item.external ? "noopener noreferrer" : undefined}
                           className="text-foreground hover:text-primary transition-colors flex items-center gap-2 font-medium"
                         >
@@ -132,7 +133,7 @@ const Contact = () => {
                 >
                   <a
                     href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm visiting your website and would like to enquire about your products/services.")}`}
-                    target="_blank"
+                    target={EXTERNAL_TARGET}
                     rel="noopener noreferrer"
                   >
                     <MessageCircle className="mr-2" />
@@ -162,7 +163,7 @@ const Contact = () => {
                       <Button asChild className="font-display tracking-wider">
                         <a
                           href={GOOGLE_MAPS_URL}
-                          target="_blank"
+                          target={EXTERNAL_TARGET}
                           rel="noopener noreferrer"
                         >
                           <ExternalLink className="mr-2" size={18} />

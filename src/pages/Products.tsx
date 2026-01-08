@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import { productCategories, type Category, type Product } from "@/data/products";
 import { cn } from "@/lib/utils";
+import { EXTERNAL_TARGET } from "@/lib/external";
 
 const WHATSAPP_NUMBER = "918369657171";
 
@@ -45,7 +46,7 @@ const ProductCard = ({ product, categoryName }: { product: Product; categoryName
         </div>
         <a 
           href={getWhatsAppUrl(message)}
-          target="_blank"
+          target={EXTERNAL_TARGET}
           rel="noopener noreferrer"
           className="shrink-0 hover:scale-110 transition-transform"
           title="Enquire on WhatsApp"
@@ -204,7 +205,7 @@ const Products = () => {
             >
               <a
                 href={getWhatsAppUrl("Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.")}
-                target="_blank"
+                target={EXTERNAL_TARGET}
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-2" />
