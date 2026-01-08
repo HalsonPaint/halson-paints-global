@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import { productCategories, type Category, type Product } from "@/data/products";
 import { cn } from "@/lib/utils";
-import { EXTERNAL_TARGET } from "@/lib/external";
+import { openExternal } from "@/lib/openExternal";
 
 const WHATSAPP_NUMBER = "918369657171";
 
@@ -32,7 +32,8 @@ const WhatsAppIcon = () => (
 
 const ProductCard = ({ product, categoryName }: { product: Product; categoryName: string }) => {
   const message = `Hi, I'm interested in the following product:\n\n*Product:* ${product.name}\n*Category:* ${categoryName}\n*Description:* ${product.description}\n\nPlease provide more details and pricing.`;
-  
+  const whatsappUrl = getWhatsAppUrl(message);
+
   return (
     <div className="p-4 bg-secondary/50 rounded-lg border border-border hover:border-primary/30 transition-all group">
       <div className="flex items-start justify-between gap-4">
@@ -40,14 +41,17 @@ const ProductCard = ({ product, categoryName }: { product: Product; categoryName
           <h4 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
             {product.name}
           </h4>
-          <p className="text-sm text-muted-foreground mt-1">
-            {product.description}
-          </p>
+          <p className="text-sm text-muted-foreground mt-1">{product.description}</p>
         </div>
-        <a 
-          href={getWhatsAppUrl(message)}
-          target={EXTERNAL_TARGET}
+        <a
+          href={whatsappUrl}
+          target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openExternal(whatsappUrl);
+          }}
           className="shrink-0 hover:scale-110 transition-transform"
           title="Enquire on WhatsApp"
         >
@@ -198,19 +202,27 @@ const Products = () => {
             <p className="text-muted-foreground mb-6">
               We offer custom formulations tailored to your specific requirements.
             </p>
-            <Button 
-              asChild
-              size="lg" 
-              className="font-display tracking-wider"
-            >
-              <a
-                href={getWhatsAppUrl("Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.")}
-                target={EXTERNAL_TARGET}
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="mr-2" />
-                Request Custom Solution
-              </a>
+            <Button asChild size="lg" className="font-display tracking-wider">
+              {(() => {
+                const whatsappUrl = getWhatsAppUrl(
+                  "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
+                );
+
+                return (
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openExternal(whatsappUrl);
+                    }}
+                  >
+                    <MessageCircle className="mr-2" />
+                    Request Custom Solution
+                  </a>
+                );
+              })()}
             </Button>
           </div>
         </div>
