@@ -134,12 +134,6 @@ const Contact = () => {
                     href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm visiting your website and would like to enquire about your products/services.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openExternal(
-                        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm visiting your website and would like to enquire about your products/services.")}`,
-                      );
-                    }}
                   >
                     <MessageCircle className="mr-2" />
                     Chat on WhatsApp
