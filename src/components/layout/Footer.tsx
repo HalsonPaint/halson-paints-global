@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { openExternal } from "@/lib/openExternal";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
@@ -52,6 +53,12 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                   href="https://maps.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openExternal(
+                      "https://maps.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381",
+                    );
+                  }}
                   className="hover:text-background transition-colors duration-500"
                 >
                   Vadavali, Maharashtra 421312
@@ -62,6 +69,10 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                   href="https://wa.me/918369657171"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openExternal("https://wa.me/918369657171");
+                  }}
                   className="hover:text-background transition-colors duration-500"
                 >
                   +91 8369657171
@@ -72,6 +83,12 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=newtechnocoats@gmail.com"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openExternal(
+                      "https://mail.google.com/mail/?view=cm&fs=1&to=newtechnocoats@gmail.com",
+                    );
+                  }}
                   className="hover:text-background transition-colors duration-500"
                 >
                   newtechnocoats@gmail.com
@@ -91,6 +108,10 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               href="https://wa.me/918369657171"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => {
+                e.preventDefault();
+                openExternal("https://wa.me/918369657171");
+              }}
               className="hover:scale-110 transition-transform"
               title="WhatsApp"
             >
@@ -113,6 +134,10 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               href="https://facebook.com/halsonpaints" 
               target="_blank" 
               rel="noopener noreferrer"
+              onClick={(e) => {
+                e.preventDefault();
+                openExternal("https://facebook.com/halsonpaints");
+              }}
               className="hover:scale-110 transition-transform"
               title="Facebook"
             >
