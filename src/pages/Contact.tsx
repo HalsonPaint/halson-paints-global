@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Layout from "@/components/layout/Layout";
 import { openExternal } from "@/lib/openExternal";
+import { EXTERNAL_TARGET } from "@/lib/external";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -108,10 +109,12 @@ const Contact = () => {
                       {item.href ? (
                         <a
                           href={item.href}
-                          target={item.external ? "_blank" : undefined}
+                          target={item.external ? EXTERNAL_TARGET : undefined}
                           rel={item.external ? "noopener noreferrer" : undefined}
                           onClick={(e) => {
                             if (!item.external || !item.href) return;
+                            // In normal browsing, let the browser handle <a target> (most reliable).
+                            if (EXTERNAL_TARGET !== "_top") return;
                             e.preventDefault();
                             openExternal(item.href);
                           }}
@@ -142,9 +145,11 @@ const Contact = () => {
                 >
                   <a
                     href={whatsappCtaUrl}
-                    target="_blank"
+                    target={EXTERNAL_TARGET}
                     rel="noopener noreferrer"
                     onClick={(e) => {
+                      // In normal browsing, let the browser handle <a target>.
+                      if (EXTERNAL_TARGET !== "_top") return;
                       e.preventDefault();
                       openExternal(whatsappCtaUrl);
                     }}
@@ -176,9 +181,11 @@ const Contact = () => {
                       <Button asChild className="font-display tracking-wider">
                         <a
                           href={GOOGLE_MAPS_URL}
-                          target="_blank"
+                          target={EXTERNAL_TARGET}
                           rel="noopener noreferrer"
                           onClick={(e) => {
+                            // In normal browsing, let the browser handle <a target>.
+                            if (EXTERNAL_TARGET !== "_top") return;
                             e.preventDefault();
                             openExternal(GOOGLE_MAPS_URL);
                           }}

@@ -5,6 +5,7 @@ import Layout from "@/components/layout/Layout";
 import { productCategories, type Category, type Product } from "@/data/products";
 import { cn } from "@/lib/utils";
 import { openExternal } from "@/lib/openExternal";
+import { EXTERNAL_TARGET } from "@/lib/external";
 
 const WHATSAPP_NUMBER = "918369657171";
 
@@ -45,11 +46,14 @@ const ProductCard = ({ product, categoryName }: { product: Product; categoryName
         </div>
         <a
           href={whatsappUrl}
-          target="_blank"
+          target={EXTERNAL_TARGET}
           rel="noopener noreferrer"
           onClick={(e) => {
-            e.preventDefault();
+            // Prevent accordion toggle on icon click.
             e.stopPropagation();
+            // In normal browsing, let the browser handle <a target>.
+            if (EXTERNAL_TARGET !== "_top") return;
+            e.preventDefault();
             openExternal(whatsappUrl);
           }}
           className="shrink-0 hover:scale-110 transition-transform"
@@ -207,9 +211,11 @@ const Products = () => {
                 href={getWhatsAppUrl(
                   "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
                 )}
-                target="_blank"
+                target={EXTERNAL_TARGET}
                 rel="noopener noreferrer"
                 onClick={(e) => {
+                  // In normal browsing, let the browser handle <a target>.
+                  if (EXTERNAL_TARGET !== "_top") return;
                   e.preventDefault();
                   openExternal(
                     getWhatsAppUrl(
