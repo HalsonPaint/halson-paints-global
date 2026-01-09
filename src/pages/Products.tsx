@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import { productCategories, type Category, type Product } from "@/data/products";
 import { cn } from "@/lib/utils";
-
+import { openExternal } from "@/lib/openExternal";
 
 const WHATSAPP_NUMBER = "918369657171";
 
@@ -47,6 +47,11 @@ const ProductCard = ({ product, categoryName }: { product: Product; categoryName
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openExternal(whatsappUrl);
+          }}
           className="shrink-0 hover:scale-110 transition-transform"
           title="Enquire on WhatsApp"
         >
@@ -199,9 +204,19 @@ const Products = () => {
             </p>
             <Button asChild size="lg" className="font-display tracking-wider">
               <a
-                href={getWhatsAppUrl("Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.")}
+                href={getWhatsAppUrl(
+                  "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openExternal(
+                    getWhatsAppUrl(
+                      "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
+                    ),
+                  );
+                }}
               >
                 <MessageCircle className="mr-2" />
                 Request Custom Solution
