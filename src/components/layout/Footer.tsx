@@ -108,7 +108,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
         {/* Bottom Bar */}
         <div className="py-6 border-t border-background/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-background/40 text-xs">
-            © {currentYear} Halson Paints Limited
+            © {currentYear} Halson Paints Private Limited
           </p>
           <div className="flex items-center gap-6">
             <a 
