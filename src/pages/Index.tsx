@@ -163,7 +163,7 @@ const Index = () => {
 
             <div className="space-y-6 text-muted-foreground leading-luxury text-lg">
               <p>
-                Established with a steadfast commitment to excellence, <strong className="text-foreground">Halson Paints Private Limited</strong> is 
+                Established with a steadfast commitment to excellence, <strong className="text-foreground">Halson Paints Limited</strong> is 
                 a distinguished manufacturer of high-performance industrial and decorative paints, proudly 
                 headquartered in Vadavali, near Thane, Maharashtra.
               </p>

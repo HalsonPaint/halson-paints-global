@@ -5,31 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Halson India - Premium Industrial Solutions</title>
     <script>
-      // GitHub Pages SPA fallback for both project pages (/repo/) and user pages (/)
-      // Converts a direct URL like /repo/products -> /repo/#/products
-      // and /products -> /#/products
-      (function () {
-        var l = window.location;
-        var segments = l.pathname.split("/").filter(Boolean);
-
-        // If there are 2+ segments, assume this is a project page where the first
-        // segment is the repo name (e.g. /my-repo/products). Otherwise, treat it
-        // as a root deployment (e.g. /products).
-        var isProjectPage = segments.length > 1;
-        var base = isProjectPage ? "/" + segments[0] : "";
-        var route = isProjectPage ? segments.slice(1).join("/") : segments.join("/");
-
-        var newUrl =
-          l.protocol +
-          "//" +
-          l.host +
-          base +
-          "/#/" +
-          route +
-          l.search;
-
-        l.replace(newUrl);
-      })();
+      // GitHub Pages SPA redirect
+      // Redirects 404 pages to the main index with the path preserved in hash
+      const path = window.location.pathname + window.location.search;
+      window.location.replace(window.location.origin + '/#' + path);
     </script>
   </head>
   <body>
