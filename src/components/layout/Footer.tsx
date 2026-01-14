@@ -64,7 +64,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                   }}
                   className="hover:text-background transition-colors duration-500"
                 >
-                  Vadavali, Maharashtra 421312
+                  G485+C49, Vadavali, Maharashtra 421312, India
                 </a>
               </li>
               <li>
