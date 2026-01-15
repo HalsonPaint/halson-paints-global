@@ -62,7 +62,17 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Option 1: Publish from Lovable
+
+Simply open Lovable and click on Share -> Publish.
+
+### Option 2: Deploy to GitHub Pages (recommended)
+
+This repo includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that builds the site and deploys the **compiled** `dist/` output.
+
+In your GitHub repo go to **Settings → Pages → Source** and select **GitHub Actions**.
+
+If you choose "Deploy from a branch", GitHub will serve the raw source (e.g. `src/main.tsx`) and you can get the MIME error: "Expected a JavaScript module script... application/octet-stream".
 
 ## Can I connect a custom domain to my Lovable project?
 
