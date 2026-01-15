@@ -75,23 +75,23 @@ const CategoryAccordion = ({ category, isOpen, onToggle }: {
     <div className="border border-border rounded-lg overflow-hidden bg-card animate-fade-in">
       <button
         onClick={onToggle}
-        className="w-full p-6 flex items-center justify-between text-left hover:bg-secondary/30 transition-colors"
+        className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-secondary/30 transition-colors"
       >
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-            <Package className="text-primary" size={24} />
+        <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+            <Package className="text-primary" size={20} />
           </div>
-          <div>
-            <h3 className="font-display text-xl font-semibold text-foreground">
+          <div className="min-w-0 flex-1">
+            <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground truncate">
               {category.name}
             </h3>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1 line-clamp-1">
               {category.description}
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-muted-foreground hidden sm:block">
+        <div className="flex items-center gap-2 sm:gap-3 ml-2 shrink-0">
+          <span className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
             {category.products.length} products
           </span>
           <ChevronDown 
@@ -99,7 +99,7 @@ const CategoryAccordion = ({ category, isOpen, onToggle }: {
               "text-muted-foreground transition-transform duration-300",
               isOpen && "rotate-180"
             )} 
-            size={24} 
+            size={20} 
           />
         </div>
       </button>
@@ -148,15 +148,15 @@ const Products = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 bg-secondary/30 relative overflow-hidden">
+      <section className="pt-24 pb-12 sm:py-24 bg-secondary/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.02%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-6 animate-fade-in">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6 animate-fade-in">
               Our <span className="text-gradient">Products</span>
             </h1>
-            <p className="text-xl text-muted-foreground animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <p className="text-base sm:text-xl text-muted-foreground animate-fade-in px-4 sm:px-0" style={{ animationDelay: "0.2s" }}>
               Comprehensive range of industrial and decorative coatings engineered 
               for superior protection and lasting performance.
             </p>
@@ -165,21 +165,21 @@ const Products = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
           {/* Controls */}
-          <div className="flex items-center justify-between mb-8">
-            <p className="text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4">
+            <p className="text-muted-foreground text-sm sm:text-base">
               <span className="text-foreground font-semibold">{productCategories.length}</span> categories, 
               <span className="text-foreground font-semibold ml-1">
                 {productCategories.reduce((acc, cat) => acc + cat.products.length, 0)}
               </span> products
             </p>
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" onClick={expandAll} className="font-display tracking-wide">
+            <div className="flex gap-2 w-full sm:w-auto">
+              <Button variant="outline" size="sm" onClick={expandAll} className="font-display tracking-wide flex-1 sm:flex-none text-xs sm:text-sm">
                 Expand All
               </Button>
-              <Button variant="outline" size="sm" onClick={collapseAll} className="font-display tracking-wide">
+              <Button variant="outline" size="sm" onClick={collapseAll} className="font-display tracking-wide flex-1 sm:flex-none text-xs sm:text-sm">
                 Collapse All
               </Button>
             </div>

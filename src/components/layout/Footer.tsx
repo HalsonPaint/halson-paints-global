@@ -8,12 +8,12 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
 
   return (
     <footer ref={ref} className="bg-foreground text-background">
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Main Footer */}
-        <div className="py-20 grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
+        <div className="py-12 sm:py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 lg:gap-20">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <h2 className="font-display text-2xl mb-6">HALSON PAINTS</h2>
+          <div className="sm:col-span-2 md:col-span-1">
+            <h2 className="font-display text-xl sm:text-2xl mb-4 sm:mb-6">HALSON PAINTS</h2>
             <p className="text-background/60 leading-relaxed text-sm max-w-xs">
               A distinguished manufacturer of high-performance industrial and decorative paints, 
               headquartered in Vadavali, Maharashtra.

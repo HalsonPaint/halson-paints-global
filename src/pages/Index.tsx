@@ -36,27 +36,27 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section - Minimal & Clean */}
-      <section className="relative min-h-screen flex items-center hero-gradient">
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <section className="relative min-h-screen flex items-center hero-gradient pt-20 md:pt-0">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl">
-            <p className="text-white/50 text-xs tracking-luxury uppercase mb-8 opacity-0 animate-fade-in">
+            <p className="text-white/50 text-xs tracking-luxury uppercase mb-6 sm:mb-8 opacity-0 animate-fade-in">
               Industrial & Decorative Coatings
             </p>
             
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.1] mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.1] mb-6 sm:mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Pioneering<br />
-              <span className="whitespace-nowrap"><span className="text-accent">Protection</span> & Performance</span>
+              <span className="sm:whitespace-nowrap"><span className="text-accent">Protection</span> <span className="inline">&</span> Performance</span>
             </h1>
             
-            <p className="text-white/60 text-lg md:text-xl max-w-lg mb-12 leading-relaxed opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+            <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-lg mb-8 sm:mb-12 leading-relaxed opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               A distinguished manufacturer of high-performance paints, 
               proudly headquartered in Maharashtra.
             </p>
             
-            <div className="flex flex-wrap gap-4 opacity-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
               <Button 
                 asChild 
-                className="bg-white text-foreground hover:bg-white/90 tracking-luxury text-xs uppercase px-8 py-6 transition-all duration-700"
+                className="bg-white text-foreground hover:bg-white/90 tracking-luxury text-xs uppercase px-6 sm:px-8 py-5 sm:py-6 transition-all duration-700 w-full sm:w-auto justify-center"
               >
                 <Link to="/products">
                   Explore Products
@@ -66,7 +66,7 @@ const Index = () => {
               <Button 
                 asChild 
                 variant="outline" 
-                className="border-white/20 text-white hover:bg-white/10 bg-transparent tracking-luxury text-xs uppercase px-8 py-6 transition-all duration-700"
+                className="border-white/20 text-white hover:bg-white/10 bg-transparent tracking-luxury text-xs uppercase px-6 sm:px-8 py-5 sm:py-6 transition-all duration-700 w-full sm:w-auto justify-center"
               >
                 <Link to="/contact">Contact Us</Link>
               </Button>
@@ -81,9 +81,9 @@ const Index = () => {
       </section>
 
       {/* Stats - Minimal */}
-      <section className="py-16 bg-background border-b border-border">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+      <section className="py-12 sm:py-16 bg-background border-b border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto">
             {[
               { value: "15+", label: "Product Categories" },
               { value: "100%", label: "Quality Assured" },
@@ -94,10 +94,10 @@ const Index = () => {
                 className="text-center opacity-0 animate-fade-in"
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
-                <div className="font-display text-4xl md:text-5xl text-primary mb-2">
+                <div className="font-display text-2xl sm:text-4xl md:text-5xl text-primary mb-1 sm:mb-2">
                   {stat.value}
                 </div>
-                <div className="text-muted-foreground text-sm tracking-wide">
+                <div className="text-muted-foreground text-xs sm:text-sm tracking-wide">
                   {stat.label}
                 </div>
               </div>
@@ -107,22 +107,22 @@ const Index = () => {
       </section>
 
       {/* Highlights Section - Clean Grid */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="text-center mb-16 opacity-0 animate-fade-in">
-            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-6 font-medium">
+      <section className="py-12 sm:py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="text-center mb-10 sm:mb-16 opacity-0 animate-fade-in">
+            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-4 sm:mb-6 font-medium">
               Why Choose Us
             </p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 sm:mb-8 leading-tight">
               Our Strengths
             </h2>
-            <div className="w-16 h-[1px] bg-primary mx-auto mb-8 transition-all duration-1000" />
-            <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto text-lg">
+            <div className="w-16 h-[1px] bg-primary mx-auto mb-6 sm:mb-8 transition-all duration-1000" />
+            <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto text-base sm:text-lg px-4 sm:px-0">
               Discover what makes Halson Paints the trusted choice for industrial and decorative coatings.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {highlights.map((item, index) => (
               <div
                 key={item.label}
@@ -136,11 +136,11 @@ const Index = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-700 group-hover:from-black/90" />
                 
-                <div className="absolute bottom-0 left-0 right-0 p-8 transform transition-transform duration-700 group-hover:translate-y-[-8px]">
-                  <h3 className="font-display text-2xl text-white mb-2">
+                <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 transform transition-transform duration-700 group-hover:translate-y-[-8px]">
+                  <h3 className="font-display text-xl sm:text-2xl text-white mb-1 sm:mb-2">
                     {item.label}
                   </h3>
-                  <p className="text-white/70 text-sm">
+                  <p className="text-white/70 text-xs sm:text-sm">
                     {item.description}
                   </p>
                 </div>
@@ -151,17 +151,17 @@ const Index = () => {
       </section>
 
       {/* About Section - Minimal */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="py-12 sm:py-20 bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <div className="max-w-4xl mx-auto">
-            <p className="text-xs tracking-luxury uppercase text-muted-foreground mb-4 text-center">
+            <p className="text-xs tracking-luxury uppercase text-muted-foreground mb-3 sm:mb-4 text-center">
               Our Story
             </p>
-            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-12 text-center">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-8 sm:mb-12 text-center">
               About Halson Paints
             </h2>
 
-            <div className="space-y-6 text-muted-foreground leading-luxury text-lg">
+            <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed sm:leading-luxury text-base sm:text-lg">
               <p>
                 Established with a steadfast commitment to excellence, <strong className="text-foreground">Halson Paints Private Limited</strong> is 
                 a distinguished manufacturer of high-performance industrial and decorative paints, proudly 
@@ -182,7 +182,7 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8 sm:mt-12">
               {[
                 "Manufacturing",
                 "Construction", 
@@ -191,9 +191,9 @@ const Index = () => {
               ].map((sector, index) => (
                 <div 
                   key={sector}
-                  className="p-5 bg-background border border-border text-center transition-all duration-700 hover:border-primary/30"
+                  className="p-4 sm:p-5 bg-background border border-border text-center transition-all duration-700 hover:border-primary/30"
                 >
-                  <span className="text-sm text-foreground">{sector}</span>
+                  <span className="text-xs sm:text-sm text-foreground">{sector}</span>
                 </div>
               ))}
             </div>
@@ -202,19 +202,19 @@ const Index = () => {
       </section>
 
       {/* CTA Section - Clean */}
-      <section className="py-20 hero-gradient">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="py-12 sm:py-20 hero-gradient">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-4xl md:text-5xl text-white mb-6">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-white mb-4 sm:mb-6">
               Ready to Elevate Your Projects?
             </h2>
-            <p className="text-white/60 text-lg mb-10 leading-relaxed">
+            <p className="text-white/60 text-base sm:text-lg mb-8 sm:mb-10 leading-relaxed px-4 sm:px-0">
               Partner with Halson Paints for industrial and decorative excellence.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4 sm:px-0">
               <Button 
                 asChild 
-                className="bg-white text-foreground hover:bg-white/90 tracking-luxury text-xs uppercase px-8 py-6 transition-all duration-700"
+                className="bg-white text-foreground hover:bg-white/90 tracking-luxury text-xs uppercase px-6 sm:px-8 py-5 sm:py-6 transition-all duration-700 w-full sm:w-auto justify-center"
               >
                 <Link to="/products">
                   View Products
@@ -224,7 +224,7 @@ const Index = () => {
               <Button 
                 asChild 
                 variant="outline" 
-                className="border-white/20 text-white hover:bg-white/10 bg-transparent tracking-luxury text-xs uppercase px-8 py-6 transition-all duration-700"
+                className="border-white/20 text-white hover:bg-white/10 bg-transparent tracking-luxury text-xs uppercase px-6 sm:px-8 py-5 sm:py-6 transition-all duration-700 w-full sm:w-auto justify-center"
               >
                 <Link to="/contact">Get in Touch</Link>
               </Button>
