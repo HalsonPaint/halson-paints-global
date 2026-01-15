@@ -72,15 +72,15 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 bg-secondary/30 relative overflow-hidden">
+      <section className="pt-24 pb-12 sm:py-24 bg-secondary/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.02%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-6 animate-fade-in">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6 animate-fade-in">
               Contact <span className="text-gradient">Us</span>
             </h1>
-            <p className="text-xl text-muted-foreground animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <p className="text-base sm:text-xl text-muted-foreground animate-fade-in px-4 sm:px-0" style={{ animationDelay: "0.2s" }}>
               Get in touch with our team for enquiries, custom solutions, 
               or to discuss your project requirements.
             </p>
@@ -89,9 +89,9 @@ const Contact = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Info */}
             <div className="animate-fade-in">
               <h2 className="font-display text-3xl font-bold text-foreground mb-8">
