@@ -103,41 +103,41 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
         </div>
 
         {/* Mobile Navigation */}
-        <div 
-          className={cn(
-            "md:hidden overflow-hidden transition-all duration-700",
-            isMobileMenuOpen ? "max-h-80 opacity-100 mt-6" : "max-h-0 opacity-0"
-          )}
-        >
-          <nav className="flex flex-col gap-1 py-4 border-t border-border">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={cn(
-                  "text-sm tracking-luxury uppercase py-3 transition-colors duration-500",
-                  location.pathname === link.path
-                    ? "text-primary"
-                    : "text-muted-foreground"
-                )}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-6 animate-fade-in">
+            <nav className="flex flex-col gap-1 py-4 border-t border-border">
+              {navLinks.map((link, index) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    "text-sm tracking-luxury uppercase py-3 transition-colors duration-500",
+                    "animate-fade-in",
+                    location.pathname === link.path
+                      ? "text-primary"
+                      : "text-muted-foreground"
+                  )}
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Button
+                type="button"
+                variant="outline"
+                className="mt-4 tracking-luxury text-xs uppercase border-foreground/20 animate-fade-in"
+                style={{ animationDelay: `${navLinks.length * 50}ms` }}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  navigate("/contact");
+                }}
               >
-                {link.name}
-              </Link>
-            ))}
-            <Button
-              type="button"
-              variant="outline"
-              className="mt-4 tracking-luxury text-xs uppercase border-foreground/20"
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                navigate("/contact");
-              }}
-            >
-              Get Quote
-            </Button>
-          </nav>
-        </div>
+                Get Quote
+              </Button>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
