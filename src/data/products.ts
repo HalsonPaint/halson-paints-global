@@ -134,11 +134,11 @@ export const productCategories: Category[] = [
     ],
   },
   {
-    id: "prime-surface-grey",
-    name: "Prime Surface Grey",
+    id: "primer-surface-grey",
+    name: "Primer Surface Grey",
     description: "Grey surface primer for metal preparation",
     products: [
-      { id: "prime-surface-grey", name: "Prime Surface Grey", description: "Grey primer for surface preparation" },
+      { id: "primer-surface-grey", name: "Primer Surface Grey", description: "Grey primer for surface preparation" },
     ],
   },
   {
