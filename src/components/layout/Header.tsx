@@ -41,7 +41,7 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
       ref={ref}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 py-3 transition-[background-color,border-color,backdrop-filter] duration-500",
-        isScrolled 
+        isScrolled || isMobileMenuOpen
           ? "bg-background/95 backdrop-blur-md border-b border-border" 
           : "bg-transparent"
       )}
