@@ -2,27 +2,12 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
-import { motion } from "framer-motion";
 
 // Import images
 import facilityImg from "@/assets/facility.jpg";
 import industrialImg from "@/assets/industrial-excellence.jpg";
 import decorativeImg from "@/assets/decorative-new.jpg";
 import leadershipImg from "@/assets/leadership.jpg";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
-};
 
 const Index = () => {
   const highlights = [
@@ -48,65 +33,30 @@ const Index = () => {
     },
   ];
 
-  const stats = [
-    { value: "15+", label: "Product Categories" },
-    { value: "100%", label: "Quality Assured" },
-    { value: "24/7", label: "Support" },
-  ];
-
-  const sectors = ["Manufacturing", "Construction", "Infrastructure", "Automotive"];
-
   return (
     <Layout>
-      {/* Hero Section - Premium & Immersive */}
-      <section className="relative min-h-screen flex items-center hero-gradient pt-20 md:pt-0 overflow-hidden">
-        {/* Subtle ambient light effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 -left-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-        </div>
-
+      {/* Hero Section - Minimal & Clean */}
+      <section className="relative min-h-screen flex items-center hero-gradient pt-20 md:pt-0">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          <motion.div 
-            className="max-w-3xl"
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-          >
-            <motion.p 
-              className="text-white/40 text-xs tracking-[0.3em] uppercase mb-8"
-              variants={fadeInUp}
-            >
+          <div className="max-w-3xl">
+            <p className="text-white/50 text-xs tracking-luxury uppercase mb-6 sm:mb-8 opacity-0 animate-fade-in">
               Industrial & Decorative Coatings
-            </motion.p>
+            </p>
             
-            <motion.h1 
-              className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.05] mb-8"
-              variants={fadeInUp}
-            >
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.1] mb-6 sm:mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Pioneering<br />
-              <span className="sm:whitespace-nowrap">
-                <span className="text-accent">Protection</span>
-                <span className="inline opacity-60"> & </span>
-                Performance
-              </span>
-            </motion.h1>
+              <span className="sm:whitespace-nowrap"><span className="text-accent">Protection</span> <span className="inline">&</span> Performance</span>
+            </h1>
             
-            <motion.p 
-              className="text-white/50 text-base sm:text-lg md:text-xl max-w-lg mb-12 leading-relaxed"
-              variants={fadeInUp}
-            >
+            <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-lg mb-8 sm:mb-12 leading-relaxed opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               A distinguished manufacturer of high-performance paints, 
               proudly headquartered in Maharashtra.
-            </motion.p>
+            </p>
             
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
-              variants={fadeInUp}
-            >
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
               <Button 
                 asChild 
-                className="btn-glow bg-white text-foreground hover:bg-white/95 tracking-[0.2em] text-xs uppercase px-8 py-6 transition-all duration-500 w-full sm:w-auto justify-center font-medium"
+                className="bg-white text-foreground hover:bg-white/90 tracking-luxury text-xs uppercase px-6 sm:px-8 py-5 sm:py-6 transition-all duration-700 w-full sm:w-auto justify-center"
               >
                 <Link to="/products">
                   Explore Products
@@ -116,162 +66,104 @@ const Index = () => {
               <Button 
                 asChild 
                 variant="outline" 
-                className="border-white/15 text-white hover:bg-white/5 bg-transparent tracking-[0.2em] text-xs uppercase px-8 py-6 transition-all duration-500 w-full sm:w-auto justify-center backdrop-blur-sm"
+                className="border-white/20 text-white hover:bg-white/10 bg-transparent tracking-luxury text-xs uppercase px-6 sm:px-8 py-5 sm:py-6 transition-all duration-700 w-full sm:w-auto justify-center"
               >
                 <Link to="/contact">Contact Us</Link>
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
 
-        {/* Elegant scroll indicator */}
-        <motion.div 
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowDown className="text-white/30" size={20} />
-          </motion.div>
-        </motion.div>
-
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+        {/* Scroll indicator */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in" style={{ animationDelay: "1s" }}>
+          <ArrowDown className="text-white/40 animate-bounce" size={20} />
+        </div>
       </section>
 
-      {/* Stats Section - Refined */}
-      <section className="py-20 bg-background">
+      {/* Stats - Minimal */}
+      <section className="py-12 sm:py-16 bg-background border-b border-border">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <motion.div 
-            className="grid grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {stats.map((stat) => (
-              <motion.div
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto">
+            {[
+              { value: "15+", label: "Product Categories" },
+              { value: "100%", label: "Quality Assured" },
+              { value: "24/7", label: "Support" },
+            ].map((stat, index) => (
+              <div
                 key={stat.label}
-                className="stat-card text-center"
-                variants={fadeInUp}
+                className="text-center opacity-0 animate-fade-in"
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
-                <div className="font-display text-3xl sm:text-4xl md:text-5xl text-gradient mb-2">
+                <div className="font-display text-2xl sm:text-4xl md:text-5xl text-primary mb-1 sm:mb-2">
                   {stat.value}
                 </div>
-                <div className="text-muted-foreground text-xs sm:text-sm tracking-wide uppercase">
+                <div className="text-muted-foreground text-xs sm:text-sm tracking-wide">
                   {stat.label}
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Highlights Section - Premium Grid */}
-      <section className="py-24 bg-secondary/30">
+      {/* Highlights Section - Clean Grid */}
+      <section className="py-12 sm:py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <motion.div 
-            className="text-center mb-16"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.p 
-              className="text-xs tracking-[0.3em] uppercase text-primary mb-6 font-medium"
-              variants={fadeInUp}
-            >
+          <div className="text-center mb-10 sm:mb-16 opacity-0 animate-fade-in">
+            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-4 sm:mb-6 font-medium">
               Why Choose Us
-            </motion.p>
-            <motion.h2 
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight"
-              variants={fadeInUp}
-            >
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 sm:mb-8 leading-tight">
               Our Strengths
-            </motion.h2>
-            <motion.div 
-              className="w-20 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-8"
-              variants={fadeInUp}
-            />
-            <motion.p 
-              className="text-muted-foreground leading-relaxed max-w-xl mx-auto text-base sm:text-lg"
-              variants={fadeInUp}
-            >
+            </h2>
+            <div className="w-16 h-[1px] bg-primary mx-auto mb-6 sm:mb-8 transition-all duration-1000" />
+            <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto text-base sm:text-lg px-4 sm:px-0">
               Discover what makes Halson Paints the trusted choice for industrial and decorative coatings.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {highlights.map((item, index) => (
-              <motion.div
+              <div
                 key={item.label}
-                className="group relative aspect-[4/3] overflow-hidden image-reveal"
-                variants={fadeInUp}
+                className="group relative aspect-[4/3] overflow-hidden image-reveal opacity-0 animate-fade-in"
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <img 
                   src={item.image} 
                   alt={item.label}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
-                {/* Premium overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 transition-all duration-700 group-hover:from-black/90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-700 group-hover:from-black/90" />
                 
-                {/* Accent line */}
-                <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-accent to-primary transition-all duration-700 group-hover:w-1/3" />
-                
-                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 transform transition-all duration-700 group-hover:translate-y-[-8px]">
-                  <h3 className="font-display text-xl sm:text-2xl text-white mb-2 tracking-tight">
+                <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 transform transition-transform duration-700 group-hover:translate-y-[-8px]">
+                  <h3 className="font-display text-xl sm:text-2xl text-white mb-1 sm:mb-2">
                     {item.label}
                   </h3>
-                  <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+                  <p className="text-white/70 text-xs sm:text-sm">
                     {item.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* About Section - Elegant */}
-      <section className="py-24 bg-background">
+      {/* About Section - Minimal */}
+      <section className="py-12 sm:py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <motion.div 
-            className="max-w-4xl mx-auto"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.p 
-              className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4 text-center"
-              variants={fadeInUp}
-            >
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xs tracking-luxury uppercase text-muted-foreground mb-3 sm:mb-4 text-center">
               Our Story
-            </motion.p>
-            <motion.h2 
-              className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-12 text-center"
-              variants={fadeInUp}
-            >
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-8 sm:mb-12 text-center">
               About Halson Paints
-            </motion.h2>
+            </h2>
 
-            <motion.div 
-              className="space-y-6 text-muted-foreground leading-relaxed sm:leading-loose text-base sm:text-lg"
-              variants={fadeInUp}
-            >
+            <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed sm:leading-luxury text-base sm:text-lg">
               <p>
-                Established with a steadfast commitment to excellence, <strong className="text-foreground font-medium">Halson Paints Private Limited</strong> is 
+                Established with a steadfast commitment to excellence, <strong className="text-foreground">Halson Paints Private Limited</strong> is 
                 a distinguished manufacturer of high-performance industrial and decorative paints, proudly 
                 headquartered in Vadavali, near Thane, Maharashtra.
               </p>
@@ -288,59 +180,41 @@ const Index = () => {
                 anti-corrosive primers and epoxy systems to heat-resistant and chemical-resistant finishes, 
                 our industrial range safeguards critical assets across diverse sectors.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-14"
-              variants={fadeInUp}
-            >
-              {sectors.map((sector) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8 sm:mt-12">
+              {[
+                "Manufacturing",
+                "Construction", 
+                "Infrastructure",
+                "Automotive"
+              ].map((sector, index) => (
                 <div 
                   key={sector}
-                  className="sector-tag text-center"
+                  className="p-4 sm:p-5 bg-background border border-border text-center transition-all duration-700 hover:border-primary/30"
                 >
-                  <span className="text-xs sm:text-sm text-foreground font-medium tracking-wide">{sector}</span>
+                  <span className="text-xs sm:text-sm text-foreground">{sector}</span>
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* CTA Section - Premium */}
-      <section className="py-24 hero-gradient relative overflow-hidden">
-        {/* Ambient effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          <motion.div 
-            className="max-w-2xl mx-auto text-center"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.h2 
-              className="font-display text-3xl sm:text-4xl md:text-5xl text-white mb-6 leading-tight"
-              variants={fadeInUp}
-            >
+      {/* CTA Section - Clean */}
+      <section className="py-12 sm:py-20 hero-gradient">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-white mb-4 sm:mb-6">
               Ready to Elevate Your Projects?
-            </motion.h2>
-            <motion.p 
-              className="text-white/50 text-base sm:text-lg mb-12 leading-relaxed"
-              variants={fadeInUp}
-            >
+            </h2>
+            <p className="text-white/60 text-base sm:text-lg mb-8 sm:mb-10 leading-relaxed px-4 sm:px-0">
               Partner with Halson Paints for industrial and decorative excellence.
-            </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row justify-center gap-4"
-              variants={fadeInUp}
-            >
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4 sm:px-0">
               <Button 
                 asChild 
-                className="btn-glow bg-white text-foreground hover:bg-white/95 tracking-[0.2em] text-xs uppercase px-8 py-6 transition-all duration-500 w-full sm:w-auto justify-center font-medium"
+                className="bg-white text-foreground hover:bg-white/90 tracking-luxury text-xs uppercase px-6 sm:px-8 py-5 sm:py-6 transition-all duration-700 w-full sm:w-auto justify-center"
               >
                 <Link to="/products">
                   View Products
@@ -350,12 +224,12 @@ const Index = () => {
               <Button 
                 asChild 
                 variant="outline" 
-                className="border-white/15 text-white hover:bg-white/5 bg-transparent tracking-[0.2em] text-xs uppercase px-8 py-6 transition-all duration-500 w-full sm:w-auto justify-center backdrop-blur-sm"
+                className="border-white/20 text-white hover:bg-white/10 bg-transparent tracking-luxury text-xs uppercase px-6 sm:px-8 py-5 sm:py-6 transition-all duration-700 w-full sm:w-auto justify-center"
               >
                 <Link to="/contact">Get in Touch</Link>
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>
