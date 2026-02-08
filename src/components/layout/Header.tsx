@@ -40,9 +40,9 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
     <header 
       ref={ref}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 py-3 transition-[background-color,border-color,backdrop-filter] duration-500",
+        "fixed top-0 left-0 right-0 z-50 py-3 transition-all duration-700",
         isScrolled || isMobileMenuOpen
-          ? "bg-background/95 backdrop-blur-md border-b border-border" 
+          ? "glass border-b border-border/50 shadow-[var(--shadow-subtle)]" 
           : "bg-transparent"
       )}
     >
@@ -54,7 +54,7 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
                 src={halsonLogo} 
                 alt="Halson Paints Logo" 
                 className={cn(
-                  "object-contain origin-left transform-gpu transition-transform duration-500",
+                  "object-contain origin-left transform-gpu transition-transform duration-700",
                   "h-12 w-40 sm:h-14 sm:w-44 md:h-14 md:w-48 lg:h-16 lg:w-56",
                   isScrolled ? "scale-[0.92]" : "scale-100"
                 )}
@@ -68,10 +68,12 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "text-sm tracking-luxury uppercase transition-all duration-500 link-underline font-medium",
+                  "text-xs tracking-luxury uppercase transition-all duration-500 link-underline font-medium",
                   location.pathname === link.path
                     ? "text-primary"
-                    : "text-foreground/80 hover:text-foreground"
+                    : isScrolled 
+                      ? "text-foreground/70 hover:text-foreground" 
+                      : "text-foreground/60 hover:text-foreground"
                 )}
               >
                 {link.name}
@@ -85,7 +87,7 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
               type="button"
               variant="outline"
               onClick={() => navigate("/contact")}
-              className="tracking-luxury text-xs uppercase border-primary text-primary hover:bg-primary hover:text-white transition-all duration-500"
+              className="tracking-luxury text-[11px] uppercase border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500"
             >
               Get Quote
             </Button>
@@ -105,14 +107,14 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-6 animate-fade-in">
-            <nav className="flex flex-col gap-1 py-4 border-t border-border">
+            <nav className="flex flex-col gap-1 py-4 border-t border-border/50">
               {navLinks.map((link, index) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    "text-sm tracking-luxury uppercase py-3 transition-colors duration-500",
+                    "text-xs tracking-luxury uppercase py-3 transition-colors duration-500",
                     "animate-fade-in",
                     location.pathname === link.path
                       ? "text-primary"
@@ -126,7 +128,7 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
               <Button
                 type="button"
                 variant="outline"
-                className="mt-4 tracking-luxury text-xs uppercase border-foreground/20 animate-fade-in"
+                className="mt-4 tracking-luxury text-[11px] uppercase border-primary/20 text-primary animate-fade-in"
                 style={{ animationDelay: `${navLinks.length * 50}ms` }}
                 onClick={() => {
                   setIsMobileMenuOpen(false);

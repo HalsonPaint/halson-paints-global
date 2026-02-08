@@ -7,14 +7,17 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer ref={ref} className="bg-foreground text-background">
+    <footer ref={ref} className="bg-charcoal text-white/80 relative">
+      {/* Top accent line */}
+      <div className="accent-line" />
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Main Footer */}
-        <div className="py-12 sm:py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 lg:gap-20">
+        <div className="py-14 sm:py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-12 lg:gap-20">
           {/* Brand */}
           <div className="sm:col-span-2 md:col-span-1">
-            <h2 className="font-display text-xl sm:text-2xl mb-4 sm:mb-6">HALSON PAINTS</h2>
-            <p className="text-background/60 leading-relaxed text-sm max-w-xs">
+            <h2 className="font-display text-xl sm:text-2xl mb-5 text-white tracking-wide">HALSON PAINTS</h2>
+            <p className="text-white/40 leading-relaxed text-sm max-w-xs font-light">
               A distinguished manufacturer of high-performance industrial and decorative paints, 
               headquartered in Vadavali, Maharashtra.
             </p>
@@ -22,7 +25,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-xs tracking-luxury uppercase text-background/40 mb-6">
+            <h3 className="text-[11px] tracking-wide-luxury uppercase text-white/30 mb-6 font-medium">
               Navigation
             </h3>
             <ul className="space-y-4">
@@ -34,7 +37,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                 <li key={link.path}>
                   <Link 
                     to={link.path} 
-                    className="text-background/70 hover:text-background transition-colors duration-500 text-sm"
+                    className="text-white/50 hover:text-white transition-colors duration-500 text-sm font-light"
                   >
                     {link.name}
                   </Link>
@@ -45,24 +48,23 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
 
           {/* Contact */}
           <div>
-            <h3 className="text-xs tracking-luxury uppercase text-background/40 mb-6">
+            <h3 className="text-[11px] tracking-wide-luxury uppercase text-white/30 mb-6 font-medium">
               Contact
             </h3>
-            <ul className="space-y-4 text-sm text-background/70">
+            <ul className="space-y-4 text-sm text-white/50 font-light">
               <li>
                 <a 
                   href="https://maps.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381"
                   target={EXTERNAL_TARGET}
                   rel="noopener noreferrer"
                   onClick={(e) => {
-                    // In normal browsing, let the browser handle <a target>.
                     if (EXTERNAL_TARGET !== "_top") return;
                     e.preventDefault();
                     openExternal(
                       "https://maps.google.com/maps/dir/?api=1&destination=19.516522417018077,73.10859087116381",
                     );
                   }}
-                  className="hover:text-background transition-colors duration-500"
+                  className="hover:text-white transition-colors duration-500"
                 >
                   G485+C49, Vadavali, Maharashtra 421312, India
                 </a>
@@ -73,12 +75,11 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                   target={EXTERNAL_TARGET}
                   rel="noopener noreferrer"
                   onClick={(e) => {
-                    // In normal browsing, let the browser handle <a target>.
                     if (EXTERNAL_TARGET !== "_top") return;
                     e.preventDefault();
                     openExternal("https://wa.me/918369657171");
                   }}
-                  className="hover:text-background transition-colors duration-500"
+                  className="hover:text-white transition-colors duration-500"
                 >
                   +91 8369657171
                 </a>
@@ -89,14 +90,13 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                   target={EXTERNAL_TARGET}
                   rel="noopener noreferrer"
                   onClick={(e) => {
-                    // In normal browsing, let the browser handle <a target>.
                     if (EXTERNAL_TARGET !== "_top") return;
                     e.preventDefault();
                     openExternal(
                       "https://mail.google.com/mail/?view=cm&fs=1&to=newtechnocoats@gmail.com",
                     );
                   }}
-                  className="hover:text-background transition-colors duration-500"
+                  className="hover:text-white transition-colors duration-500"
                 >
                   newtechnocoats@gmail.com
                 </a>
@@ -106,8 +106,8 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-background/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-background/40 text-xs">
+        <div className="py-6 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-white/25 text-xs font-light">
             © {currentYear} Halson Paints Private Limited
           </p>
           <div className="flex items-center gap-6">
@@ -116,18 +116,17 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               target={EXTERNAL_TARGET}
               rel="noopener noreferrer"
               onClick={(e) => {
-                // In normal browsing, let the browser handle <a target>.
                 if (EXTERNAL_TARGET !== "_top") return;
                 e.preventDefault();
                 openExternal("https://wa.me/918369657171");
               }}
-              className="hover:scale-110 transition-transform"
+              className="text-white/30 hover:text-white/60 hover:scale-110 transition-all duration-500"
               title="WhatsApp"
             >
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 175.216 175.552"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <defs>
                   <linearGradient id="whatsapp-gradient-footer" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse">
@@ -144,20 +143,19 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               target={EXTERNAL_TARGET}
               rel="noopener noreferrer"
               onClick={(e) => {
-                // In normal browsing, let the browser handle <a target>.
                 if (EXTERNAL_TARGET !== "_top") return;
                 e.preventDefault();
                 openExternal("https://facebook.com/halsonpaints");
               }}
-              className="hover:scale-110 transition-transform"
+              className="text-white/30 hover:text-white/60 hover:scale-110 transition-all duration-500"
               title="Facebook"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
-                fill="#1877F2"
+                fill="currentColor"
               >
                 <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.495v-9.294H9.692V11.01h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"/>
               </svg>
