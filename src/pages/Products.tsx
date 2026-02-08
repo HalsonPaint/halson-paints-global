@@ -10,7 +10,6 @@ import { EXTERNAL_TARGET } from "@/lib/external";
 const WHATSAPP_NUMBER = "918369657171";
 
 const getWhatsAppUrl = (message: string) => {
-  // Using wa.me avoids environments that block api.whatsapp.com
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 };
 
@@ -36,27 +35,25 @@ const ProductCard = ({ product, categoryName }: { product: Product; categoryName
   const whatsappUrl = getWhatsAppUrl(message);
 
   return (
-    <div className="p-4 bg-secondary/50 rounded-lg border border-border hover:border-primary/30 transition-all group">
+    <div className="p-4 sm:p-5 bg-secondary/40 border border-border hover:border-primary/20 transition-all duration-500 group rounded-sm hover:shadow-[var(--shadow-subtle)]">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
-          <h4 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
+          <h4 className="font-display font-medium text-foreground group-hover:text-primary transition-colors duration-500 text-sm sm:text-base">
             {product.name}
           </h4>
-          <p className="text-sm text-muted-foreground mt-1">{product.description}</p>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1 font-light">{product.description}</p>
         </div>
         <a
           href={whatsappUrl}
           target={EXTERNAL_TARGET}
           rel="noopener noreferrer"
           onClick={(e) => {
-            // Prevent accordion toggle on icon click.
             e.stopPropagation();
-            // In normal browsing, let the browser handle <a target>.
             if (EXTERNAL_TARGET !== "_top") return;
             e.preventDefault();
             openExternal(whatsappUrl);
           }}
-          className="shrink-0 hover:scale-110 transition-transform"
+          className="shrink-0 hover:scale-110 transition-transform duration-300"
           title="Enquire on WhatsApp"
         >
           <WhatsAppIcon />
@@ -72,50 +69,59 @@ const CategoryAccordion = ({ category, isOpen, onToggle }: {
   onToggle: () => void;
 }) => {
   return (
-    <div className="border border-border rounded-lg overflow-hidden bg-card animate-fade-in">
+    <div className={cn(
+      "border border-border overflow-hidden bg-card animate-fade-in transition-all duration-500 rounded-sm",
+      isOpen && "border-primary/15 shadow-[var(--shadow-elevated)]"
+    )}>
       <button
         onClick={onToggle}
-        className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-secondary/30 transition-colors"
+        className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-secondary/30 transition-all duration-500"
       >
         <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-            <Package className="text-primary" size={20} />
+          <div className={cn(
+            "w-10 h-10 sm:w-12 sm:h-12 rounded-sm flex items-center justify-center shrink-0 transition-all duration-500",
+            isOpen ? "bg-primary text-primary-foreground" : "bg-primary/8 text-primary"
+          )}>
+            <Package size={20} />
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground truncate">
+            <h3 className="font-display text-lg sm:text-xl font-medium text-foreground truncate">
               {category.name}
             </h3>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1 line-clamp-1">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1 line-clamp-1 font-light">
               {category.description}
             </p>
           </div>
         </div>
         <div className="flex items-center gap-2 sm:gap-3 ml-2 shrink-0">
-          <span className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
+          <span className="text-xs text-muted-foreground hidden sm:block tracking-wide">
             {category.products.length} products
           </span>
           <ChevronDown 
             className={cn(
-              "text-muted-foreground transition-transform duration-300",
+              "text-muted-foreground transition-transform duration-500",
               isOpen && "rotate-180"
             )} 
-            size={20} 
+            size={18} 
           />
         </div>
       </button>
 
       <div className={cn(
-        "transition-all duration-300",
+        "transition-all duration-500",
         isOpen ? "max-h-none opacity-100" : "max-h-0 opacity-0 overflow-hidden"
       )}>
-        <div className="p-6 pt-0 space-y-3">
-          {category.products.map((product) => (
-            <ProductCard 
-              key={product.id} 
-              product={product} 
-              categoryName={category.name} 
-            />
-          ))}
+        <div className="px-4 sm:px-6 pb-6 pt-0">
+          <div className="w-full h-[1px] bg-border mb-4" />
+          <div className="space-y-2">
+            {category.products.map((product) => (
+              <ProductCard 
+                key={product.id} 
+                product={product} 
+                categoryName={category.name} 
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -148,15 +154,20 @@ const Products = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-24 pb-12 sm:py-24 bg-secondary/30 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.02%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
-        
+      <section className="pt-24 pb-14 sm:py-28 page-hero relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6 animate-fade-in">
+            <div className="flex items-center justify-center gap-4 mb-6 opacity-0 animate-fade-in">
+              <div className="w-8 h-[1px] bg-accent/40" />
+              <p className="text-[11px] tracking-wide-luxury uppercase text-accent font-medium">
+                Our Collection
+              </p>
+              <div className="w-8 h-[1px] bg-accent/40" />
+            </div>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-foreground mb-4 sm:mb-6 animate-fade-in">
               Our <span className="text-gradient">Products</span>
             </h1>
-            <p className="text-base sm:text-xl text-muted-foreground animate-fade-in px-4 sm:px-0" style={{ animationDelay: "0.2s" }}>
+            <p className="text-base sm:text-lg text-muted-foreground animate-fade-in px-4 sm:px-0 font-light max-w-xl mx-auto" style={{ animationDelay: "0.2s" }}>
               Comprehensive range of industrial and decorative coatings engineered 
               for superior protection and lasting performance.
             </p>
@@ -165,28 +176,38 @@ const Products = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:py-20">
         <div className="container mx-auto px-4">
           {/* Controls */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4">
-            <p className="text-muted-foreground text-sm sm:text-base">
-              <span className="text-foreground font-semibold">{productCategories.length}</span> categories, 
-              <span className="text-foreground font-semibold ml-1">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 sm:mb-10 gap-4">
+            <p className="text-muted-foreground text-sm">
+              <span className="text-foreground font-medium">{productCategories.length}</span> categories · 
+              <span className="text-foreground font-medium ml-1">
                 {productCategories.reduce((acc, cat) => acc + cat.products.length, 0)}
               </span> products
             </p>
             <div className="flex gap-2 w-full sm:w-auto">
-              <Button variant="outline" size="sm" onClick={expandAll} className="font-display tracking-wide flex-1 sm:flex-none text-xs sm:text-sm">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={expandAll} 
+                className="font-sans tracking-wide flex-1 sm:flex-none text-xs border-border hover:border-primary/20 transition-all duration-500"
+              >
                 Expand All
               </Button>
-              <Button variant="outline" size="sm" onClick={collapseAll} className="font-display tracking-wide flex-1 sm:flex-none text-xs sm:text-sm">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={collapseAll} 
+                className="font-sans tracking-wide flex-1 sm:flex-none text-xs border-border hover:border-primary/20 transition-all duration-500"
+              >
                 Collapse All
               </Button>
             </div>
           </div>
 
           {/* Categories */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             {productCategories.map((category, index) => (
               <div key={category.id} style={{ animationDelay: `${index * 0.05}s` }}>
                 <CategoryAccordion
@@ -199,35 +220,37 @@ const Products = () => {
           </div>
 
           {/* CTA */}
-          <div className="mt-16 text-center p-8 bg-card rounded-lg border border-border">
-            <h3 className="font-display text-2xl font-semibold text-foreground mb-4">
-              Can't find what you're looking for?
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              We offer custom formulations tailored to your specific requirements.
-            </p>
-            <Button asChild size="lg" className="font-display tracking-wider">
-              <a
-                href={getWhatsAppUrl(
-                  "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
-                )}
-                target={EXTERNAL_TARGET}
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  // In normal browsing, let the browser handle <a target>.
-                  if (EXTERNAL_TARGET !== "_top") return;
-                  e.preventDefault();
-                  openExternal(
-                    getWhatsAppUrl(
-                      "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
-                    ),
-                  );
-                }}
-              >
-                <MessageCircle className="mr-2" />
-                Request Custom Solution
-              </a>
-            </Button>
+          <div className="mt-16 sm:mt-20 text-center p-8 sm:p-12 bg-card rounded-sm border border-border relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-accent/[0.02]" />
+            <div className="relative z-10">
+              <h3 className="font-display text-2xl sm:text-3xl text-foreground mb-4">
+                Can't find what you're looking for?
+              </h3>
+              <p className="text-muted-foreground mb-8 font-light max-w-md mx-auto">
+                We offer custom formulations tailored to your specific requirements.
+              </p>
+              <Button asChild size="lg" className="tracking-luxury text-xs uppercase px-8 py-6">
+                <a
+                  href={getWhatsAppUrl(
+                    "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
+                  )}
+                  target={EXTERNAL_TARGET}
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (EXTERNAL_TARGET !== "_top") return;
+                    e.preventDefault();
+                    openExternal(
+                      getWhatsAppUrl(
+                        "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
+                      ),
+                    );
+                  }}
+                >
+                  <MessageCircle className="mr-2" size={18} />
+                  Request Custom Solution
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
