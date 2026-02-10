@@ -111,7 +111,7 @@ const Index = () => {
                 transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
                 style={{ transformOrigin: "left" }}
               />
-              <p className="text-white/40 text-[11px] tracking-[0.3em] uppercase font-medium">
+              <p className="text-white/40 text-[10px] sm:text-[11px] tracking-[0.25em] sm:tracking-[0.3em] uppercase font-medium whitespace-nowrap">
                 Industrial & Decorative Coatings
               </p>
             </motion.div>

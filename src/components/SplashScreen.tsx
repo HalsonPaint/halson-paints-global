@@ -60,8 +60,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
             <img
               src={halsonLogo}
               alt="Halson Paints"
-              className="h-20 md:h-24 w-auto drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
-              style={{ filter: "brightness(0) invert(1) drop-shadow(0 0 20px rgba(255,255,255,0.4))" }}
+              className="h-20 md:h-28 w-auto drop-shadow-[0_0_40px_rgba(255,255,255,0.25)]"
             />
           </motion.div>
 
