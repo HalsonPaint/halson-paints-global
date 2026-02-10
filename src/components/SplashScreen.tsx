@@ -6,9 +6,9 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [phase, setPhase] = useState<"logo" | "reveal" | "exit">("logo");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("reveal"), 1200);
-    const t2 = setTimeout(() => setPhase("exit"), 2400);
-    const t3 = setTimeout(onComplete, 3000);
+    const t1 = setTimeout(() => setPhase("reveal"), 1400);
+    const t2 = setTimeout(() => setPhase("exit"), 3000);
+    const t3 = setTimeout(onComplete, 3800);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onComplete]);
 
@@ -21,8 +21,8 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           background: "linear-gradient(165deg, hsl(192 55% 12%) 0%, hsl(210 42% 8%) 100%)",
         }}
         initial={{ opacity: 1 }}
-        animate={phase === "exit" ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        animate={phase === "exit" ? { opacity: 0, scale: 1.02 } : { opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         onAnimationComplete={() => {
           if (phase === "exit") onComplete();
         }}
@@ -34,8 +34,8 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
             background: "radial-gradient(circle, hsl(192 50% 22% / 0.3) 0%, transparent 70%)",
           }}
           initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1.5, opacity: 1 }}
-          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+          animate={{ scale: 2, opacity: 1 }}
+          transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
         />
 
         {/* Gold accent line */}
@@ -53,14 +53,15 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           {/* Logo */}
           <motion.div
             className="relative"
-            initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.85, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           >
             <img
               src={halsonLogo}
               alt="Halson Paints"
-              className="h-16 md:h-20 w-auto brightness-0 invert"
+              className="h-20 md:h-24 w-auto drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+              style={{ filter: "brightness(0) invert(1) drop-shadow(0 0 20px rgba(255,255,255,0.4))" }}
             />
           </motion.div>
 
@@ -97,7 +98,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
               }}
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
-              transition={{ duration: 2, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
+              transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
             />
           </motion.div>
         </div>

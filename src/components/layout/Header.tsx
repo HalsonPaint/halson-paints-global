@@ -56,7 +56,7 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
       )}
     >
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between min-h-[72px] md:grid md:grid-cols-[auto,1fr,auto] md:gap-6">
+        <div className="flex items-center justify-between min-h-[72px] md:grid md:grid-cols-[auto,1fr,auto] md:gap-4 lg:gap-6">
           {/* Logo */}
           <Link to="/" className="group flex-shrink-0 flex items-center">
             <motion.img 
@@ -73,13 +73,13 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center justify-center gap-10 lg:gap-14">
+          <nav className="hidden md:flex items-center justify-center gap-6 lg:gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "relative text-[11px] tracking-[0.2em] uppercase transition-all duration-500 font-medium",
+                  "relative text-[11px] tracking-[0.15em] uppercase transition-all duration-500 font-medium whitespace-nowrap",
                   location.pathname === link.path
                     ? "text-primary"
                     : isScrolled 
