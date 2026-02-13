@@ -102,7 +102,7 @@ const Index = () => {
                 style={{ transformOrigin: "left" }}
               />
               <p className="text-white/40 text-[10px] sm:text-[11px] tracking-[0.25em] sm:tracking-[0.3em] uppercase font-medium whitespace-nowrap">
-                Industrial & Decorative Coatings
+                Premium Industrial & Decorative Coatings
               </p>
             </motion.div>
             
@@ -125,8 +125,8 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 1.2, ease: [0.25, 0.4, 0.25, 1] }}
               className="text-white/40 text-base sm:text-lg md:text-xl max-w-lg mb-12 sm:mb-16 leading-relaxed font-light"
             >
-              A distinguished manufacturer of high-performance paints, 
-              proudly headquartered in Maharashtra.
+              Trusted by leading manufacturers across India — delivering 
+              high-performance coating solutions since establishment.
             </motion.p>
             
             <motion.div 
