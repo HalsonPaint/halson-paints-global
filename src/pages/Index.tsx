@@ -67,24 +67,14 @@ const Index = () => {
     <Layout>
       {/* Hero Section - Cinematic */}
       <section ref={heroRef} className="relative min-h-screen flex items-center hero-gradient noise-overlay pt-32 md:pt-36 overflow-hidden">
-        {/* Animated ambient elements */}
-        <motion.div 
-          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[150px]"
+        {/* Animated ambient elements - simplified for performance */}
+        <div 
+          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[100px] md:blur-[150px] opacity-30 will-change-transform"
           style={{ background: "hsl(var(--primary) / 0.08)" }}
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div 
-          className="absolute bottom-1/4 left-[10%] w-[400px] h-[400px] rounded-full blur-[120px]"
+        <div 
+          className="absolute bottom-1/4 left-[10%] w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full blur-[80px] md:blur-[120px] opacity-20 will-change-transform"
           style={{ background: "hsl(var(--accent) / 0.06)" }}
-          animate={{ 
-            scale: [1.1, 1, 1.1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
         
         {/* Decorative grid lines */}
@@ -95,7 +85,7 @@ const Index = () => {
         
         <motion.div 
           style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-          className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10"
+          className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 will-change-transform"
         >
           <div className="max-w-4xl">
             <motion.div
@@ -423,11 +413,9 @@ const Index = () => {
 
       {/* CTA Section - Dramatic */}
       <section className="py-24 sm:py-36 hero-gradient noise-overlay relative overflow-hidden">
-        <motion.div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[200px]"
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] rounded-full blur-[120px] md:blur-[200px] opacity-30"
           style={{ background: "hsl(var(--accent) / 0.04)" }}
-          animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         
         {/* Decorative grid lines */}

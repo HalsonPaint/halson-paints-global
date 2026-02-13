@@ -6,9 +6,9 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [phase, setPhase] = useState<"logo" | "reveal" | "exit">("logo");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("reveal"), 1400);
-    const t2 = setTimeout(() => setPhase("exit"), 3000);
-    const t3 = setTimeout(onComplete, 3800);
+    const t1 = setTimeout(() => setPhase("reveal"), 800);
+    const t2 = setTimeout(() => setPhase("exit"), 1800);
+    const t3 = setTimeout(onComplete, 2400);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onComplete]);
 
@@ -27,15 +27,12 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           if (phase === "exit") onComplete();
         }}
       >
-        {/* Ambient glow */}
-        <motion.div
-          className="absolute w-[500px] h-[500px] rounded-full"
+        {/* Ambient glow - static for performance */}
+        <div
+          className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full opacity-60"
           style={{
             background: "radial-gradient(circle, hsl(192 50% 22% / 0.3) 0%, transparent 70%)",
           }}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 2, opacity: 1 }}
-          transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
         />
 
         {/* Gold accent line */}
