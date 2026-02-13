@@ -66,7 +66,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section - Cinematic */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center hero-gradient noise-overlay pt-28 md:pt-24 overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen flex items-center hero-gradient noise-overlay pt-32 md:pt-36 overflow-hidden">
         {/* Animated ambient elements */}
         <motion.div 
           className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[150px]"
