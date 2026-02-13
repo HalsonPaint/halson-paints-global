@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, MessageCircle, Package } from "lucide-react";
+import { ChevronDown, MessageCircle, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
@@ -9,17 +9,44 @@ import { cn } from "@/lib/utils";
 import { openExternal } from "@/lib/openExternal";
 import { EXTERNAL_TARGET } from "@/lib/external";
 
+// Category images
+import puEnamelImg from "@/assets/products/pu-enamel.jpg";
+import qdEnamelImg from "@/assets/products/qd-enamel.jpg";
+import syntheticEnamelImg from "@/assets/products/synthetic-enamel.jpg";
+import primersImg from "@/assets/products/primers.jpg";
+import primerSurfaceGreyImg from "@/assets/products/primer-surface-grey.jpg";
+import redOxideImg from "@/assets/products/red-oxide.jpg";
+import zincYellowImg from "@/assets/products/zinc-yellow.jpg";
+import furnitureEnamelImg from "@/assets/products/furniture-enamel.jpg";
+import specialShadesImg from "@/assets/products/special-shades.jpg";
+import powderCoatingImg from "@/assets/products/powder-coating.jpg";
+import hammerFinishImg from "@/assets/products/hammer-finish.jpg";
+
+const categoryImages: Record<string, string> = {
+  "pu-enamel-super": puEnamelImg,
+  "qd-enamel": qdEnamelImg,
+  "synthetic-enamel": syntheticEnamelImg,
+  "primers": primersImg,
+  "primer-surface-grey": primerSurfaceGreyImg,
+  "red-oxide-metal-primer": redOxideImg,
+  "zinc-yellow-primer": zincYellowImg,
+  "furniture-enamel": furnitureEnamelImg,
+  "special-shades": specialShadesImg,
+  "powder-coating": powderCoatingImg,
+  "hammer-finish": hammerFinishImg,
+};
+
 const WHATSAPP_NUMBER = "918369657171";
 
 const getWhatsAppUrl = (message: string) => {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 };
 
-const WhatsAppIcon = () => (
+const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     viewBox="0 0 175.216 175.552"
-    className="w-6 h-6"
+    className={className}
   >
     <defs>
       <linearGradient id="whatsapp-gradient" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse">
@@ -38,219 +65,264 @@ const ProductCard = ({ product, categoryName, index }: { product: Product; categ
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.03 }}
+      transition={{ duration: 0.25, delay: index * 0.02 }}
       className="group"
     >
-      <div className="p-4 sm:p-5 bg-secondary/30 border border-border/60 hover:border-primary/20 transition-all duration-500 rounded-sm hover:shadow-[var(--shadow-subtle)] hover:bg-secondary/50">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex-1">
-            <h4 className="font-display font-medium text-foreground group-hover:text-primary transition-colors duration-500 text-sm sm:text-base">
+      <div className="flex items-center justify-between gap-3 py-3 px-4 bg-secondary/20 border border-border/40 hover:border-primary/20 transition-all duration-400 rounded-sm hover:bg-secondary/40">
+        <div className="flex items-center gap-3 flex-1 min-w-0">
+          <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-400 shrink-0" />
+          <div className="min-w-0">
+            <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-400 truncate">
               {product.name}
             </h4>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1 font-light">{product.description}</p>
           </div>
-          <a
-            href={whatsappUrl}
-            target={EXTERNAL_TARGET}
-            rel="noopener noreferrer"
-            onClick={(e) => {
-              e.stopPropagation();
-              if (EXTERNAL_TARGET !== "_top") return;
-              e.preventDefault();
-              openExternal(whatsappUrl);
-            }}
-            className="shrink-0 hover:scale-110 transition-transform duration-300"
-            title="Enquire on WhatsApp"
-          >
-            <WhatsAppIcon />
-          </a>
         </div>
+        <a
+          href={whatsappUrl}
+          target={EXTERNAL_TARGET}
+          rel="noopener noreferrer"
+          onClick={(e) => {
+            e.stopPropagation();
+            if (EXTERNAL_TARGET !== "_top") return;
+            e.preventDefault();
+            openExternal(whatsappUrl);
+          }}
+          className="shrink-0 opacity-40 group-hover:opacity-100 hover:scale-110 transition-all duration-300"
+          title="Enquire on WhatsApp"
+        >
+          <WhatsAppIcon className="w-5 h-5" />
+        </a>
       </div>
     </motion.div>
   );
 };
 
-const CategoryAccordion = ({ category, isOpen, onToggle, index }: { 
+const CategorySection = ({ category, index }: { 
   category: Category; 
-  isOpen: boolean; 
-  onToggle: () => void;
   index: number;
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const image = categoryImages[category.id];
+  const isEven = index % 2 === 0;
+
   return (
-    <ScrollReveal delay={index * 0.05} distance={20}>
-      <motion.div 
-        className={cn(
-          "border border-border/80 overflow-hidden bg-card transition-all duration-500 rounded-sm",
-          isOpen && "border-primary/15 shadow-[var(--shadow-elevated)]"
-        )}
-        layout
-      >
-        <button
-          onClick={onToggle}
-          className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-secondary/20 transition-all duration-500"
-        >
-          <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
-            <motion.div 
-              className={cn(
-                "w-10 h-10 sm:w-12 sm:h-12 rounded-sm flex items-center justify-center shrink-0 transition-all duration-500",
-                isOpen ? "bg-primary text-primary-foreground" : "bg-primary/8 text-primary"
-              )}
-              animate={isOpen ? { scale: [1, 1.05, 1] } : {}}
-              transition={{ duration: 0.3 }}
-            >
-              <Package size={20} />
-            </motion.div>
-            <div className="min-w-0 flex-1">
-              <h3 className="font-display text-lg sm:text-xl font-medium text-foreground truncate">
-                {category.name}
-              </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1 line-clamp-1 font-light">
-                {category.description}
-              </p>
+    <ScrollReveal delay={index * 0.05} distance={30}>
+      <div className={cn(
+        "grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden rounded-sm border border-border/60 bg-card transition-all duration-500",
+        isOpen && "border-primary/15 shadow-[var(--shadow-elevated)]"
+      )}>
+        {/* Image side */}
+        <div className={cn(
+          "relative aspect-[16/10] lg:aspect-auto lg:min-h-[320px] overflow-hidden",
+          !isEven && "lg:order-2"
+        )}>
+          <img 
+            src={image} 
+            alt={category.name}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-black/10 lg:to-black/50" />
+          
+          {/* Category badge on image */}
+          <div className="absolute bottom-4 left-4 lg:hidden">
+            <span className="text-[10px] tracking-[0.2em] uppercase text-white/60 font-medium bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-sm">
+              {category.products.length} {category.products.length === 1 ? 'Product' : 'Products'}
+            </span>
+          </div>
+        </div>
+
+        {/* Content side */}
+        <div className={cn(
+          "flex flex-col",
+          !isEven && "lg:order-1"
+        )}>
+          {/* Header */}
+          <div className="p-6 sm:p-8 lg:p-10">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-[2px] bg-accent/50" />
+              <span className="text-[10px] tracking-[0.25em] uppercase text-accent font-medium">
+                Category {String(index + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <h3 className="font-display text-2xl sm:text-3xl text-foreground mb-2">
+              {category.name}
+            </h3>
+            <p className="text-sm text-muted-foreground font-light mb-5 leading-relaxed">
+              {category.description}
+            </p>
+            
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all duration-400"
+              >
+                {isOpen ? "Hide Products" : "View Products"}
+                <motion.div
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown size={16} />
+                </motion.div>
+              </button>
+              <span className="hidden sm:block text-xs text-muted-foreground">
+                {category.products.length} {category.products.length === 1 ? 'variant' : 'variants'} available
+              </span>
             </div>
           </div>
-          <div className="flex items-center gap-2 sm:gap-3 ml-2 shrink-0">
-            <span className="text-xs text-muted-foreground hidden sm:block tracking-wide">
-              {category.products.length} products
-            </span>
-            <motion.div
-              animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-            >
-              <ChevronDown className="text-muted-foreground" size={18} />
-            </motion.div>
-          </div>
-        </button>
 
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-            >
-              <div className="px-4 sm:px-6 pb-6 pt-0">
-                <div className="w-full h-[1px] bg-border/60 mb-4" />
-                <div className="space-y-2">
-                  {category.products.map((product, i) => (
-                    <ProductCard 
-                      key={product.id} 
-                      product={product} 
-                      categoryName={category.name}
-                      index={i}
-                    />
-                  ))}
+          {/* Products list */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="px-6 sm:px-8 lg:px-10 pb-6 sm:pb-8 lg:pb-10">
+                  <div className="w-full h-[1px] bg-border/40 mb-4" />
+                  <div className="space-y-1.5 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                    {category.products.map((product, i) => (
+                      <ProductCard 
+                        key={product.id} 
+                        product={product} 
+                        categoryName={category.name}
+                        index={i}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
     </ScrollReveal>
   );
 };
 
 const Products = () => {
-  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set());
-
-  const toggleCategory = (categoryId: string) => {
-    setOpenCategories((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(categoryId)) {
-        newSet.delete(categoryId);
-      } else {
-        newSet.add(categoryId);
-      }
-      return newSet;
-    });
-  };
-
-  const expandAll = () => {
-    setOpenCategories(new Set(productCategories.map((c) => c.id)));
-  };
-
-  const collapseAll = () => {
-    setOpenCategories(new Set());
-  };
-
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="pt-28 pb-16 sm:pt-36 sm:pb-20 page-hero relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/[0.03] rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/[0.03] rounded-full blur-[80px]" />
+      {/* Hero Section - Bold & Authoritative */}
+      <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 hero-gradient noise-overlay overflow-hidden">
+        {/* Ambient elements */}
+        <div 
+          className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[120px] opacity-20"
+          style={{ background: "hsl(var(--accent) / 0.08)" }}
+        />
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: "linear-gradient(90deg, white 1px, transparent 1px), linear-gradient(180deg, white 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
+        }} />
         
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <ScrollReveal>
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="w-12 h-[1px] bg-accent/40" />
-                <p className="text-[10px] tracking-[0.3em] uppercase text-accent font-medium">
-                  Our Collection
-                </p>
-                <div className="w-12 h-[1px] bg-accent/40" />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-foreground mb-5 sm:mb-7">
-                Our <span className="text-gradient">Products</span>
-              </h1>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <p className="text-base sm:text-lg text-muted-foreground px-4 sm:px-0 font-light max-w-xl mx-auto leading-relaxed">
-                Comprehensive range of industrial and decorative coatings engineered 
-                for superior protection and lasting performance.
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              <div className="w-12 h-[1px] bg-accent/50" />
+              <p className="text-white/35 text-[10px] tracking-[0.3em] uppercase font-medium">
+                Product Portfolio
               </p>
-            </ScrollReveal>
+            </motion.div>
+            
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white font-light leading-[1.05] mb-6"
+            >
+              Engineered for<br />
+              <span className="text-gradient-gold">Performance</span>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-white/35 text-base sm:text-lg max-w-xl leading-relaxed font-light mb-10"
+            >
+              A comprehensive range of industrial and decorative coatings — 
+              formulated for superior protection, durability, and finish quality.
+            </motion.p>
+
+            {/* Stats bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex items-center gap-8 sm:gap-12"
+            >
+              <div>
+                <div className="font-display text-3xl sm:text-4xl text-white">{productCategories.length}</div>
+                <div className="text-white/25 text-[10px] tracking-[0.2em] uppercase mt-1">Categories</div>
+              </div>
+              <div className="w-[1px] h-10 bg-white/10" />
+              <div>
+                <div className="font-display text-3xl sm:text-4xl text-white">
+                  {productCategories.reduce((acc, cat) => acc + cat.products.length, 0)}+
+                </div>
+                <div className="text-white/25 text-[10px] tracking-[0.2em] uppercase mt-1">Products</div>
+              </div>
+              <div className="w-[1px] h-10 bg-white/10" />
+              <div>
+                <div className="font-display text-3xl sm:text-4xl text-white">100%</div>
+                <div className="text-white/25 text-[10px] tracking-[0.2em] uppercase mt-1">Quality Assured</div>
+              </div>
+            </motion.div>
           </div>
+        </div>
+
+        {/* Side text */}
+        <div className="absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 hidden lg:block">
+          <motion.p 
+            className="text-white/8 text-[11px] tracking-[0.4em] uppercase"
+            style={{ writingMode: "vertical-rl" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.8 }}
+          >
+            Premium Coating Solutions
+          </motion.p>
         </div>
       </section>
 
-      {/* Products Section */}
-      <section className="py-12 sm:py-24">
-        <div className="container mx-auto px-4">
-          {/* Controls */}
-          <ScrollReveal>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 sm:mb-14 gap-4">
-              <p className="text-muted-foreground text-sm">
-                <span className="text-foreground font-medium">{productCategories.length}</span> categories · 
-                <span className="text-foreground font-medium ml-1">
-                  {productCategories.reduce((acc, cat) => acc + cat.products.length, 0)}
-                </span> products
-              </p>
-              <div className="flex gap-2 w-full sm:w-auto">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={expandAll} 
-                  className="font-sans tracking-wide flex-1 sm:flex-none text-xs border-border hover:border-primary/20 transition-all duration-500"
-                >
-                  Expand All
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={collapseAll} 
-                  className="font-sans tracking-wide flex-1 sm:flex-none text-xs border-border hover:border-primary/20 transition-all duration-500"
-                >
-                  Collapse All
-                </Button>
+      {/* Categories Grid */}
+      <section className="py-16 sm:py-24 lg:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          {/* Section intro */}
+          <ScrollReveal className="mb-14 sm:mb-20">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-12 h-[1px] bg-accent/40" />
+                <p className="text-[10px] tracking-[0.3em] uppercase text-accent font-medium">
+                  Our Range
+                </p>
               </div>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-4 leading-tight">
+                Product Categories
+              </h2>
+              <p className="text-muted-foreground text-base font-light leading-relaxed">
+                From high-performance industrial primers to elegant decorative finishes — 
+                every product is engineered to deliver exceptional results.
+              </p>
             </div>
           </ScrollReveal>
 
-          {/* Categories */}
-          <div className="space-y-3">
+          {/* Category cards */}
+          <div className="space-y-6 sm:space-y-8">
             {productCategories.map((category, index) => (
-              <CategoryAccordion
+              <CategorySection
                 key={category.id}
                 category={category}
-                isOpen={openCategories.has(category.id)}
-                onToggle={() => toggleCategory(category.id)}
                 index={index}
               />
             ))}
@@ -258,37 +330,45 @@ const Products = () => {
 
           {/* CTA */}
           <ScrollReveal delay={0.1}>
-            <div className="mt-20 sm:mt-28 text-center p-10 sm:p-16 bg-card rounded-sm border border-border relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-accent/[0.02]" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-              <div className="relative z-10">
-                <h3 className="font-display text-3xl sm:text-4xl text-foreground mb-5">
-                  Can't find what you're looking for?
-                </h3>
-                <p className="text-muted-foreground mb-10 font-light max-w-md mx-auto text-base">
-                  We offer custom formulations tailored to your specific requirements.
-                </p>
-                <Button asChild size="lg" className="tracking-[0.2em] text-[11px] uppercase px-10 py-7">
-                  <a
-                    href={getWhatsAppUrl(
-                      "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
-                    )}
-                    target={EXTERNAL_TARGET}
-                    rel="noopener noreferrer"
-                    onClick={(e) => {
-                      if (EXTERNAL_TARGET !== "_top") return;
-                      e.preventDefault();
-                      openExternal(
-                        getWhatsAppUrl(
-                          "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
-                        ),
-                      );
-                    }}
-                  >
-                    <MessageCircle className="mr-2" size={18} />
-                    Request Custom Solution
-                  </a>
-                </Button>
+            <div className="mt-20 sm:mt-28 relative overflow-hidden rounded-sm">
+              {/* CTA with dark hero treatment */}
+              <div className="hero-gradient noise-overlay py-16 sm:py-20 px-8 sm:px-16 relative">
+                <div className="absolute inset-0 opacity-[0.02]" style={{
+                  backgroundImage: "linear-gradient(90deg, white 1px, transparent 1px), linear-gradient(180deg, white 1px, transparent 1px)",
+                  backgroundSize: "60px 60px",
+                }} />
+                <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                  <div className="text-center lg:text-left">
+                    <h3 className="font-display text-3xl sm:text-4xl text-white mb-3">
+                      Need a Custom Formulation?
+                    </h3>
+                    <p className="text-white/35 font-light max-w-md text-base">
+                      Our R&D team develops tailored coating solutions for your specific industrial requirements.
+                    </p>
+                  </div>
+                  <Button asChild size="lg" className="bg-white text-charcoal hover:bg-white/90 tracking-[0.2em] text-[11px] uppercase px-10 py-7 shrink-0 group">
+                    <a
+                      href={getWhatsAppUrl(
+                        "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
+                      )}
+                      target={EXTERNAL_TARGET}
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        if (EXTERNAL_TARGET !== "_top") return;
+                        e.preventDefault();
+                        openExternal(
+                          getWhatsAppUrl(
+                            "Hi, I'm looking for a custom paint solution. Please contact me to discuss my requirements.",
+                          ),
+                        );
+                      }}
+                    >
+                      <MessageCircle className="mr-2" size={16} />
+                      Get in Touch
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </ScrollReveal>
