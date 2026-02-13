@@ -21,7 +21,7 @@ const ScrollReveal = ({
   once = true,
 }: ScrollRevealProps) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: "-80px" });
+  const isInView = useInView(ref, { once, margin: "-40px" });
 
   const directions = {
     up: { y: distance, x: 0 },
@@ -34,7 +34,7 @@ const ScrollReveal = ({
   return (
     <motion.div
       ref={ref}
-      className={className}
+      className={`${className} will-change-transform`}
       initial={{
         opacity: 0,
         y: directions[direction].y,
@@ -42,8 +42,8 @@ const ScrollReveal = ({
       }}
       animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
       transition={{
-        duration,
-        delay,
+        duration: Math.min(duration, 0.6),
+        delay: Math.min(delay, 0.2),
         ease: [0.25, 0.4, 0.25, 1],
       }}
     >
