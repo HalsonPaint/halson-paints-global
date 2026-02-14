@@ -122,7 +122,7 @@ const CategorySection = ({ category, index }: {
             src={image} 
             alt={category.name}
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            className="absolute inset-0 w-full h-full object-contain bg-[#e8e8e6] transition-transform duration-700 hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-black/10 lg:to-black/50" />
           
