@@ -15,7 +15,7 @@ import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import Marquee from "@/components/animations/Marquee";
 
 // Hero & lifestyle imagery
-import heroTins from "@/assets/home-hero-tins.jpg";
+import heroTinPortrait from "@/assets/home-hero-tin-portrait.jpg";
 import industrialApp from "@/assets/home-industrial-app.jpg";
 import decorativeApp from "@/assets/home-decorative-app.jpg";
 
@@ -74,80 +74,141 @@ const marqueeItems = [
 const Index = () => {
   return (
     <Layout>
-      {/* ============ HERO — Full bleed product imagery ============ */}
-      <section className="relative min-h-[92vh] flex items-center bg-secondary overflow-hidden pt-28 md:pt-32">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <img
-            src={heroTins}
-            alt="Halson Paints premium industrial paint tins"
-            className="w-full h-full object-cover object-center"
-            width={1920}
-            height={1280}
-          />
-          {/* Bright wash for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30 md:from-background/95 md:via-background/70 md:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-        </div>
+      {/* ============ HERO — Editorial Split ============ */}
+      <section className="relative bg-background overflow-hidden pt-28 md:pt-36 pb-16 md:pb-0">
+        {/* Subtle ambient glows */}
+        <div
+          className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-[140px] opacity-40 pointer-events-none"
+          style={{ background: "hsl(var(--accent) / 0.08)" }}
+        />
+        <div
+          className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-30 pointer-events-none"
+          style={{ background: "hsl(var(--primary) / 0.05)" }}
+        />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex items-center gap-3 mb-6"
-            >
-              <div className="w-10 h-[2px] bg-accent" />
-              <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
-                Halson Paints Pvt. Ltd.
-              </p>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground font-normal leading-[1.05] tracking-tight mb-8"
-            >
-              Coatings that
-              <span className="block text-primary italic">protect &amp; perform.</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-xl mb-10 leading-relaxed"
-            >
-              India's trusted manufacturer of premium industrial and decorative paints —
-              engineered for excellence, built on quality you can rely on.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Button
-                asChild
-                size="lg"
-                className="group bg-primary text-primary-foreground hover:bg-primary/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 shadow-lg"
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center min-h-[calc(100vh-9rem)]">
+            {/* LEFT — Text */}
+            <div className="lg:col-span-7 order-2 lg:order-1">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex items-center gap-4 mb-8"
               >
-                <Link to="/products">
-                  Explore Products
-                  <ArrowRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-foreground/20 text-foreground hover:bg-foreground/5 tracking-[0.2em] text-[11px] uppercase px-8 py-6"
+                <div className="w-12 h-[1px] bg-accent" />
+                <p className="text-[10px] sm:text-[11px] tracking-[0.35em] uppercase text-accent font-medium">
+                  Est. Halson Paints Pvt. Ltd.
+                </p>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+                className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6rem] text-foreground font-normal leading-[1.02] tracking-[-0.02em] mb-8"
               >
-                <Link to="/contact">Request a Quote</Link>
-              </Button>
+                Coatings that
+                <span className="block">
+                  <span className="italic text-primary">protect</span>
+                  <span className="text-foreground/30 mx-3">&amp;</span>
+                </span>
+                <span className="italic text-primary">perform.</span>
+              </motion.h1>
+
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 1, ease: [0.25, 0.4, 0.25, 1] }}
+                className="w-20 h-[2px] bg-accent mb-8 origin-left"
+              />
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-xl mb-10 sm:mb-12 leading-relaxed font-light"
+              >
+                India's trusted manufacturer of premium industrial and decorative paints —
+                engineered for excellence, built on quality you can rely on.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.1 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="group bg-primary text-primary-foreground hover:bg-primary/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 rounded-none shadow-lg hover:shadow-xl transition-all duration-500"
+                >
+                  <Link to="/products">
+                    Explore Products
+                    <ArrowRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-foreground/20 text-foreground hover:bg-foreground hover:text-background bg-transparent tracking-[0.2em] text-[11px] uppercase px-8 py-6 rounded-none transition-all duration-500"
+                >
+                  <Link to="/contact">Request a Quote</Link>
+                </Button>
+              </motion.div>
+
+              {/* Mini trust strip */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1.4 }}
+                className="hidden lg:flex items-center gap-8 mt-16 pt-8 border-t border-border/60"
+              >
+                <div>
+                  <div className="font-display text-2xl text-primary leading-none mb-1">15+</div>
+                  <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">Categories</div>
+                </div>
+                <div className="w-px h-10 bg-border" />
+                <div>
+                  <div className="font-display text-2xl text-primary leading-none mb-1">100%</div>
+                  <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">Quality Assured</div>
+                </div>
+                <div className="w-px h-10 bg-border" />
+                <div>
+                  <div className="font-display text-2xl text-primary leading-none mb-1">Pan-India</div>
+                  <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">Distribution</div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* RIGHT — Product image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, delay: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+              className="lg:col-span-5 order-1 lg:order-2 relative"
+            >
+              <div className="relative aspect-[3/4] max-w-md mx-auto lg:max-w-none lg:h-[80vh] lg:max-h-[760px]">
+                {/* Decorative frame */}
+                <div className="absolute -inset-3 sm:-inset-4 border border-accent/30 pointer-events-none" />
+                <div className="absolute inset-0 overflow-hidden bg-secondary">
+                  <img
+                    src={heroTinPortrait}
+                    alt="Halson Paints premium industrial paint tin"
+                    className="w-full h-full object-cover object-center"
+                    width={1080}
+                    height={1600}
+                  />
+                </div>
+                {/* Caption tag */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-background px-4 py-2 border border-border shadow-sm whitespace-nowrap">
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+                    Premium · Industrial Grade
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
