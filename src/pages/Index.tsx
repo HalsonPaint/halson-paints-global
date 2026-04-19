@@ -1,243 +1,244 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Shield, Factory, Award, Truck } from "lucide-react";
+import { ArrowRight, Shield, Factory, Palette, Truck, Award, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import AnimatedCounter from "@/components/animations/AnimatedCounter";
-import Marquee from "@/components/animations/Marquee";
 
-// Hero & lifestyle imagery
-import heroTinPortrait from "@/assets/home-hero-tin-portrait.jpg";
-import industrialApp from "@/assets/home-industrial-app.jpg";
-import decorativeApp from "@/assets/home-decorative-app.jpg";
+// Lifestyle imagery
+import heroLifestyle from "@/assets/ap-hero-lifestyle.jpg";
+import catIndustrial from "@/assets/ap-cat-industrial.jpg";
+import catDecorative from "@/assets/ap-cat-decorative.jpg";
+import catAutomotive from "@/assets/ap-cat-automotive.jpg";
+import inspBridge from "@/assets/ap-insp-bridge.jpg";
+import inspWarehouse from "@/assets/ap-insp-warehouse.jpg";
+import inspOffice from "@/assets/ap-insp-office.jpg";
+import inspCrane from "@/assets/ap-insp-crane.jpg";
 
-// Featured product imagery
-import puEnamel from "@/assets/products/pu-enamel.jpg";
-import syntheticEnamel from "@/assets/products/synthetic-enamel.jpg";
-import qdEnamel from "@/assets/products/qd-enamel.jpg";
-import primers from "@/assets/products/primers.jpg";
-import powderCoating from "@/assets/products/powder-coating.jpg";
-import hammerFinish from "@/assets/products/hammer-finish.jpg";
+const categories = [
+  {
+    title: "Industrial Coatings",
+    tagline: "Heavy-duty protection for plants, pipelines & machinery.",
+    image: catIndustrial,
+    href: "/products",
+  },
+  {
+    title: "Decorative Paints",
+    tagline: "Refined finishes for homes, offices & commercial spaces.",
+    image: catDecorative,
+    href: "/products",
+  },
+  {
+    title: "Automotive & OEM",
+    tagline: "High-gloss enamels engineered for vehicles & equipment.",
+    image: catAutomotive,
+    href: "/products",
+  },
+];
 
-const featuredProducts = [
-  { name: "PU Enamel (Super)", tagline: "Premium polyurethane finish", image: puEnamel },
-  { name: "Synthetic Enamel", tagline: "Glossy, durable protection", image: syntheticEnamel },
-  { name: "QD Enamel", tagline: "Quick-drying high gloss", image: qdEnamel },
-  { name: "Primers", tagline: "Engineered surface preparation", image: primers },
-  { name: "Powder Coating", tagline: "Industrial-grade finish", image: powderCoating },
-  { name: "Hammer Finish", tagline: "Distinctive textured coating", image: hammerFinish },
+const services = [
+  { icon: Palette, label: "Shade Catalogue" },
+  { icon: Factory, label: "Bulk Orders" },
+  { icon: Shield, label: "Industrial Specs" },
+  { icon: Truck, label: "Pan-India Supply" },
+  { icon: Award, label: "Quality Assured" },
+  { icon: Phone, label: "Talk to Expert" },
 ];
 
 const stats = [
   { value: "15+", label: "Product Categories" },
   { value: "100%", label: "Quality Assured" },
+  { value: "500+", label: "Shades Available" },
   { value: "24/7", label: "Client Support" },
 ];
 
-const pillars = [
-  {
-    icon: Factory,
-    title: "Manufacturing Excellence",
-    description: "State-of-the-art facility in Vadavali, Maharashtra producing high-performance coatings.",
-  },
-  {
-    icon: Shield,
-    title: "Industrial Protection",
-    description: "Anti-corrosive, epoxy and heat-resistant systems engineered for demanding environments.",
-  },
-  {
-    icon: Award,
-    title: "Trusted Quality",
-    description: "Built on decades of expertise under the leadership of Mr. Om Prakash Tiwari.",
-  },
-  {
-    icon: Truck,
-    title: "Pan-India Reach",
-    description: "Robust offline distribution and seamless online presence on IndiaMART.",
-  },
-];
-
-const marqueeItems = [
-  "PU Enamel", "Synthetic Enamel", "QD Enamel", "Powder Coating",
-  "Hammer Finish", "Primers", "Red Oxide", "Special Shades",
-  "Anti-Corrosive", "Epoxy Systems", "Heat Resistant", "Industrial Coatings",
+const inspirations = [
+  { image: inspBridge, tag: "Infrastructure", title: "Bridges & Steel Structures" },
+  { image: inspWarehouse, tag: "Commercial", title: "Warehouses & Plants" },
+  { image: inspOffice, tag: "Interior", title: "Corporate Spaces" },
+  { image: inspCrane, tag: "Heavy Industry", title: "Cranes & Equipment" },
 ];
 
 const Index = () => {
   return (
     <Layout>
-      {/* ============ HERO — Editorial Split ============ */}
-      <section className="relative bg-background overflow-hidden pt-28 md:pt-36 pb-16 md:pb-0">
-        {/* Subtle ambient glows */}
-        <div
-          className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-[140px] opacity-40 pointer-events-none"
-          style={{ background: "hsl(var(--accent) / 0.08)" }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-30 pointer-events-none"
-          style={{ background: "hsl(var(--primary) / 0.05)" }}
-        />
+      {/* ============ HERO — Full-bleed lifestyle + floating panel ============ */}
+      <section className="relative bg-secondary overflow-hidden">
+        <div className="relative min-h-[88vh] lg:min-h-[92vh] pt-24 md:pt-28">
+          {/* Background lifestyle image */}
+          <div className="absolute inset-0">
+            <img
+              src={heroLifestyle}
+              alt="Halson Paints — premium industrial coatings"
+              className="w-full h-full object-cover object-center"
+              width={1920}
+              height={1100}
+            />
+            {/* Soft gradient for legibility (left side only) */}
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/55 via-foreground/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent" />
+          </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center min-h-[calc(100vh-9rem)]">
-            {/* LEFT — Text */}
-            <div className="lg:col-span-7 order-2 lg:order-1">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 h-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[calc(88vh-6rem)] lg:min-h-[calc(92vh-7rem)]">
+              {/* LEFT — Headline */}
+              <div className="lg:col-span-7">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="flex items-center gap-3 mb-6"
+                >
+                  <div className="w-12 h-[2px] bg-accent" />
+                  <p className="text-[10px] sm:text-[11px] tracking-[0.35em] uppercase text-accent font-medium">
+                    Halson Paints Pvt. Ltd.
+                  </p>
+                </motion.div>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.4 }}
+                  className="font-display text-white text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[5.75rem] font-normal leading-[1.05] tracking-tight mb-6"
+                >
+                  Coatings that
+                  <span className="block">power India's industry.</span>
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.7 }}
+                  className="text-white/85 text-base sm:text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-light"
+                >
+                  Premium industrial &amp; decorative paints — engineered in Maharashtra,
+                  trusted by manufacturers across India.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.9 }}
+                  className="flex flex-col sm:flex-row gap-4"
+                >
+                  <Button
+                    asChild
+                    size="lg"
+                    className="group bg-accent text-accent-foreground hover:bg-accent/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 rounded-none shadow-lg"
+                  >
+                    <Link to="/products">
+                      Explore Products
+                      <ArrowRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-white/40 text-white hover:bg-white hover:text-foreground bg-transparent backdrop-blur-sm tracking-[0.2em] text-[11px] uppercase px-8 py-6 rounded-none"
+                  >
+                    <Link to="/contact">Request a Quote</Link>
+                  </Button>
+                </motion.div>
+              </div>
+
+              {/* RIGHT — Floating service panel (Asian Paints pattern) */}
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="flex items-center gap-4 mb-8"
-              >
-                <div className="w-12 h-[1px] bg-accent" />
-                <p className="text-[10px] sm:text-[11px] tracking-[0.35em] uppercase text-accent font-medium">
-                  Est. Halson Paints Pvt. Ltd.
-                </p>
-              </motion.div>
-
-              <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-                className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6rem] text-foreground font-normal leading-[1.02] tracking-[-0.02em] mb-8"
+                transition={{ duration: 1, delay: 0.8 }}
+                className="lg:col-span-5"
               >
-                Coatings that
-                <span className="block">
-                  <span className="italic text-primary">protect</span>
-                  <span className="text-foreground/30 mx-3">&amp;</span>
-                </span>
-                <span className="italic text-primary">perform.</span>
-              </motion.h1>
-
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1, delay: 1, ease: [0.25, 0.4, 0.25, 1] }}
-                className="w-20 h-[2px] bg-accent mb-8 origin-left"
-              />
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-                className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-xl mb-10 sm:mb-12 leading-relaxed font-light"
-              >
-                India's trusted manufacturer of premium industrial and decorative paints —
-                engineered for excellence, built on quality you can rely on.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.1 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <Button
-                  asChild
-                  size="lg"
-                  className="group bg-primary text-primary-foreground hover:bg-primary/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 rounded-none shadow-lg hover:shadow-xl transition-all duration-500"
-                >
-                  <Link to="/products">
-                    Explore Products
-                    <ArrowRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-foreground/20 text-foreground hover:bg-foreground hover:text-background bg-transparent tracking-[0.2em] text-[11px] uppercase px-8 py-6 rounded-none transition-all duration-500"
-                >
-                  <Link to="/contact">Request a Quote</Link>
-                </Button>
-              </motion.div>
-
-              {/* Mini trust strip */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 1.4 }}
-                className="hidden lg:flex items-center gap-8 mt-16 pt-8 border-t border-border/60"
-              >
-                <div>
-                  <div className="font-display text-2xl text-primary leading-none mb-1">15+</div>
-                  <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">Categories</div>
-                </div>
-                <div className="w-px h-10 bg-border" />
-                <div>
-                  <div className="font-display text-2xl text-primary leading-none mb-1">100%</div>
-                  <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">Quality Assured</div>
-                </div>
-                <div className="w-px h-10 bg-border" />
-                <div>
-                  <div className="font-display text-2xl text-primary leading-none mb-1">Pan-India</div>
-                  <div className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground">Distribution</div>
+                <div className="bg-background/95 backdrop-blur-xl border border-border shadow-2xl p-8 sm:p-10">
+                  <h3 className="font-display text-3xl sm:text-4xl text-foreground mb-2 leading-tight">
+                    Find what your
+                    <span className="block text-primary italic">project needs</span>
+                  </h3>
+                  <div className="w-12 h-[2px] bg-accent mt-4 mb-8" />
+                  <div className="grid grid-cols-3 gap-4 sm:gap-5">
+                    {services.map((service) => {
+                      const Icon = service.icon;
+                      return (
+                        <Link
+                          key={service.label}
+                          to="/contact"
+                          className="group flex flex-col items-center text-center gap-3 p-3 hover:bg-secondary transition-colors duration-300"
+                        >
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-secondary group-hover:bg-primary flex items-center justify-center transition-colors duration-300">
+                            <Icon
+                              className="h-5 w-5 sm:h-6 sm:w-6 text-primary group-hover:text-primary-foreground transition-colors duration-300"
+                              strokeWidth={1.5}
+                            />
+                          </div>
+                          <span className="text-[10px] sm:text-[11px] tracking-wider text-foreground leading-tight">
+                            {service.label}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
               </motion.div>
             </div>
-
-            {/* RIGHT — Product image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-              className="lg:col-span-5 order-1 lg:order-2 relative"
-            >
-              <div className="relative aspect-[3/4] max-w-md mx-auto lg:max-w-none lg:h-[80vh] lg:max-h-[760px]">
-                {/* Decorative frame */}
-                <div className="absolute -inset-3 sm:-inset-4 border border-accent/30 pointer-events-none" />
-                <div className="absolute inset-0 overflow-hidden bg-secondary">
-                  <img
-                    src={heroTinPortrait}
-                    alt="Halson Paints premium industrial paint tin"
-                    className="w-full h-full object-cover object-center"
-                    width={1080}
-                    height={1600}
-                  />
-                </div>
-                {/* Caption tag */}
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-background px-4 py-2 border border-border shadow-sm whitespace-nowrap">
-                  <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-                    Premium · Industrial Grade
-                  </p>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ============ Marquee Ticker ============ */}
-      <section className="py-5 bg-primary border-y border-primary/40 overflow-hidden">
-        <Marquee speed={40}>
-          {marqueeItems.map((item, i) => (
-            <span key={i} className="flex items-center gap-12">
-              <span className="text-primary-foreground/80 text-[11px] tracking-[0.25em] uppercase font-light">
-                {item}
-              </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-            </span>
-          ))}
-        </Marquee>
-      </section>
-
-      {/* ============ Trust Stats ============ */}
+      {/* ============ CATEGORY TILES (Asian Paints triple row) ============ */}
       <section className="py-16 sm:py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto">
-            {stats.map((stat, index) => (
-              <ScrollReveal key={stat.label} delay={index * 0.1} className="text-center">
-                <div className="font-display text-4xl sm:text-5xl md:text-6xl text-primary mb-3">
+          <ScrollReveal className="text-center max-w-2xl mx-auto mb-12">
+            <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium mb-3">
+              Explore Our Range
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-tight">
+              Built for every surface
+            </h2>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+            {categories.map((cat, i) => (
+              <ScrollReveal key={cat.title} delay={i * 0.1}>
+                <Link
+                  to={cat.href}
+                  className="group relative block aspect-[3/4] overflow-hidden bg-secondary"
+                >
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/40 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-background">
+                    <h3 className="font-display text-2xl sm:text-3xl mb-2 leading-tight">
+                      {cat.title}
+                    </h3>
+                    <p className="text-background/85 text-sm mb-4 max-w-xs">
+                      {cat.tagline}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.25em] uppercase text-accent border-b border-accent/50 pb-1 group-hover:gap-3 transition-all">
+                      Explore <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ STATS BAND (colored strip) ============ */}
+      <section className="py-14 sm:py-16 bg-primary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, i) => (
+              <ScrollReveal key={stat.label} delay={i * 0.08} className="text-center md:border-r md:last:border-r-0 border-primary-foreground/15">
+                <div className="font-display text-4xl sm:text-5xl md:text-6xl text-accent mb-2">
                   <AnimatedCounter value={stat.value} />
                 </div>
-                <div className="text-muted-foreground text-[10px] sm:text-xs tracking-[0.2em] uppercase font-medium">
+                <div className="text-primary-foreground/80 text-[10px] sm:text-xs tracking-[0.2em] uppercase font-medium">
                   {stat.label}
                 </div>
               </ScrollReveal>
@@ -246,203 +247,73 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ============ Featured Products Carousel ============ */}
+      {/* ============ INSPIRATIONS (Asian Paints style gallery) ============ */}
       <section className="py-20 sm:py-28 section-warm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <ScrollReveal className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
             <div className="max-w-xl">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-[2px] bg-accent" />
-                <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
-                  Featured Products
-                </p>
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl text-foreground leading-tight mb-4">
-                Engineered for every surface
-              </h2>
-              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                From industrial enamels to specialty primers — explore our range of
-                high-performance coatings.
+              <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium mb-3">
+                Inspirations
               </p>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-tight">
+                Halson Paints in action
+              </h2>
             </div>
             <Button
               asChild
               variant="outline"
-              className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground tracking-[0.2em] text-[11px] uppercase px-6 py-5 self-start md:self-auto"
+              className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground tracking-[0.2em] text-[11px] uppercase rounded-none px-6 py-5 self-start md:self-auto"
             >
               <Link to="/products">
-                View All <ArrowRight className="ml-2 h-4 w-4" />
+                View Products <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
-            <Carousel
-              opts={{ align: "start", loop: true }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4">
-                {featuredProducts.map((product) => (
-                  <CarouselItem
-                    key={product.name}
-                    className="pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/3"
-                  >
-                    <Link to="/products" className="group block">
-                      <div className="relative aspect-[4/5] overflow-hidden bg-[#e8e8e6] rounded-sm border border-border">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          loading="lazy"
-                          className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </div>
-                      <div className="pt-5">
-                        <h3 className="font-display text-xl sm:text-2xl text-foreground mb-1 group-hover:text-primary transition-colors">
-                          {product.name}
-                        </h3>
-                        <p className="text-muted-foreground text-sm">{product.tagline}</p>
-                      </div>
-                    </Link>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-4 bg-background border-border hover:bg-primary hover:text-primary-foreground" />
-              <CarouselNext className="hidden md:flex -right-4 bg-background border-border hover:bg-primary hover:text-primary-foreground" />
-            </Carousel>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ============ Two-Up Solutions Showcase ============ */}
-      <section className="py-20 sm:py-28 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <ScrollReveal className="text-center max-w-2xl mx-auto mb-14">
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <div className="w-10 h-[2px] bg-accent" />
-              <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
-                Solutions
-              </p>
-              <div className="w-10 h-[2px] bg-accent" />
-            </div>
-            <h2 className="font-display text-4xl sm:text-5xl text-foreground leading-tight">
-              Built for industry. Designed for life.
-            </h2>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <ScrollReveal>
-              <Link to="/products" className="group relative block aspect-[4/5] md:aspect-[4/5] overflow-hidden rounded-sm">
-                <img
-                  src={industrialApp}
-                  alt="Industrial coatings"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 text-background">
-                  <p className="text-[11px] tracking-[0.3em] uppercase text-accent mb-3 font-medium">
-                    Industrial
-                  </p>
-                  <h3 className="font-display text-3xl sm:text-4xl mb-3">
-                    Heavy-duty protection
-                  </h3>
-                  <p className="text-background/80 text-sm sm:text-base mb-5 max-w-md">
-                    Anti-corrosive primers, epoxy systems, heat-resistant and chemical-resistant finishes for demanding environments.
-                  </p>
-                  <span className="inline-flex items-center text-[11px] tracking-[0.2em] uppercase border-b border-accent pb-1 group-hover:gap-3 gap-2 transition-all">
-                    Discover Range <ArrowRight className="h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.15}>
-              <Link to="/products" className="group relative block aspect-[4/5] overflow-hidden rounded-sm">
-                <img
-                  src={decorativeApp}
-                  alt="Decorative paints"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 text-background">
-                  <p className="text-[11px] tracking-[0.3em] uppercase text-accent mb-3 font-medium">
-                    Decorative
-                  </p>
-                  <h3 className="font-display text-3xl sm:text-4xl mb-3">
-                    Elegant finishes
-                  </h3>
-                  <p className="text-background/80 text-sm sm:text-base mb-5 max-w-md">
-                    Sophisticated shades and refined textures for residential and commercial spaces that inspire.
-                  </p>
-                  <span className="inline-flex items-center text-[11px] tracking-[0.2em] uppercase border-b border-accent pb-1 group-hover:gap-3 gap-2 transition-all">
-                    Explore Shades <ArrowRight className="h-4 w-4" />
-                  </span>
-                </div>
-              </Link>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ Why Halson — Pillars ============ */}
-      <section className="py-20 sm:py-28 section-warm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <ScrollReveal className="text-center max-w-2xl mx-auto mb-14">
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <div className="w-10 h-[2px] bg-accent" />
-              <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
-                Why Halson
-              </p>
-              <div className="w-10 h-[2px] bg-accent" />
-            </div>
-            <h2 className="font-display text-4xl sm:text-5xl text-foreground leading-tight">
-              The mark of a serious manufacturer
-            </h2>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {pillars.map((pillar, index) => {
-              const Icon = pillar.icon;
-              return (
-                <ScrollReveal key={pillar.title} delay={index * 0.1}>
-                  <div className="card-luxury h-full p-7 rounded-sm">
-                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-5">
-                      <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="font-display text-xl text-foreground mb-3 leading-tight">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {pillar.description}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {inspirations.map((insp, i) => (
+              <ScrollReveal key={insp.title} delay={i * 0.08}>
+                <div className="group relative block aspect-square overflow-hidden bg-secondary">
+                  <img
+                    src={insp.image}
+                    alt={insp.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/10 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-background">
+                    <p className="text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-accent mb-1">
+                      {insp.tag}
                     </p>
+                    <h4 className="font-display text-base sm:text-lg leading-tight">
+                      {insp.title}
+                    </h4>
                   </div>
-                </ScrollReveal>
-              );
-            })}
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ============ About / Founder Quote ============ */}
+      {/* ============ ABOUT / FOUNDER ============ */}
       <section className="py-20 sm:py-28 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center">
             <ScrollReveal>
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-10 h-[2px] bg-accent" />
-                <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
-                  Our Story
-                </p>
-                <div className="w-10 h-[2px] bg-accent" />
-              </div>
+              <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium mb-5">
+                Our Story
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-8 leading-tight">
+                A serious manufacturer.
+                <span className="block text-primary italic">Trusted across India.</span>
+              </h2>
               <p className="text-muted-foreground text-base sm:text-lg leading-relaxed sm:leading-[1.9] mb-10 font-light">
-                <strong className="text-foreground font-medium">Halson Paints Private Limited</strong> is
-                a distinguished manufacturer of high-performance industrial and decorative paints,
-                headquartered in Vadavali, near Thane, Maharashtra. With years of expertise honed in
-                one of India's most dynamic industrial hubs, we deliver coating solutions trusted by
-                manufacturers nationwide.
+                Headquartered in Vadavali, near Thane, Maharashtra,{" "}
+                <strong className="text-foreground font-medium">Halson Paints Private Limited</strong>{" "}
+                manufactures high-performance industrial and decorative coatings under the leadership
+                of Mr. Om Prakash Tiwari. Our extensive distribution network and presence on IndiaMART
+                deliver reliable solutions to clients nationwide.
               </p>
             </ScrollReveal>
 
@@ -461,7 +332,7 @@ const Index = () => {
       </section>
 
       {/* ============ CTA ============ */}
-      <section className="py-20 sm:py-28 bg-primary relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-foreground relative overflow-hidden">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[150px] opacity-20"
           style={{ background: "hsl(var(--accent))" }}
@@ -469,18 +340,18 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <ScrollReveal>
-              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-primary-foreground mb-6 leading-tight">
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-background mb-6 leading-tight">
                 Let's build something
                 <span className="block italic text-accent">that lasts.</span>
               </h2>
-              <p className="text-primary-foreground/70 text-base sm:text-lg mb-10 max-w-lg mx-auto">
+              <p className="text-background/70 text-base sm:text-lg mb-10 max-w-lg mx-auto">
                 Partner with Halson Paints for industrial and decorative coatings that perform.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button
                   asChild
                   size="lg"
-                  className="bg-background text-foreground hover:bg-background/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6"
+                  className="bg-accent text-accent-foreground hover:bg-accent/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 rounded-none"
                 >
                   <Link to="/contact">Get in Touch</Link>
                 </Button>
@@ -488,7 +359,7 @@ const Index = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent tracking-[0.2em] text-[11px] uppercase px-8 py-6"
+                  className="border-background/30 text-background hover:bg-background hover:text-foreground bg-transparent tracking-[0.2em] text-[11px] uppercase px-8 py-6 rounded-none"
                 >
                   <Link to="/products">
                     View Products <ArrowRight className="ml-2 h-4 w-4" />
