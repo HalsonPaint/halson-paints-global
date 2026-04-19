@@ -1,51 +1,69 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowDown } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { ArrowRight, Shield, Factory, Award, Truck } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import AnimatedCounter from "@/components/animations/AnimatedCounter";
-import TextReveal from "@/components/animations/TextReveal";
 import Marquee from "@/components/animations/Marquee";
-import ParallaxImage from "@/components/animations/ParallaxImage";
 
-// Import images
-import facilityImg from "@/assets/facility.jpg";
-import industrialImg from "@/assets/industrial-excellence.jpg";
-import decorativeImg from "@/assets/decorative-new.jpg";
-import leadershipImg from "@/assets/leadership.jpg";
+// Hero & lifestyle imagery
+import heroTins from "@/assets/home-hero-tins.jpg";
+import industrialApp from "@/assets/home-industrial-app.jpg";
+import decorativeApp from "@/assets/home-decorative-app.jpg";
 
-const highlights = [
-  { 
-    label: "State-of-the-Art Facility", 
-    description: "Advanced manufacturing technology in Vadavali, Maharashtra",
-    image: facilityImg,
-  },
-  { 
-    label: "Industrial Excellence", 
-    description: "Superior protection for demanding environments",
-    image: industrialImg,
-  },
-  { 
-    label: "Decorative Range", 
-    description: "Elegant finishes for residential and commercial spaces",
-    image: decorativeImg,
-  },
-  { 
-    label: "Expert Leadership", 
-    description: "Under the vision of Mr. Om Prakash Tiwari",
-    image: leadershipImg,
-  },
+// Featured product imagery
+import puEnamel from "@/assets/products/pu-enamel.jpg";
+import syntheticEnamel from "@/assets/products/synthetic-enamel.jpg";
+import qdEnamel from "@/assets/products/qd-enamel.jpg";
+import primers from "@/assets/products/primers.jpg";
+import powderCoating from "@/assets/products/powder-coating.jpg";
+import hammerFinish from "@/assets/products/hammer-finish.jpg";
+
+const featuredProducts = [
+  { name: "PU Enamel (Super)", tagline: "Premium polyurethane finish", image: puEnamel },
+  { name: "Synthetic Enamel", tagline: "Glossy, durable protection", image: syntheticEnamel },
+  { name: "QD Enamel", tagline: "Quick-drying high gloss", image: qdEnamel },
+  { name: "Primers", tagline: "Engineered surface preparation", image: primers },
+  { name: "Powder Coating", tagline: "Industrial-grade finish", image: powderCoating },
+  { name: "Hammer Finish", tagline: "Distinctive textured coating", image: hammerFinish },
 ];
 
 const stats = [
   { value: "15+", label: "Product Categories" },
   { value: "100%", label: "Quality Assured" },
-  { value: "24/7", label: "Support" },
+  { value: "24/7", label: "Client Support" },
 ];
 
-const sectors = ["Manufacturing", "Construction", "Infrastructure", "Automotive"];
+const pillars = [
+  {
+    icon: Factory,
+    title: "Manufacturing Excellence",
+    description: "State-of-the-art facility in Vadavali, Maharashtra producing high-performance coatings.",
+  },
+  {
+    icon: Shield,
+    title: "Industrial Protection",
+    description: "Anti-corrosive, epoxy and heat-resistant systems engineered for demanding environments.",
+  },
+  {
+    icon: Award,
+    title: "Trusted Quality",
+    description: "Built on decades of expertise under the leadership of Mr. Om Prakash Tiwari.",
+  },
+  {
+    icon: Truck,
+    title: "Pan-India Reach",
+    description: "Robust offline distribution and seamless online presence on IndiaMART.",
+  },
+];
 
 const marqueeItems = [
   "PU Enamel", "Synthetic Enamel", "QD Enamel", "Powder Coating",
@@ -54,421 +72,366 @@ const marqueeItems = [
 ];
 
 const Index = () => {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
-  const heroY = useTransform(scrollYProgress, [0, 0.8], [0, 60]);
-
   return (
     <Layout>
-      {/* Hero Section - Cinematic */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center hero-gradient noise-overlay pt-32 md:pt-36 overflow-hidden">
-        {/* Animated ambient elements - simplified for performance */}
-        <div 
-          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[100px] md:blur-[150px] opacity-30 will-change-transform"
-          style={{ background: "hsl(var(--primary) / 0.08)" }}
-        />
-        <div 
-          className="absolute bottom-1/4 left-[10%] w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full blur-[80px] md:blur-[120px] opacity-20 will-change-transform"
-          style={{ background: "hsl(var(--accent) / 0.06)" }}
-        />
-        
-        {/* Decorative grid lines */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: "linear-gradient(90deg, white 1px, transparent 1px), linear-gradient(180deg, white 1px, transparent 1px)",
-          backgroundSize: "120px 120px",
-        }} />
-        
-        <motion.div 
-          style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-          className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 will-change-transform"
-        >
-          <div className="max-w-4xl">
+      {/* ============ HERO — Full bleed product imagery ============ */}
+      <section className="relative min-h-[92vh] flex items-center bg-secondary overflow-hidden pt-28 md:pt-32">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src={heroTins}
+            alt="Halson Paints premium industrial paint tins"
+            className="w-full h-full object-cover object-center"
+            width={1920}
+            height={1280}
+          />
+          {/* Bright wash for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30 md:from-background/95 md:via-background/70 md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+          <div className="max-w-2xl">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-              className="flex items-center gap-4 mb-10 sm:mb-12"
-            >
-              <motion.div 
-                className="w-12 h-[1px] bg-accent/60"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-                style={{ transformOrigin: "left" }}
-              />
-              <p className="text-white/40 text-[10px] sm:text-[11px] tracking-[0.25em] sm:tracking-[0.3em] uppercase font-medium whitespace-nowrap">
-                Premium Industrial & Decorative Coatings
-              </p>
-            </motion.div>
-            
-            <div className="mb-8 sm:mb-10">
-              <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.4}>
-                Pioneering
-              </TextReveal>
-              <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.6}>
-                <span className="text-gradient-gold">Protection</span>
-                <span className="text-white/30 mx-2 sm:mx-3">&</span>
-              </TextReveal>
-              <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.8}>
-                Performance
-              </TextReveal>
-            </div>
-            
-            <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2, ease: [0.25, 0.4, 0.25, 1] }}
-              className="text-white/40 text-base sm:text-lg md:text-xl max-w-lg mb-12 sm:mb-16 leading-relaxed font-light"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex items-center gap-3 mb-6"
             >
-              Trusted by leading manufacturers across India — delivering 
-              high-performance coating solutions since establishment.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-3 sm:gap-5"
+              <div className="w-10 h-[2px] bg-accent" />
+              <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
+                Halson Paints Pvt. Ltd.
+              </p>
+            </motion.div>
+
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.4, ease: [0.25, 0.4, 0.25, 1] }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground font-normal leading-[1.05] tracking-tight mb-8"
             >
-              <Button 
-                asChild 
-                className="group bg-white text-charcoal hover:bg-white/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 transition-all duration-700 w-full sm:w-auto justify-center shadow-lg hover:shadow-xl relative overflow-hidden"
+              Coatings that
+              <span className="block text-primary italic">protect &amp; perform.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-xl mb-10 leading-relaxed"
+            >
+              India's trusted manufacturer of premium industrial and decorative paints —
+              engineered for excellence, built on quality you can rely on.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button
+                asChild
+                size="lg"
+                className="group bg-primary text-primary-foreground hover:bg-primary/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 shadow-lg"
               >
                 <Link to="/products">
-                  <span className="relative z-10 flex items-center">
-                    Explore Products
-                    <ArrowRight className="ml-3 h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
-                  </span>
+                  Explore Products
+                  <ArrowRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button 
-                asChild 
-                variant="outline" 
-                className="border-white/15 text-white hover:bg-white/5 bg-transparent tracking-[0.2em] text-[11px] uppercase px-8 py-6 transition-all duration-700 w-full sm:w-auto justify-center backdrop-blur-sm hover:border-white/30"
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-foreground/20 text-foreground hover:bg-foreground/5 tracking-[0.2em] text-[11px] uppercase px-8 py-6"
               >
-                <Link to="/contact">Contact Us</Link>
+                <Link to="/contact">Request a Quote</Link>
               </Button>
             </motion.div>
           </div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div 
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-        >
-          <motion.div 
-            className="flex flex-col items-center gap-3"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <span className="text-white/20 text-[10px] tracking-[0.3em] uppercase">Scroll</span>
-            <div className="w-[1px] h-8 bg-gradient-to-b from-white/30 to-transparent" />
-          </motion.div>
-        </motion.div>
-
-        {/* Side text */}
-        <div className="absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 hidden lg:block">
-          <motion.p 
-            className="text-white/10 text-[11px] tracking-[0.4em] uppercase writing-vertical"
-            style={{ writingMode: "vertical-rl" }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.8, duration: 1 }}
-          >
-            Halson Paints Pvt. Ltd.
-          </motion.p>
         </div>
       </section>
 
-      {/* Marquee Ticker */}
-      <section className="py-6 sm:py-8 bg-charcoal relative overflow-hidden">
-        <Marquee speed={40} className="py-2">
+      {/* ============ Marquee Ticker ============ */}
+      <section className="py-5 bg-primary border-y border-primary/40 overflow-hidden">
+        <Marquee speed={40}>
           {marqueeItems.map((item, i) => (
             <span key={i} className="flex items-center gap-12">
-              <span className="text-white/25 text-[11px] tracking-[0.25em] uppercase font-light">{item}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-accent/30" />
+              <span className="text-primary-foreground/80 text-[11px] tracking-[0.25em] uppercase font-light">
+                {item}
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             </span>
           ))}
         </Marquee>
       </section>
 
-      {/* Stats - Animated */}
-      <section className="py-20 sm:py-28 bg-background relative">
+      {/* ============ Trust Stats ============ */}
+      <section className="py-16 sm:py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto">
             {stats.map((stat, index) => (
-              <ScrollReveal
-                key={stat.label}
-                delay={index * 0.15}
-                className="text-center group"
-              >
-                <div className="font-display text-4xl sm:text-5xl md:text-6xl text-primary mb-3 sm:mb-4">
+              <ScrollReveal key={stat.label} delay={index * 0.1} className="text-center">
+                <div className="font-display text-4xl sm:text-5xl md:text-6xl text-primary mb-3">
                   <AnimatedCounter value={stat.value} />
                 </div>
                 <div className="text-muted-foreground text-[10px] sm:text-xs tracking-[0.2em] uppercase font-medium">
                   {stat.label}
                 </div>
-                <motion.div 
-                  className="w-6 h-[1px] bg-accent/30 mx-auto mt-4"
-                  whileInView={{ width: 32 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.5 + index * 0.15 }}
-                />
               </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Highlights Section - Reimagined */}
-      <section className="py-20 sm:py-32 bg-background relative noise-overlay">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          <ScrollReveal className="text-center mb-16 sm:mb-24">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="w-12 h-[1px] bg-accent/40" />
-              <p className="text-[10px] tracking-[0.3em] uppercase text-accent font-medium">
-                Why Choose Us
+      {/* ============ Featured Products Carousel ============ */}
+      <section className="py-20 sm:py-28 section-warm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <ScrollReveal className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
+            <div className="max-w-xl">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-[2px] bg-accent" />
+                <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
+                  Featured Products
+                </p>
+              </div>
+              <h2 className="font-display text-4xl sm:text-5xl text-foreground leading-tight mb-4">
+                Engineered for every surface
+              </h2>
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                From industrial enamels to specialty primers — explore our range of
+                high-performance coatings.
               </p>
-              <div className="w-12 h-[1px] bg-accent/40" />
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-foreground mb-6 leading-tight">
-              Our Strengths
-            </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto text-base sm:text-lg font-light">
-              Discover what makes Halson Paints the trusted choice for industrial and decorative coatings.
-            </p>
+            <Button
+              asChild
+              variant="outline"
+              className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground tracking-[0.2em] text-[11px] uppercase px-6 py-5 self-start md:self-auto"
+            >
+              <Link to="/products">
+                View All <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </ScrollReveal>
 
-          {/* Bento-style grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4">
-            {/* Large featured card */}
-            <ScrollReveal className="md:col-span-7 group relative aspect-[4/3] md:aspect-auto md:min-h-[480px] overflow-hidden rounded-sm">
-              <ParallaxImage 
-                src={highlights[0].image}
-                alt={highlights[0].label}
-                className="absolute inset-0"
-                speed={0.15}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5 transition-all duration-700 group-hover:from-black/90" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 transform transition-all duration-700 group-hover:translate-y-[-4px]">
-                <motion.div 
-                  className="w-8 h-[2px] bg-accent/60 mb-4"
-                  whileInView={{ width: 48 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
+          <ScrollReveal delay={0.1}>
+            <Carousel
+              opts={{ align: "start", loop: true }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {featuredProducts.map((product) => (
+                  <CarouselItem
+                    key={product.name}
+                    className="pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/3"
+                  >
+                    <Link to="/products" className="group block">
+                      <div className="relative aspect-[4/5] overflow-hidden bg-[#e8e8e6] rounded-sm border border-border">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          loading="lazy"
+                          className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+                      <div className="pt-5">
+                        <h3 className="font-display text-xl sm:text-2xl text-foreground mb-1 group-hover:text-primary transition-colors">
+                          {product.name}
+                        </h3>
+                        <p className="text-muted-foreground text-sm">{product.tagline}</p>
+                      </div>
+                    </Link>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-4 bg-background border-border hover:bg-primary hover:text-primary-foreground" />
+              <CarouselNext className="hidden md:flex -right-4 bg-background border-border hover:bg-primary hover:text-primary-foreground" />
+            </Carousel>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ============ Two-Up Solutions Showcase ============ */}
+      <section className="py-20 sm:py-28 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <ScrollReveal className="text-center max-w-2xl mx-auto mb-14">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-10 h-[2px] bg-accent" />
+              <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
+                Solutions
+              </p>
+              <div className="w-10 h-[2px] bg-accent" />
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl text-foreground leading-tight">
+              Built for industry. Designed for life.
+            </h2>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <ScrollReveal>
+              <Link to="/products" className="group relative block aspect-[4/5] md:aspect-[4/5] overflow-hidden rounded-sm">
+                <img
+                  src={industrialApp}
+                  alt="Industrial coatings"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
-                <h3 className="font-display text-2xl sm:text-3xl text-white mb-2">
-                  {highlights[0].label}
-                </h3>
-                <p className="text-white/50 text-sm font-light max-w-sm">
-                  {highlights[0].description}
-                </p>
-              </div>
-            </ScrollReveal>
-
-            {/* Right column - two stacked */}
-            <div className="md:col-span-5 flex flex-col gap-3 sm:gap-4">
-              {highlights.slice(1, 3).map((item, index) => (
-                <ScrollReveal
-                  key={item.label}
-                  delay={0.15 + index * 0.1}
-                  className="group relative aspect-[4/3] md:aspect-auto md:flex-1 overflow-hidden rounded-sm"
-                >
-                  <ParallaxImage 
-                    src={item.image}
-                    alt={item.label}
-                    className="absolute inset-0"
-                    speed={0.1}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/5 transition-all duration-700 group-hover:from-black/85" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7 transform transition-all duration-700 group-hover:translate-y-[-4px]">
-                    <div className="w-6 h-[1px] bg-accent/60 mb-3 transition-all duration-700 group-hover:w-10" />
-                    <h3 className="font-display text-xl sm:text-2xl text-white mb-1">
-                      {item.label}
-                    </h3>
-                    <p className="text-white/50 text-xs sm:text-sm font-light">
-                      {item.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            {/* Full-width bottom card */}
-            <ScrollReveal delay={0.3} className="md:col-span-12 group relative aspect-[16/7] sm:aspect-[21/9] overflow-hidden rounded-sm">
-              <ParallaxImage 
-                src={highlights[3].image}
-                alt={highlights[3].label}
-                className="absolute inset-0"
-                speed={0.12}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-black/10 transition-all duration-700 group-hover:from-black/90" />
-              <div className="absolute bottom-0 left-0 p-6 sm:p-10 transform transition-all duration-700 group-hover:translate-y-[-4px]">
-                <div className="w-8 h-[1px] bg-accent/60 mb-4 transition-all duration-700 group-hover:w-12" />
-                <h3 className="font-display text-2xl sm:text-3xl text-white mb-2">
-                  {highlights[3].label}
-                </h3>
-                <p className="text-white/50 text-sm font-light max-w-md">
-                  {highlights[3].description}
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section - Editorial */}
-      <section className="py-20 sm:py-32 section-warm relative overflow-hidden">
-        {/* Decorative element */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/[0.02] rounded-full blur-[100px]" />
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-              {/* Left column - headings */}
-              <div className="lg:col-span-4">
-                <ScrollReveal>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-[1px] bg-accent/40" />
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-accent font-medium">
-                      Our Story
-                    </p>
-                  </div>
-                  <h2 className="font-display text-4xl sm:text-5xl text-foreground mb-6 leading-tight">
-                    About<br />Halson Paints
-                  </h2>
-                  <div className="w-16 h-[2px] bg-gradient-to-r from-accent/60 to-transparent mb-8" />
-                </ScrollReveal>
-                
-                <ScrollReveal delay={0.2}>
-                  <div className="grid grid-cols-2 gap-3">
-                    {sectors.map((sector) => (
-                      <motion.div 
-                        key={sector}
-                        className="p-4 bg-background border border-border text-center transition-all duration-500 cursor-default group"
-                        whileHover={{ 
-                          borderColor: "hsl(var(--primary) / 0.25)",
-                          y: -2,
-                        }}
-                      >
-                        <span className="text-xs text-foreground/70 tracking-wide group-hover:text-primary transition-colors duration-500">{sector}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </ScrollReveal>
-              </div>
-
-              {/* Right column - text */}
-              <div className="lg:col-span-8">
-                <div className="space-y-6 sm:space-y-8">
-                  <ScrollReveal>
-                    <p className="text-muted-foreground leading-relaxed sm:leading-[1.9] text-base sm:text-lg font-light">
-                      Established with a steadfast commitment to excellence, <strong className="text-foreground font-medium">Halson Paints Private Limited</strong> is 
-                      a distinguished manufacturer of high-performance industrial and decorative paints, proudly 
-                      headquartered in Vadavali, near Thane, Maharashtra.
-                    </p>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={0.1}>
-                    <p className="text-muted-foreground leading-relaxed sm:leading-[1.9] text-base sm:text-lg font-light">
-                      With years of expertise honed in one of India's dynamic industrial hubs, we have built enduring 
-                      trust through our extensive offline distribution network and seamless online presence on IndiaMART, 
-                      delivering reliable solutions to clients nationwide.
-                    </p>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={0.2}>
-                    <p className="text-muted-foreground leading-relaxed sm:leading-[1.9] text-base sm:text-lg font-light">
-                      At the core of our success is our primary focus on industrial paints – robust, 
-                      specialized coatings engineered for superior protection in demanding environments. From 
-                      anti-corrosive primers and epoxy systems to heat-resistant and chemical-resistant finishes, 
-                      our industrial range safeguards critical assets across diverse sectors.
-                    </p>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={0.3}>
-                    <div className="pt-6 border-t border-border/60">
-                      <blockquote className="font-display text-xl sm:text-2xl text-foreground/80 italic leading-relaxed">
-                        "Quality is not just a standard — it's our promise to every client."
-                      </blockquote>
-                      <p className="text-muted-foreground text-sm mt-4 tracking-wide">
-                        — Mr. Om Prakash Tiwari, Founder
-                      </p>
-                    </div>
-                  </ScrollReveal>
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 text-background">
+                  <p className="text-[11px] tracking-[0.3em] uppercase text-accent mb-3 font-medium">
+                    Industrial
+                  </p>
+                  <h3 className="font-display text-3xl sm:text-4xl mb-3">
+                    Heavy-duty protection
+                  </h3>
+                  <p className="text-background/80 text-sm sm:text-base mb-5 max-w-md">
+                    Anti-corrosive primers, epoxy systems, heat-resistant and chemical-resistant finishes for demanding environments.
+                  </p>
+                  <span className="inline-flex items-center text-[11px] tracking-[0.2em] uppercase border-b border-accent pb-1 group-hover:gap-3 gap-2 transition-all">
+                    Discover Range <ArrowRight className="h-4 w-4" />
+                  </span>
                 </div>
-              </div>
-            </div>
+              </Link>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
+              <Link to="/products" className="group relative block aspect-[4/5] overflow-hidden rounded-sm">
+                <img
+                  src={decorativeApp}
+                  alt="Decorative paints"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 text-background">
+                  <p className="text-[11px] tracking-[0.3em] uppercase text-accent mb-3 font-medium">
+                    Decorative
+                  </p>
+                  <h3 className="font-display text-3xl sm:text-4xl mb-3">
+                    Elegant finishes
+                  </h3>
+                  <p className="text-background/80 text-sm sm:text-base mb-5 max-w-md">
+                    Sophisticated shades and refined textures for residential and commercial spaces that inspire.
+                  </p>
+                  <span className="inline-flex items-center text-[11px] tracking-[0.2em] uppercase border-b border-accent pb-1 group-hover:gap-3 gap-2 transition-all">
+                    Explore Shades <ArrowRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </Link>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Dramatic */}
-      <section className="py-24 sm:py-36 hero-gradient noise-overlay relative overflow-hidden">
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] rounded-full blur-[120px] md:blur-[200px] opacity-30"
-          style={{ background: "hsl(var(--accent) / 0.04)" }}
+      {/* ============ Why Halson — Pillars ============ */}
+      <section className="py-20 sm:py-28 section-warm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <ScrollReveal className="text-center max-w-2xl mx-auto mb-14">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-10 h-[2px] bg-accent" />
+              <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
+                Why Halson
+              </p>
+              <div className="w-10 h-[2px] bg-accent" />
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl text-foreground leading-tight">
+              The mark of a serious manufacturer
+            </h2>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {pillars.map((pillar, index) => {
+              const Icon = pillar.icon;
+              return (
+                <ScrollReveal key={pillar.title} delay={index * 0.1}>
+                  <div className="card-luxury h-full p-7 rounded-sm">
+                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-5">
+                      <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="font-display text-xl text-foreground mb-3 leading-tight">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ About / Founder Quote ============ */}
+      <section className="py-20 sm:py-28 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <ScrollReveal>
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-10 h-[2px] bg-accent" />
+                <p className="text-[11px] tracking-[0.3em] uppercase text-accent font-medium">
+                  Our Story
+                </p>
+                <div className="w-10 h-[2px] bg-accent" />
+              </div>
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed sm:leading-[1.9] mb-10 font-light">
+                <strong className="text-foreground font-medium">Halson Paints Private Limited</strong> is
+                a distinguished manufacturer of high-performance industrial and decorative paints,
+                headquartered in Vadavali, near Thane, Maharashtra. With years of expertise honed in
+                one of India's most dynamic industrial hubs, we deliver coating solutions trusted by
+                manufacturers nationwide.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <div className="pt-10 border-t border-border max-w-2xl mx-auto">
+                <blockquote className="font-display text-2xl sm:text-3xl text-foreground italic leading-relaxed mb-5">
+                  "Quality is not just a standard — it's our promise to every client."
+                </blockquote>
+                <p className="text-muted-foreground text-sm tracking-wide">
+                  — Mr. Om Prakash Tiwari, Founder
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CTA ============ */}
+      <section className="py-20 sm:py-28 bg-primary relative overflow-hidden">
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[150px] opacity-20"
+          style={{ background: "hsl(var(--accent))" }}
         />
-        
-        {/* Decorative grid lines */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: "linear-gradient(90deg, white 1px, transparent 1px), linear-gradient(180deg, white 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }} />
-        
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <ScrollReveal>
-              <div className="flex items-center justify-center gap-4 mb-8">
-                <div className="w-12 h-[1px] bg-accent/40" />
-                <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 font-medium">
-                  Get Started
-                </p>
-                <div className="w-12 h-[1px] bg-accent/40" />
-              </div>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={0.1}>
-              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-white mb-6 sm:mb-8 leading-tight">
-                Ready to Elevate<br />
-                <span className="text-gradient-gold">Your Projects?</span>
+              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-primary-foreground mb-6 leading-tight">
+                Let's build something
+                <span className="block italic text-accent">that lasts.</span>
               </h2>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={0.2}>
-              <p className="text-white/35 text-base sm:text-lg mb-12 sm:mb-16 leading-relaxed px-4 sm:px-0 font-light max-w-lg mx-auto">
-                Partner with Halson Paints for industrial and decorative excellence 
-                that stands the test of time.
+              <p className="text-primary-foreground/70 text-base sm:text-lg mb-10 max-w-lg mx-auto">
+                Partner with Halson Paints for industrial and decorative coatings that perform.
               </p>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={0.3}>
-              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-5 px-4 sm:px-0">
-                <Button 
-                  asChild 
-                  className="group bg-white text-charcoal hover:bg-white/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 transition-all duration-700 w-full sm:w-auto justify-center shadow-lg hover:shadow-xl"
-                >
-                  <Link to="/products">
-                    <span className="flex items-center">
-                      View Products
-                      <ArrowRight className="ml-3 h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
-                    </span>
-                  </Link>
-                </Button>
-                <Button 
-                  asChild 
-                  variant="outline" 
-                  className="border-white/15 text-white hover:bg-white/5 bg-transparent tracking-[0.2em] text-[11px] uppercase px-8 py-6 transition-all duration-700 w-full sm:w-auto justify-center backdrop-blur-sm hover:border-white/30"
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-background text-foreground hover:bg-background/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6"
                 >
                   <Link to="/contact">Get in Touch</Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent tracking-[0.2em] text-[11px] uppercase px-8 py-6"
+                >
+                  <Link to="/products">
+                    View Products <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
             </ScrollReveal>
