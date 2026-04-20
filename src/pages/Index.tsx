@@ -15,7 +15,6 @@ import facilityImg from "@/assets/facility.jpg";
 import industrialImg from "@/assets/industrial-excellence.jpg";
 import decorativeImg from "@/assets/decorative-new.jpg";
 import leadershipImg from "@/assets/leadership.jpg";
-import heroPaintTin from "@/assets/hero-paint-tin.jpg";
 
 const highlights = [
   { 
@@ -66,194 +65,125 @@ const Index = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Editorial Split */}
-      <section ref={heroRef} className="relative min-h-screen hero-gradient noise-overlay pt-28 md:pt-32 overflow-hidden">
-        {/* Ambient glow */}
-        <div
-          className="absolute top-1/3 right-1/3 w-[700px] h-[700px] rounded-full blur-[140px] opacity-40 will-change-transform pointer-events-none"
-          style={{ background: "hsl(var(--primary) / 0.10)" }}
+      {/* Hero Section - Cinematic */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center hero-gradient noise-overlay pt-32 md:pt-36 overflow-hidden">
+        {/* Animated ambient elements - simplified for performance */}
+        <div 
+          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[100px] md:blur-[150px] opacity-30 will-change-transform"
+          style={{ background: "hsl(var(--primary) / 0.08)" }}
         />
-        <div
-          className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[120px] opacity-25 will-change-transform pointer-events-none"
-          style={{ background: "hsl(var(--accent) / 0.08)" }}
+        <div 
+          className="absolute bottom-1/4 left-[10%] w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full blur-[80px] md:blur-[120px] opacity-20 will-change-transform"
+          style={{ background: "hsl(var(--accent) / 0.06)" }}
         />
-
-        {/* Subtle grid */}
-        <div className="absolute inset-0 opacity-[0.025] pointer-events-none" style={{
+        
+        {/* Decorative grid lines */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: "linear-gradient(90deg, white 1px, transparent 1px), linear-gradient(180deg, white 1px, transparent 1px)",
           backgroundSize: "120px 120px",
         }} />
-
-        <motion.div
+        
+        <motion.div 
           style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
           className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 will-change-transform"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[calc(100vh-8rem)]">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+              className="flex items-center gap-4 mb-10 sm:mb-12"
+            >
+              <motion.div 
+                className="w-12 h-[1px] bg-accent/60"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+                style={{ transformOrigin: "left" }}
+              />
+              <p className="text-white/40 text-[10px] sm:text-[11px] tracking-[0.25em] sm:tracking-[0.3em] uppercase font-medium whitespace-nowrap">
+                Premium Industrial & Decorative Coatings
+              </p>
+            </motion.div>
             
-            {/* LEFT — Editorial Copy */}
-            <div className="lg:col-span-7 order-2 lg:order-1">
-              {/* Eyebrow */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-                className="flex items-center gap-4 mb-8 sm:mb-10"
-              >
-                <motion.div
-                  className="w-10 h-[1px] bg-accent/70"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-                  style={{ transformOrigin: "left" }}
-                />
-                <p className="text-accent/80 text-[10px] sm:text-[11px] tracking-[0.3em] uppercase font-medium whitespace-nowrap">
-                  Est. Maharashtra · India
-                </p>
-              </motion.div>
-
-              {/* Headline */}
-              <div className="mb-8 sm:mb-10">
-                <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.4}>
-                  The Science
-                </TextReveal>
-                <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.55}>
-                  of <span className="italic text-gradient-gold">Colour</span>,
-                </TextReveal>
-                <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.7}>
-                  the Art of
-                </TextReveal>
-                <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.85}>
-                  Protection.
-                </TextReveal>
-              </div>
-
-              {/* Sub-copy */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.2, ease: [0.25, 0.4, 0.25, 1] }}
-                className="text-white/45 text-base sm:text-lg max-w-xl mb-10 sm:mb-12 leading-relaxed font-light"
-              >
-                Engineered industrial coatings and refined decorative finishes —
-                manufactured in Vadavali, trusted by India's most demanding projects.
-              </motion.p>
-
-              {/* CTAs */}
-              <motion.div
-                className="flex flex-col sm:flex-row gap-3 sm:gap-5 mb-14 sm:mb-16"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.4, ease: [0.25, 0.4, 0.25, 1] }}
-              >
-                <Button
-                  asChild
-                  className="group bg-white text-charcoal hover:bg-white/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 transition-all duration-700 w-full sm:w-auto justify-center shadow-lg hover:shadow-xl"
-                >
-                  <Link to="/products">
-                    <span className="flex items-center">
-                      Explore Range
-                      <ArrowRight className="ml-3 h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
-                    </span>
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-white/15 text-white hover:bg-white/5 bg-transparent tracking-[0.2em] text-[11px] uppercase px-8 py-6 transition-all duration-700 w-full sm:w-auto justify-center backdrop-blur-sm hover:border-white/30"
-                >
-                  <Link to="/contact">Request Catalogue</Link>
-                </Button>
-              </motion.div>
-
-              {/* Credentials strip */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 1.6 }}
-                className="grid grid-cols-3 gap-6 sm:gap-10 max-w-xl pt-8 border-t border-white/10"
-              >
-                {[
-                  { k: "ISO", v: "Quality" },
-                  { k: "15+", v: "Categories" },
-                  { k: "PAN", v: "India Reach" },
-                ].map((c) => (
-                  <div key={c.k}>
-                    <div className="font-display text-2xl sm:text-3xl text-white font-light mb-1">{c.k}</div>
-                    <div className="text-white/40 text-[10px] tracking-[0.25em] uppercase">{c.v}</div>
-                  </div>
-                ))}
-              </motion.div>
+            <div className="mb-8 sm:mb-10">
+              <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.4}>
+                Pioneering
+              </TextReveal>
+              <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.6}>
+                <span className="text-gradient-gold">Protection</span>
+                <span className="text-white/30 mx-2 sm:mx-3">&</span>
+              </TextReveal>
+              <TextReveal as="h1" className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-white font-light leading-[1.02] tracking-tight" delay={0.8}>
+                Performance
+              </TextReveal>
             </div>
-
-            {/* RIGHT — Product Visual */}
-            <div className="lg:col-span-5 order-1 lg:order-2 relative">
-              <motion.div
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.6, delay: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-                className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none rounded-sm overflow-hidden"
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2, ease: [0.25, 0.4, 0.25, 1] }}
+              className="text-white/40 text-base sm:text-lg md:text-xl max-w-lg mb-12 sm:mb-16 leading-relaxed font-light"
+            >
+              Trusted by leading manufacturers across India — delivering 
+              high-performance coating solutions since establishment.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-3 sm:gap-5"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.4, ease: [0.25, 0.4, 0.25, 1] }}
+            >
+              <Button 
+                asChild 
+                className="group bg-white text-charcoal hover:bg-white/90 tracking-[0.2em] text-[11px] uppercase px-8 py-6 transition-all duration-700 w-full sm:w-auto justify-center shadow-lg hover:shadow-xl relative overflow-hidden"
               >
-                <img
-                  src={heroPaintTin}
-                  alt="Halson Paints premium industrial coating tin"
-                  width={1600}
-                  height={1280}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                {/* Vignette to blend with hero bg */}
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/40" />
-                <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/30" />
-
-                {/* Floating product label */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 1.6 }}
-                  className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 backdrop-blur-md bg-black/30 border border-white/10 p-4 sm:p-5"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <div className="text-accent/80 text-[9px] tracking-[0.3em] uppercase mb-1">Featured</div>
-                      <div className="text-white font-display text-base sm:text-lg leading-tight">PU Enamel Super</div>
-                      <div className="text-white/40 text-[10px] tracking-[0.2em] uppercase mt-1">High-Gloss Industrial Finish</div>
-                    </div>
-                    <Link to="/products" className="shrink-0 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-all">
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
+                <Link to="/products">
+                  <span className="relative z-10 flex items-center">
+                    Explore Products
+                    <ArrowRight className="ml-3 h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </Button>
+              <Button 
+                asChild 
+                variant="outline" 
+                className="border-white/15 text-white hover:bg-white/5 bg-transparent tracking-[0.2em] text-[11px] uppercase px-8 py-6 transition-all duration-700 w-full sm:w-auto justify-center backdrop-blur-sm hover:border-white/30"
+              >
+                <Link to="/contact">Contact Us</Link>
+              </Button>
+            </motion.div>
           </div>
         </motion.div>
 
         {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
+        <motion.div 
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
         >
-          <motion.div
+          <motion.div 
             className="flex flex-col items-center gap-3"
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <span className="text-white/25 text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+            <span className="text-white/20 text-[10px] tracking-[0.3em] uppercase">Scroll</span>
             <div className="w-[1px] h-8 bg-gradient-to-b from-white/30 to-transparent" />
           </motion.div>
         </motion.div>
 
         {/* Side text */}
-        <div className="absolute right-6 lg:right-8 top-1/2 -translate-y-1/2 hidden xl:block pointer-events-none">
-          <motion.p
-            className="text-white/10 text-[11px] tracking-[0.4em] uppercase"
+        <div className="absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 hidden lg:block">
+          <motion.p 
+            className="text-white/10 text-[11px] tracking-[0.4em] uppercase writing-vertical"
             style={{ writingMode: "vertical-rl" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8, duration: 1 }}
           >
-            Halson Paints Pvt. Ltd. — Since Establishment
+            Halson Paints Pvt. Ltd.
           </motion.p>
         </div>
       </section>
