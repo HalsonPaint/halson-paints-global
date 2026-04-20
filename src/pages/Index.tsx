@@ -15,6 +15,7 @@ import facilityImg from "@/assets/facility.jpg";
 import industrialImg from "@/assets/industrial-excellence.jpg";
 import decorativeImg from "@/assets/decorative-new.jpg";
 import leadershipImg from "@/assets/leadership.jpg";
+import heroPaintTin from "@/assets/hero-paint-tin.jpg";
 
 const highlights = [
   { 
