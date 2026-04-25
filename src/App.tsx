@@ -4,12 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import Index from "./pages/Index";
-import Products from "./pages/Products";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+import Maintenance from "./pages/Maintenance";
 import { useEffect, useState, useCallback } from "react";
-import SplashScreen from "./components/SplashScreen";
 
 const queryClient = new QueryClient();
 
@@ -35,31 +31,22 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
-        <Route path="/products" element={<PageWrapper><Products /></PageWrapper>} />
-        <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
-        <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
+        <Route path="*" element={<PageWrapper><Maintenance /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
 };
 
 const App = () => {
-  const [showSplash, setShowSplash] = useState(true);
-  const handleSplashComplete = useCallback(() => setShowSplash(false), []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <AnimatePresence>
-          {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-        </AnimatePresence>
         <HashRouter>
           <ScrollToTop />
           <AnimatedRoutes />
