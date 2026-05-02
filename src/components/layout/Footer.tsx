@@ -36,7 +36,8 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               </h3>
               <ul className="space-y-5">
                 {[
-                  { name: "About Us", path: "/" },
+                  { name: "Home", path: "/" },
+                  { name: "About Us", path: "/about" },
                   { name: "Products", path: "/products" },
                   { name: "Contact", path: "/contact" },
                 ].map((link) => (
