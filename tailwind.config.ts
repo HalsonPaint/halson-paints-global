@@ -56,6 +56,10 @@ export default {
         gold: "hsl(var(--gold))",
         "gold-light": "hsl(var(--gold-light))",
         navy: "hsl(var(--navy))",
+        "navy-deep": "hsl(var(--navy-deep))",
+        "navy-soft": "hsl(var(--navy-soft))",
+        orange: "hsl(var(--orange))",
+        "orange-soft": "hsl(var(--orange-soft))",
         "teal-deep": "hsl(var(--teal-deep))",
         "teal-glow": "hsl(var(--teal-glow))",
         sidebar: {
