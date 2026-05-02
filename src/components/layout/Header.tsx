@@ -7,7 +7,8 @@ import { cn } from "@/lib/utils";
 import halsonLogo from "@/assets/halson-logo-new.png";
 
 const navLinks = [
-  { name: "About", path: "/" },
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
   { name: "Products", path: "/products" },
   { name: "Contact", path: "/contact" },
 ];
