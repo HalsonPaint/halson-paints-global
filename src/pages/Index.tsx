@@ -180,7 +180,8 @@ const Index = () => {
       </section>
 
       {/* ============ WHO WE ARE — 3 pillars ============ */}
-      <section className="py-20 sm:py-28 bg-[hsl(35_30%_97%)]">
+      <section className="py-16 sm:py-24 lg:py-28 bg-cream relative">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <ScrollReveal className="text-center mb-14 sm:mb-20 max-w-2xl mx-auto">
             <p className="text-accent text-[11px] tracking-[0.3em] uppercase font-semibold mb-4">
@@ -214,9 +215,9 @@ const Index = () => {
       </section>
 
       {/* ============ PAINT TINS — visual showcase ============ */}
-      <section className="py-20 sm:py-28 bg-background relative overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-28 bg-background relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
             {/* Copy */}
             <ScrollReveal className="lg:col-span-5 order-2 lg:order-1">
               <p className="text-accent text-[11px] tracking-[0.3em] uppercase font-semibold mb-4">
@@ -233,47 +234,37 @@ const Index = () => {
                 to outlast the harshest industrial conditions while delivering a
                 flawless finish.
               </p>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 mt-2 rounded-full bg-accent" />
-                  <p className="text-foreground/80 font-light">High-build coverage</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 mt-2 rounded-full bg-accent" />
-                  <p className="text-foreground/80 font-light">Anti-corrosive formulas</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 mt-2 rounded-full bg-accent" />
-                  <p className="text-foreground/80 font-light">Long-lasting gloss</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 mt-2 rounded-full bg-accent" />
-                  <p className="text-foreground/80 font-light">Precision shade match</p>
-                </div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 text-sm">
+                {["High-build coverage","Anti-corrosive formulas","Long-lasting gloss","Precision shade match"].map(t => (
+                  <div key={t} className="flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 mt-2 rounded-full bg-accent shrink-0" />
+                    <p className="text-foreground/80 font-light">{t}</p>
+                  </div>
+                ))}
               </div>
             </ScrollReveal>
 
-            {/* Image collage */}
-            <ScrollReveal delay={0.15} className="lg:col-span-7 order-1 lg:order-2">
-              <div className="grid grid-cols-2 gap-4 sm:gap-6 relative">
-                <div className="relative rounded-md overflow-hidden bg-[hsl(40_30%_94%)] aspect-[4/5] shadow-[var(--shadow-elevated)]">
+            {/* Image collage — balanced, contained, mobile-friendly */}
+            <ScrollReveal delay={0.15} className="lg:col-span-7 order-1 lg:order-2 w-full">
+              <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:gap-6 max-w-[520px] sm:max-w-none mx-auto">
+                <div className="relative rounded-lg overflow-hidden bg-cream aspect-[4/5] shadow-[var(--shadow-elevated)] ring-1 ring-border/40">
                   <img
                     src={paintTinNavy}
                     alt="Halson Paints premium navy industrial paint tin"
                     loading="lazy"
                     width={1024}
                     height={1024}
-                    className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
+                    className="w-full h-full object-contain p-4 sm:p-6 transition-transform duration-700 hover:scale-[1.04]"
                   />
                 </div>
-                <div className="relative rounded-md overflow-hidden bg-[hsl(40_30%_94%)] aspect-[4/5] shadow-[var(--shadow-elevated)] mt-8 sm:mt-12">
+                <div className="relative rounded-lg overflow-hidden bg-cream aspect-[4/5] shadow-[var(--shadow-elevated)] ring-1 ring-border/40 mt-6 sm:mt-10 lg:mt-14">
                   <img
                     src={paintTinOrange}
                     alt="Open paint tin with vibrant orange paint and brush"
                     loading="lazy"
                     width={1024}
                     height={1024}
-                    className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]"
                   />
                 </div>
               </div>
