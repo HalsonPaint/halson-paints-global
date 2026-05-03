@@ -50,10 +50,10 @@ const Header = forwardRef<HTMLElement>((_, ref) => {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 py-3 transition-all duration-700",
+        "fixed top-0 left-0 right-0 z-50 py-3 transition-all duration-700 glass",
         isScrolled || isMobileMenuOpen
-          ? "glass border-b border-border/40 shadow-[var(--shadow-subtle)]" 
-          : "bg-transparent"
+          ? "border-b border-border/40 shadow-[var(--shadow-subtle)]"
+          : "border-b border-transparent"
       )}
     >
       <div className="container mx-auto px-6 lg:px-12">
