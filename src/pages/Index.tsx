@@ -180,7 +180,7 @@ const Index = () => {
       </section>
 
       {/* ============ WHO WE ARE — 3 pillars ============ */}
-      <section className="py-20 sm:py-28 bg-secondary/40">
+      <section className="py-20 sm:py-28 bg-[hsl(35_30%_97%)]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <ScrollReveal className="text-center mb-14 sm:mb-20 max-w-2xl mx-auto">
             <p className="text-accent text-[11px] tracking-[0.3em] uppercase font-semibold mb-4">
