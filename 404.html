@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halson India - Premium Industrial Solutions</title>
+    <script>
+      // GitHub Pages SPA redirect (works for project pages like /<repo>/ as well)
+      const routes = new Set(["products", "contact"]);
+      const pathname = window.location.pathname;
+      const search = window.location.search;
+      const segments = pathname.split("/").filter(Boolean);
+
+      const first = segments[0] || "";
+      const isLikelyBase = first && !routes.has(first);
+      const base = isLikelyBase ? `/${first}` : "";
+      const rest = isLikelyBase ? segments.slice(1).join("/") : segments.join("/");
+      const hashPath = rest ? `/${rest}` : "/";
+
+      window.location.replace(`${window.location.origin}${base}/#${hashPath}${search}`);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
