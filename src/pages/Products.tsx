@@ -1,5 +1,20 @@
 import { useState } from "react";
-import { ChevronDown, MessageCircle, ArrowRight } from "lucide-react";
+import {
+  ChevronDown,
+  MessageCircle,
+  ArrowRight,
+  ShieldCheck,
+  Sparkles,
+  FileBadge,
+  PaintRoller,
+  Droplets,
+  Layers,
+  Brush,
+  Flame,
+  FlaskConical,
+  Palette,
+  Shield,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
