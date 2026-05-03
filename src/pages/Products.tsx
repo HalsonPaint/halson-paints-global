@@ -99,6 +99,8 @@ const ProductCard = ({ product, categoryName, index }: { product: Product; categ
   const message = `Hi, I'm interested in the following product:\n\n*Product:* ${product.name}\n*Category:* ${categoryName}\n*Description:* ${product.description}\n\nPlease provide more details and pricing.`;
   const whatsappUrl = getWhatsAppUrl(message);
 
+  const { Icon, bg, color } = getProductIcon(product.id);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -106,13 +108,18 @@ const ProductCard = ({ product, categoryName, index }: { product: Product; categ
       transition={{ duration: 0.25, delay: index * 0.02 }}
       className="group"
     >
-      <div className="flex items-center justify-between gap-3 py-3 px-4 bg-secondary/20 border border-border/40 hover:border-primary/20 transition-all duration-400 rounded-sm hover:bg-secondary/40">
-        <div className="flex items-center gap-3 flex-1 min-w-0">
-          <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary/50 transition-colors duration-400 shrink-0" />
+      <div className="flex items-center justify-between gap-4 py-4 px-4 sm:px-5 bg-white border border-border/50 hover:border-primary/30 hover:shadow-[var(--shadow-elevated)] transition-all duration-400 rounded-md">
+        <div className="flex items-center gap-4 flex-1 min-w-0">
+          <div className={cn("w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shrink-0", bg)}>
+            <Icon className={cn("w-5 h-5 sm:w-[22px] sm:h-[22px]", color)} strokeWidth={1.75} />
+          </div>
           <div className="min-w-0">
-            <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-400 truncate">
+            <h4 className="text-sm sm:text-base font-semibold text-foreground group-hover:text-primary transition-colors duration-400 truncate">
               {product.name}
             </h4>
+            <p className="text-xs sm:text-[13px] text-muted-foreground font-light truncate mt-0.5">
+              {product.description}
+            </p>
           </div>
         </div>
         <a
@@ -125,10 +132,11 @@ const ProductCard = ({ product, categoryName, index }: { product: Product; categ
             e.preventDefault();
             openExternal(whatsappUrl);
           }}
-          className="shrink-0 opacity-40 group-hover:opacity-100 hover:scale-110 transition-all duration-300"
+          className="shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors"
           title="Enquire on WhatsApp"
         >
-          <WhatsAppIcon className="w-5 h-5" />
+          <MessageCircle className="w-4 h-4" strokeWidth={1.75} />
+          <span className="hidden sm:inline">Enquiry</span>
         </a>
       </div>
     </motion.div>
