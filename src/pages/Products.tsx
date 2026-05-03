@@ -51,6 +51,27 @@ const categoryImages: Record<string, string> = {
   "hammer-finish": hammerFinishImg,
 };
 
+// Icon palette + soft tinted background per product (cycled deterministically)
+const productIconPool = [
+  { Icon: ShieldCheck, bg: "bg-primary/10", color: "text-primary" },
+  { Icon: Sparkles, bg: "bg-emerald-500/10", color: "text-emerald-600" },
+  { Icon: FileBadge, bg: "bg-accent/10", color: "text-accent" },
+  { Icon: PaintRoller, bg: "bg-amber-400/15", color: "text-amber-600" },
+  { Icon: Droplets, bg: "bg-sky-500/10", color: "text-sky-600" },
+  { Icon: Layers, bg: "bg-purple-500/10", color: "text-purple-600" },
+  { Icon: Brush, bg: "bg-rose-500/10", color: "text-rose-600" },
+  { Icon: Flame, bg: "bg-orange-500/10", color: "text-orange-600" },
+  { Icon: FlaskConical, bg: "bg-teal-500/10", color: "text-teal-600" },
+  { Icon: Palette, bg: "bg-indigo-500/10", color: "text-indigo-600" },
+  { Icon: Shield, bg: "bg-slate-500/10", color: "text-slate-600" },
+];
+
+const getProductIcon = (id: string) => {
+  let h = 0;
+  for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) >>> 0;
+  return productIconPool[h % productIconPool.length];
+};
+
 const WHATSAPP_NUMBER = "918369657171";
 
 const getWhatsAppUrl = (message: string) => {
