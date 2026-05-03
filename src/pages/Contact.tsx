@@ -55,8 +55,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "newtechnocoats@gmail.com",
-      href: "https://mail.google.com/mail/?view=cm&fs=1&to=newtechnocoats@gmail.com",
+      value: "halsonpaints1@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=halsonpaints1@gmail.com",
       external: true,
     },
     {

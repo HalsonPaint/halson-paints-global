@@ -95,19 +95,19 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                 </li>
                 <li>
                   <a 
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=newtechnocoats@gmail.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=halsonpaints1@gmail.com"
                     target={EXTERNAL_TARGET}
                     rel="noopener noreferrer"
                     onClick={(e) => {
                       if (EXTERNAL_TARGET !== "_top") return;
                       e.preventDefault();
                       openExternal(
-                        "https://mail.google.com/mail/?view=cm&fs=1&to=newtechnocoats@gmail.com",
+                        "https://mail.google.com/mail/?view=cm&fs=1&to=halsonpaints1@gmail.com",
                       );
                     }}
                     className="hover:text-white/70 transition-colors duration-500"
                   >
-                    newtechnocoats@gmail.com
+                    halsonpaints1@gmail.com
                   </a>
                 </li>
               </ul>
