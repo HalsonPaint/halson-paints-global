@@ -23,6 +23,8 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import Marquee from "@/components/animations/Marquee";
 
 import facilityImg from "@/assets/facility.jpg";
+import paintTinNavy from "@/assets/paint-tin-navy.jpg";
+import paintTinOrange from "@/assets/paint-tin-orange.jpg";
 
 const trustBadges = [
   { icon: ShieldCheck, title: "Quality You Can Trust", desc: "Rigorous QC at every stage" },
