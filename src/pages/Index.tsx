@@ -23,6 +23,8 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import Marquee from "@/components/animations/Marquee";
 
 import facilityImg from "@/assets/facility.jpg";
+import paintTinNavy from "@/assets/paint-tin-navy.jpg";
+import paintTinOrange from "@/assets/paint-tin-orange.jpg";
 
 const trustBadges = [
   { icon: ShieldCheck, title: "Quality You Can Trust", desc: "Rigorous QC at every stage" },
@@ -178,7 +180,7 @@ const Index = () => {
       </section>
 
       {/* ============ WHO WE ARE — 3 pillars ============ */}
-      <section className="py-20 sm:py-28 bg-secondary/40">
+      <section className="py-20 sm:py-28 bg-[hsl(35_30%_97%)]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <ScrollReveal className="text-center mb-14 sm:mb-20 max-w-2xl mx-auto">
             <p className="text-accent text-[11px] tracking-[0.3em] uppercase font-semibold mb-4">
@@ -207,6 +209,75 @@ const Index = () => {
                 </p>
               </ScrollReveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ PAINT TINS — visual showcase ============ */}
+      <section className="py-20 sm:py-28 bg-background relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            {/* Copy */}
+            <ScrollReveal className="lg:col-span-5 order-2 lg:order-1">
+              <p className="text-accent text-[11px] tracking-[0.3em] uppercase font-semibold mb-4">
+                Crafted in Every Tin
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.1] mb-6">
+                Premium finish.{" "}
+                <span className="text-accent">Industrial strength.</span>
+              </h2>
+              <div className="w-16 h-[2px] bg-accent/60 mb-6" />
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed font-light mb-8">
+                Every tin of Halson Paint is engineered with precision-blended
+                resins, fade-resistant pigments and protective additives — built
+                to outlast the harshest industrial conditions while delivering a
+                flawless finish.
+              </p>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 mt-2 rounded-full bg-accent" />
+                  <p className="text-foreground/80 font-light">High-build coverage</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 mt-2 rounded-full bg-accent" />
+                  <p className="text-foreground/80 font-light">Anti-corrosive formulas</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 mt-2 rounded-full bg-accent" />
+                  <p className="text-foreground/80 font-light">Long-lasting gloss</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 mt-2 rounded-full bg-accent" />
+                  <p className="text-foreground/80 font-light">Precision shade match</p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Image collage */}
+            <ScrollReveal delay={0.15} className="lg:col-span-7 order-1 lg:order-2">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 relative">
+                <div className="relative rounded-md overflow-hidden bg-[hsl(40_30%_94%)] aspect-[4/5] shadow-[var(--shadow-elevated)]">
+                  <img
+                    src={paintTinNavy}
+                    alt="Halson Paints premium navy industrial paint tin"
+                    loading="lazy"
+                    width={1024}
+                    height={1024}
+                    className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
+                  />
+                </div>
+                <div className="relative rounded-md overflow-hidden bg-[hsl(40_30%_94%)] aspect-[4/5] shadow-[var(--shadow-elevated)] mt-8 sm:mt-12">
+                  <img
+                    src={paintTinOrange}
+                    alt="Open paint tin with vibrant orange paint and brush"
+                    loading="lazy"
+                    width={1024}
+                    height={1024}
+                    className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
+                  />
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
